@@ -14,8 +14,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('templates.WelcomeScreen');
 });
+
+Route::get('/home', function () {
+    return view('templates.home');
+})->name('home');
+
+
+// For admin only
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
