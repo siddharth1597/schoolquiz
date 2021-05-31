@@ -12,26 +12,30 @@
         <div class="container mx-auto">
             <div class="row">
                 <div class="col-md-6 pt-5">
-                    <div class="card shadow border border-primary cursor-pointer">
+                    <div class="card shadow border border-white cursor-pointer saved-quiz">
                         <div class="card-body m-12">
-                            <i class="fas fa-book h1 text-primary mb-3"></i>
-                            <h2 class="text-primary">Saved Quiz</h2>
+                            <i class="fas fa-book h1 text-white mb-3"></i>
+                            <h2 class="text-white">Saved Quiz</h2>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6 pt-5">
-                    <div class="card shadow border border-success cursor-pointer organize-quiz">
+                    <div class="card shadow bor der border-white cursor-pointer organize-quiz">
                         <div class="card-body m-12">
-                            <i class="fas fa-book h1 text-success mb-3"></i>
-                            <h2 class="text-success">Organize Quiz</h2>
+                            <i class="fas fa-book h1 text-white mb-3"></i>
+                            <h2 class="text-white">Organize Quiz</h2>
                         </div>
                     </div>
                 </div>
             </div>
+            <div>
+                <img class="w-25 mx-auto" src="{{ url('images/quiz-logo-poll.jpg') }}" alt="quiz">
+            </div>
         </div>
     </div>
-
-    <div class="bg-white p-4 px-5 fixed-bottom text-right position-absolute shadow">
-        <a href="#">Contact us</a>
-    </div>
 </x-app-layout>
+
+<footer class="bg-dark p-3 px-5 w-100 text-right shadow">
+    <i class="fas fa-phone-alt text-white mr-2"></i>
+    <a href="#" class="text-white">Contact us</a>
+</footer>

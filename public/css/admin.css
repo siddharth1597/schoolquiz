@@ -1,0 +1,11 @@
+.size_modal {
+    max-width: 800px;
+}
+
+.saved-quiz {
+    background: radial-gradient(#007bff, #000000bf);
+}
+
+.organize-quiz {
+    background: radial-gradient(#28a745, #000000bf);
+}
