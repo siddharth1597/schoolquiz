@@ -21,6 +21,10 @@ Route::get('/home', function () {
     return view('templates.home');
 })->name('home');
 
+Route::get('/dashboard/createQuizSet', function () {
+    return view('templates.createSet');
+})->name('createQuizSet');
+
 
 // For admin only
 

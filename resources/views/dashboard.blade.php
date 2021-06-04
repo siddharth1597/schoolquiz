@@ -11,7 +11,7 @@
         <div class="container mx-auto">
             <div class="row">
                 <div class="col-md-4 pt-5">
-                    <div class="card shadow border border-primary cursor-pointer bg-primary">
+                    <div class="card shadow border border-primary cursor-pointer bg-primary" data-toggle="modal" data-target="#CreateQuiz">
                         <div class="card-body m-8">
                             <i class="fas fa-book h1 text-white mb-3"></i>
                             <h2 class="text-white">Create Quiz</h2>
@@ -19,7 +19,7 @@
                     </div>
                 </div>
                 <div class="col-md-4 pt-5">
-                    <div class="card shadow border border-success cursor-pointer bg-success">
+                    <div class="card shadow border border-success cursor-pointer bg-success update_quiz">
                         <div class="card-body m-8">
                             <i class="fas fa-book h1 text-white mb-3"></i>
                             <h2 class="text-white">Update Quiz</h2>
@@ -27,7 +27,7 @@
                     </div>
                 </div>
                 <div class="col-md-4 pt-5">
-                    <div class="card shadow border border-danger cursor-pointer bg-danger">
+                    <div class="card shadow border border-danger cursor-pointer bg-danger delete_quiz">
                         <div class="card-body m-8">
                             <i class="fas fa-book h1 text-white mb-3"></i>
                             <h2 class="text-white">Delete Quiz</h2>
