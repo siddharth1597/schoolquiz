@@ -4,7 +4,7 @@
             <div class="d-flex">
                 <i id="fa-edit" class="fas fa-edit h2 text-dark mr-3"></i>
                 <h2 class="font-semibold text-xl text-gray-800 leading-tight my-auto">
-                    {{ __('Create Quiz') }}
+                    {{ __('Update Quiz') }}
                 </h2>
             </div>
             <div class="d-flex">
@@ -93,7 +93,7 @@
                     </div>
                     <div class="card-footer py-4">
                         <i class="fas fa-arrow-circle-left text-dark h4 cursor-pointer back_link float-left">  Back</i>
-                        <button id='save_details' onclick='saveQuestion()' class="btn btn-primary float-right">Submit & Next</button>
+                        <button id='save_details' onclick='saveQuestion()' class="btn btn-primary float-right">Update & Next</button>
                     </div>
                 </div>
             </div>

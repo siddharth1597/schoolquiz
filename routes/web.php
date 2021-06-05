@@ -25,6 +25,10 @@ Route::get('/dashboard/createQuizSet', function () {
     return view('templates.createSet');
 })->name('createQuizSet');
 
+Route::get('/dashboard/updateQuizSet', function () {
+    return view('templates.updateSet');
+})->name('updateQuizSet');
+
 
 // For admin only
 

@@ -11,5 +11,9 @@ $(document).ready(function() {
 });
 
 function createSet() {
-    window.location = url + '/dashboard/createQuizSet';
+  window.location = url + '/dashboard/createQuizSet';
+}
+
+function continueUpdate(set_no) {
+  window.location = url + '/dashboard/updateQuizSet';
 }

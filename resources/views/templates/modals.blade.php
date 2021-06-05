@@ -117,7 +117,83 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button id='create_set' onclick='createSet()' class="btn btn-primary">Create Set 1</button>
+        <button id='create_set' onclick='createSet()' class="btn btn-success">Create Set 1</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Update-Quiz Modal -->
+
+<div class="modal fade" id="UpdateQuiz" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">UPDATE QUIZ</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <p>Select the Quiz set that you want to update</p>
+          </div>
+          <div class="form-group">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <label class="input-group-text" for="quizSetList">Quiz</label>
+              </div>
+              <select class="custom-select" id="quizSetList">
+                <option selected>--Select Set--</option>
+                <option value="1">Set 1</option>
+                <option value="2">Set 2</option>
+                <option value="3">Set 3</option>
+              </select>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button id='continue_update' onclick='continueUpdate(quizSetList.selected)' class="btn btn-primary">Continue</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Delete-Quiz Modal -->
+
+<div class="modal fade" id="DeleteQuiz" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">DELETE QUIZ</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <p>Select the Quiz set that you want to delete</p>
+          </div>
+          <div class="form-group">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <label class="input-group-text" for="deleteQuizSet">Quiz</label>
+              </div>
+              <select class="custom-select" id="deleteQuizSet">
+                <option selected>--Select Set--</option>
+                <option value="1">Set 1</option>
+                <option value="2">Set 2</option>
+                <option value="3">Set 3</option>
+              </select>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button id='delete_set' onclick='deleteSet(quizSetList.selected)' class="btn btn-danger">Delete</button>
       </div>
     </div>
   </div>

@@ -19,7 +19,7 @@
                     </div>
                 </div>
                 <div class="col-md-4 pt-5">
-                    <div class="card shadow border border-success cursor-pointer bg-success update_quiz">
+                    <div class="card shadow border border-success cursor-pointer bg-success update_quiz" data-toggle="modal" data-target="#UpdateQuiz">
                         <div class="card-body m-8">
                             <i class="fas fa-book h1 text-white mb-3"></i>
                             <h2 class="text-white">Update Quiz</h2>
@@ -27,7 +27,7 @@
                     </div>
                 </div>
                 <div class="col-md-4 pt-5">
-                    <div class="card shadow border border-danger cursor-pointer bg-danger delete_quiz">
+                    <div class="card shadow border border-danger cursor-pointer bg-danger delete_quiz" data-toggle="modal" data-target="#DeleteQuiz">
                         <div class="card-body m-8">
                             <i class="fas fa-book h1 text-white mb-3"></i>
                             <h2 class="text-white">Delete Quiz</h2>

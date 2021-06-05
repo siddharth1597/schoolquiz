@@ -6,9 +6,10 @@
 
         <x-jet-validation-errors class="mb-4" />
 
+        <h3 class="font-semibold text-center text-xl my-2 text-gray-700">Super Admin Registration</h3>
         <form method="POST" action="{{ route('register') }}">
             @csrf
-
+            <p class="my-3 text-red-900 text-center">Only Admin has access to add the Super Admin**</p>
             <div>
                 <x-jet-label for="name" value="{{ __('Name') }}" />
                 <x-jet-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
@@ -27,6 +28,11 @@
             <div class="mt-4">
                 <x-jet-label for="password_confirmation" value="{{ __('Confirm Password') }}" />
                 <x-jet-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
+            </div>
+
+            <div class="mt-4">
+                <x-jet-label for="admin_password" value="{{ __('Enter Admin Password to verify') }}" />
+                <x-jet-input id="admin_password" class="block mt-1 w-full" type="password" name="admin_password" required autocomplete="new-password" />
             </div>
 
             @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())

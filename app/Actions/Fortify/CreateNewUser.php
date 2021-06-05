@@ -25,12 +25,18 @@ class CreateNewUser implements CreatesNewUsers
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => $this->passwordRules(),
             'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['required', 'accepted'] : '',
-        ])->validate();
+        ])->after(function ($validator) use ($input) {
+            $admin_password = User::select('password')->where('role', 'admin')->first();
+            if (!isset($input['admin_password']) || !Hash::check($input['admin_password'], $admin_password->password)) {
+                $validator->errors()->add('admin_password', __('The provided Admin Password does not match. Try Again!'));
+            }
+        })->validate();
 
         return User::create([
             'name' => $input['name'],
             'email' => $input['email'],
             'password' => Hash::make($input['password']),
+            'role' => 'super_admin',
         ]);
     }
 }
