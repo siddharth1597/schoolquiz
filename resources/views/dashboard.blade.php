@@ -6,7 +6,11 @@
             {{ __('Admin Dashboard') }}
         </h2>
     </x-slot>
-
+    @if (Session::has('flash_message'))
+        <div class="alert {{ Session::get('flash_type') }}">
+            <strong>{{ Session::get('flash_message') }}</strong>
+        </div>
+    @endif
     <div class="py-2 px-10 text-center mb-10">
         <div class="container mx-auto">
             <div class="row">

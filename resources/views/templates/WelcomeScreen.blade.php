@@ -16,10 +16,8 @@
 
     </head>
     <body class="antialiased">
-        <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
-            <div class="max-w-6xl mx-auto sm:px-6 lg:px-8 justify-center">
-                Animation-1 appears only for 4 seconds.
-            </div>
+        <div style="height: 100%; position: absolute;">
+            <img src="{{ url('/images/main-comp.gif') }}" style="width: 100%; height:100%" alt="School Quiz">
         </div>
     </body>
 
@@ -29,7 +27,7 @@
         function timeout() {
             setTimeout(function () { 
                 window.location = 'home';
-            }, 2000);
+            }, 3000);
         }
         
     </script>

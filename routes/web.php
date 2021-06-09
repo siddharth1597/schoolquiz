@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\ContactUsController;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,6 +33,8 @@ Route::get('/dashboard/updateQuizSet', function () {
     return view('templates.updateSet');
 })->name('updateQuizSet');
 
+Route::post('/dashboard/contact', 'App/Http/Controllers/ContactUsController@saveContactData');
+Route::post('/imageUploadFile', 'App/Http/Controllers/ContactUsController@uploadFile');
 
 // For admin only
 

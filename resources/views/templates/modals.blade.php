@@ -18,7 +18,7 @@
             <div class="form-group col-md-6">
               <div class="d-flex">
                 <div class="custom-file">
-                  <input required type="file" class="custom-file-input" onchange="image_file(event, this.id)" id="contact_image" name="customFile" />
+                  <input required type="file" class="custom-file-input image_file" data-type="profile" onchange="image_file(event, this.id)" id="contact_image" name="customFile" />
                   <label class="custom-file-label" for="customFile" id="contact_images">Choose image</label>
                   <small id="upload_msg_proof d-none" class="form-text">
                   </small>
@@ -78,7 +78,7 @@
             <div class="form-group col-md-6">
               <div class="d-flex">
                 <div class="custom-file">
-                  <input required type="file" class="custom-file-input" onchange="image_file(event, this.id)" id="contact_icon" name="customFile" />
+                  <input required type="file" class="custom-file-input image_file" data-type="icon" onchange="image_file(event, this.id)" id="contact_icon" name="customFile" />
                   <label class="custom-file-label" for="customFile" id="contact_icons">Choose home icon</label>
                   <small id="upload_msg_proof d-none" class="form-text">
                   </small>
@@ -91,7 +91,7 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button id='update_details' onclick='updateContactUs()' class="btn btn-primary">Save data</button>
+        <button id='update_details' onclick='updateContactUs(this.id)' class="btn btn-primary">Save data</button>
         <button class="btn btn-secondary" onclick="Reset()">Reset</button>
       </div>
     </div>
