@@ -2,10 +2,13 @@ var url = $('meta[name=url]').attr('content');
 
 $(document).ready(function() {
 
-  $('.image_file').on('click', function() {
+  $('.upload_image').on('click', function() {
 
+    var $this = $(this);
     var image_file = '';
-    if ($(this).attr('data-type') === 'icon') {
+    var image_type = $this.prev().find('.image_file').attr('data-type');
+    alert(image_type);
+    if (image_type == 'icon') {
       image_file = document.getElementById('contact_icon').files[0];
     }
     else {
@@ -13,9 +16,10 @@ $(document).ready(function() {
     }
     var form_data = new FormData();
     form_data.append("image", image_file);
-    form_data.append("image_type", $(this).attr('data-type'));
+    form_data.append("image_type", image_type);
+
     $.ajax({
-      url: url + '/imageUploadFile',
+      url: url + "/imageUpload",
       method:"POST",
       data: form_data,
       dataType:'JSON',
@@ -26,15 +30,13 @@ $(document).ready(function() {
       success:function(data)
       {
         if (data.class_name == 'text-success') {
-          id_proof_click = id_proof_click + 1;
-          extension_id_proof = data.extension;
-          secure_no_proof = data.secure_no;
-          $('#upload_msg_proof').addClass(data.class_name).removeClass('text-danger').html(data.message);
+          $this.parent().next().removeClass('d-none').attr('src', data.image_url);
+          $this.closest('#upload_msg_proof').addClass(data.class_name).removeClass('text-danger').html(data.message);
         }
         else {
-          $('#upload_msg_proof').addClass(data.class_name).removeClass('text-success').html(data.message);
+          $this.closest('#upload_msg_proof').addClass(data.class_name).removeClass('text-success').html(data.message);
         }
-        $('#upload_msg_proof').show();
+        $this.closest('#upload_msg_proof').show();
       }
     });
   });
@@ -76,7 +78,6 @@ function updateContactUs() {
         'whatsapp_no': whatsapp_no,
         'phone_no': phone_no
       },
-
       success: function(data) {
         if ('success' in data) {
           if (data.success === 'yes') {

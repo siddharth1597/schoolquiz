@@ -11,6 +11,7 @@
       </div>
       <div class="modal-body">
         <form>
+        @csrf
           <div class="form-group">
             <input type="text" class="form-control" id="contact_title" placeholder="Title" required>
           </div>
@@ -18,12 +19,12 @@
             <div class="form-group col-md-6">
               <div class="d-flex">
                 <div class="custom-file">
-                  <input required type="file" class="custom-file-input image_file" data-type="profile" onchange="image_file(event, this.id)" id="contact_image" name="customFile" />
-                  <label class="custom-file-label" for="customFile" id="contact_images">Choose image</label>
-                  <small id="upload_msg_proof d-none" class="form-text">
+                  <input required type="file" class="custom-file-input image_file" data-type="profile" onchange="image_file(event, this.id)" id="contact_image" name="contact_image" />
+                  <label class="custom-file-label" for="contact_image" id="contact_images">Choose image</label>
+                  <small id="upload_msg_proof" class="form-text">
                   </small>
                 </div>
-                <input type="button" name="upload" id="upload_contact_image" class="btn btn-success ml-2" value="Upload">
+                <input type="button" name="upload" id="upload_contact_image" class="btn btn-success ml-2 upload_image" value="Upload">
               </div>
               <img class="mt-2 w-50 mx-auto d-none" src="" alt="profile image">
             </div>
@@ -78,12 +79,12 @@
             <div class="form-group col-md-6">
               <div class="d-flex">
                 <div class="custom-file">
-                  <input required type="file" class="custom-file-input image_file" data-type="icon" onchange="image_file(event, this.id)" id="contact_icon" name="customFile" />
-                  <label class="custom-file-label" for="customFile" id="contact_icons">Choose home icon</label>
-                  <small id="upload_msg_proof d-none" class="form-text">
+                  <input required type="file" class="custom-file-input image_file" data-type="icon" onchange="image_file(event, this.id)" id="contact_icon" name="contact_icon" />
+                  <label class="custom-file-label" for="contact_icon" id="contact_icons">Choose home icon</label>
+                  <small id="upload_msg_proof" class="form-text">
                   </small>
                 </div>
-                <input type="button" name="upload" id="upload_contact_icon" class="btn btn-success ml-2" value="Upload">
+                <input type="button" name="upload" id="upload_contact_icon" class="btn btn-success ml-2 upload_image" value="Upload">
               </div>
             </div>
           </div>

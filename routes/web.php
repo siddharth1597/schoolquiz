@@ -33,8 +33,8 @@ Route::get('/dashboard/updateQuizSet', function () {
     return view('templates.updateSet');
 })->name('updateQuizSet');
 
-Route::post('/dashboard/contact', 'App/Http/Controllers/ContactUsController@saveContactData');
-Route::post('/imageUploadFile', 'App/Http/Controllers/ContactUsController@uploadFile');
+Route::post('/dashboard/contact', 'App\Http\Controllers\ContactUsController@saveContactData');
+Route::post('imageUpload', 'App\Http\Controllers\ContactUsController@uploadFile');
 
 // For admin only
 
