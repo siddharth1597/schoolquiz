@@ -7,38 +7,43 @@ $(document).ready(function() {
     var $this = $(this);
     var image_file = '';
     var image_type = $this.prev().find('.image_file').attr('data-type');
-    alert(image_type);
     if (image_type == 'icon') {
       image_file = document.getElementById('contact_icon').files[0];
     }
     else {
       image_file = document.getElementById('contact_image').files[0];
     }
-    var form_data = new FormData();
-    form_data.append("image", image_file);
-    form_data.append("image_type", image_type);
 
-    $.ajax({
-      url: url + "/imageUpload",
-      method:"POST",
-      data: form_data,
-      dataType:'JSON',
-      contentType: false,
-      cache: false,
-      processData: false,
+    if (image_file !== '') {
+      var form_data = new FormData();
+      form_data.append("image", image_file);
+      form_data.append("image_type", image_type);
 
-      success:function(data)
-      {
-        if (data.class_name == 'text-success') {
-          $this.parent().next().removeClass('d-none').attr('src', data.image_url);
-          $this.closest('#upload_msg_proof').addClass(data.class_name).removeClass('text-danger').html(data.message);
+      $.ajax({
+        url: url + "/imageUpload",
+        method:"POST",
+        data: form_data,
+        dataType:'JSON',
+        contentType: false,
+        cache: false,
+        processData: false,
+
+        success:function(data)
+        {
+          if (data.class_name == 'text-success') {
+            $this.parent().next().removeClass('d-none').attr('src', data.image_url);
+            $this.closest('#upload_msg_proof').addClass(data.class_name).removeClass('text-danger').html(data.message);
+          }
+          else {
+            $this.closest('#upload_msg_proof').addClass(data.class_name).removeClass('text-success').html(data.message);
+          }
+          $this.closest('#upload_msg_proof').show();
         }
-        else {
-          $this.closest('#upload_msg_proof').addClass(data.class_name).removeClass('text-success').html(data.message);
-        }
-        $this.closest('#upload_msg_proof').show();
-      }
-    });
+      });
+    }
+    else {
+      alert('Select the image first!!');
+    }
   });
 });
 
@@ -93,4 +98,17 @@ function updateContactUs() {
   else {
     alert('All fields required');
   }
+}
+
+function resetContact() {
+  document.getElementById('contact_title').value = '';
+  document.getElementById('contact_name').value = '';
+  document.getElementById('contact_designation').value = '';
+  document.getElementById('contact_email').value = '';
+  document.getElementById('contact_address').value = '';
+  document.getElementById('contact_city').value = '';
+  document.getElementById('contact_pincode').value = '';
+  document.getElementById('contact_whatsapp').value = '';
+  document.getElementById('contact_mobile').value = '';
+  $('.contact_image').attr('src', '');
 }

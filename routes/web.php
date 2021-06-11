@@ -38,6 +38,4 @@ Route::post('imageUpload', 'App\Http\Controllers\ContactUsController@uploadFile'
 
 // For admin only
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', 'App\Http\Controllers\DashboardController@showDetails')->name('dashboard');

@@ -17,7 +17,7 @@
     </head>
     <body class="antialiased">
         <div style="height: 100%; position: absolute;">
-            <img src="{{ url('/images/main-comp.gif') }}" style="width: 100%; height:100%" alt="School Quiz">
+            <img src="{{ url('/images/animation_1.gif') }}" style="width: 100%; height:100%" alt="School Quiz">
         </div>
     </body>
 
@@ -27,7 +27,7 @@
         function timeout() {
             setTimeout(function () { 
                 window.location = 'home';
-            }, 3000);
+            }, 2500);
         }
         
     </script>

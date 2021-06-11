@@ -55,7 +55,6 @@
             </main>
         </div>
 
-        @include('templates.modals')
         @stack('modals')
 
         @livewireScripts
