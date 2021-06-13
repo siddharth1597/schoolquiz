@@ -26,14 +26,16 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
         <script>
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            var url = $('meta[name=url]').attr('content');
         </script>
         <script src="{{ url('/js/home.js') }}"></script>
         <script src="{{ url('/js/contact-us.js') }}"></script>
+        <script src="{{ url('/js/quiz-admin.js') }}"></script>
 
     </head>
     <body class="font-sans antialiased">
@@ -42,7 +44,7 @@
 
             <!-- Page Heading -->
             @if (isset($header))
-                <header class="bg-white shadow">
+                <header class="bg-white shadow position-relative">
                     <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                         {{ $header }}
                     </div>
@@ -50,7 +52,7 @@
             @endif
 
             <!-- Page Content -->
-            <main>
+            <main class="position-relative">
                 {{ $slot }}
             </main>
         </div>
