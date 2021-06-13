@@ -6,6 +6,7 @@
             {{ __('Admin Dashboard') }}
         </h2>
     </x-slot>
+    <div class="background_wall dashboard_back"></div>
     @if (Session::has('flash_message'))
         <div class="alert {{ Session::get('flash_type') }}">
             <strong>{{ Session::get('flash_message') }}</strong>
@@ -61,7 +62,7 @@
     @include('templates.dashboard_modals')
 </x-app-layout>
 
-<footer class="bg-dark p-3 px-5 w-100 text-right shadow">
+<footer class="bg-dark p-3 px-5 w-100 text-right shadow position-relative">
     <i class="fas fa-phone-alt text-white mr-2"></i>
     <a href="#" class="text-white">Contact us</a>
 </footer>

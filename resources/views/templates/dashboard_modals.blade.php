@@ -130,7 +130,7 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button id='create_set' onclick='createSet()' class="btn btn-success">Create Set 1</button>
+        <button id='create_set-{{ $quiz_no }}' data-set="{{ $quiz_no }}" onclick='createSet(this)' class="btn btn-success">Create Set {{ $quiz_no }}</button>
       </div>
     </div>
   </div>
@@ -159,9 +159,9 @@
               </div>
               <select class="custom-select" id="quizSetList">
                 <option selected>--Select Set--</option>
-                <option value="1">Set 1</option>
-                <option value="2">Set 2</option>
-                <option value="3">Set 3</option>
+                @foreach($quiz_sets as $quiz_set)
+                <option value="{{ $quiz_set->set_no }}">Set {{ $quiz_set->set_no }}</option>
+                @endforeach
               </select>
             </div>
           </div>
@@ -197,16 +197,16 @@
               </div>
               <select class="custom-select" id="deleteQuizSet">
                 <option selected>--Select Set--</option>
-                <option value="1">Set 1</option>
-                <option value="2">Set 2</option>
-                <option value="3">Set 3</option>
+                @foreach($quiz_sets as $quiz_set)
+                <option value="{{ $quiz_set->set_no }}">Set {{ $quiz_set->set_no }}</option>
+                @endforeach
               </select>
             </div>
           </div>
         </form>
       </div>
       <div class="modal-footer">
-        <button id='delete_set' onclick='deleteSet(quizSetList.selected)' class="btn btn-danger">Delete</button>
+        <button id='delete_set' onclick='deleteQuizSet()' class="btn btn-danger">Delete</button>
       </div>
     </div>
   </div>

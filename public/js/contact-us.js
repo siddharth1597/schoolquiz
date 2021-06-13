@@ -1,5 +1,3 @@
-var url = $('meta[name=url]').attr('content');
-
 $(document).ready(function() {
 
   $('.upload_image').on('click', function() {
