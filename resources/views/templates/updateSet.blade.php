@@ -21,6 +21,14 @@
     </x-slot>
     <div class="background_wall"></div>
     <div class="py-10 px-10 text-center">
+        <div class="row d-flex justify-center mt-2 mb-4">
+            <div class="ml-1 mt-2 float-left" style="z-index: 10"><button id="question-1" data-set="{{ $quiz_question->set_no }}" data-question="1" class="btn btn-success rounded shadow question_pagination" title="Go to Question 1">1</button></div>
+            @php
+                for ($i = 2 ; $i < 31 ; $i++) {
+                    echo '<div class="ml-1 mt-2 float-left" style="z-index: 10"><button id=question-' . $i . ' data-question=' . $i . ' data-set=' . $quiz_question->set_no . ' class="btn btn-secondary rounded shadow question_pagination" title="Go to Question ' . $i . '">' . $i . '</button></div>';
+                }
+            @endphp
+        </div>
         <div class="container mx-auto">
             <div class="row">
                 <div class="card shadow border border-white w-100 card_back_color">
@@ -109,7 +117,7 @@
                     </div>
                     <div class="card-footer py-4">
                         <i id='back-{{ $quiz_question->set_no }}' data-set='{{ $quiz_question->set_no }}' data-question="0" class="fas fa-arrow-circle-left text-dark h4 cursor-pointer back_link float-left" onclick="backForm(this)">  Back</i>
-                        <button id='save_details-{{ $quiz_question->set_no }}' data-question="1" data-set="{{ $quiz_question->set_no }}" onclick='saveQuestion(this)' class="btn btn-primary float-right">Update & Next</button>
+                        <button id='update_details-{{ $quiz_question->set_no }}' data-question="1" data-set="{{ $quiz_question->set_no }}" onclick='saveQuestion(this)' class="btn btn-primary float-right">Update & Next</button>
                     </div>
                 </div>
             </div>

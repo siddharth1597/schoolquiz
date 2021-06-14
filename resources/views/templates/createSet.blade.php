@@ -21,6 +21,14 @@
     </x-slot>
     <div class="background_wall"></div>
     <div class="py-10 px-10 text-center">
+        <div class="row d-flex justify-center mt-2 mb-4">
+            <div class="ml-1 mt-2 float-left" style="z-index: 10"><button id="question-1" data-question="1" class="btn btn-dark rounded shadow question_pagination" title="Question 1">1</button></div>
+            @php
+                for ($i = 2 ; $i < 31 ; $i++) {
+                    echo '<div class="ml-1 mt-2 float-left" style="z-index: 10"><button id=question-' . $i . ' data-question=' . $i . ' class="btn btn-secondary rounded shadow question_pagination" title="Question ' . $i . '">' . $i . '</button></div>';
+                }
+            @endphp
+        </div>
         <div class="container mx-auto">
             <div class="row">
                 <div class="card shadow border border-white w-100 card_back_color">

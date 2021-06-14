@@ -131,7 +131,7 @@ class CreateQuizController extends Controller
         }
         else {
             return response()->json([
-                'message'   => $validation->errors()->all(),
+                'message' => $validation->errors()->all(),
             ]);
         }
 
@@ -165,7 +165,12 @@ class CreateQuizController extends Controller
             'set_no' => $set_no
         ])->get();
 
-        Session::put('question_media', $saved_quiz[0]->media_file);
+        if ($saved_quiz->isEmpty()) {
+            $saved_quiz[0] = '';
+        }
+        else {
+            Session::put('question_media', $saved_quiz[0]->media_file);
+        }
 
         return response()->json([
             'success' => 'yes',

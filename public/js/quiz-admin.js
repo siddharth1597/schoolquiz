@@ -1,5 +1,7 @@
 // To save the Questions
 
+var flag_update = false;
+
 function saveQuestion($this) {
   
   var question = document.getElementById('question').value;
@@ -85,11 +87,19 @@ function clearForm(next_question_no, $this, set_no) {
   $('.ques_heading').text('Question-' + next_question_no);
   $('[name="answer"]').prop('checked', false);
 
-  if (Number(next_question_no) - 1 >= $('#storedQuestions').val()) {
-    $('#storedQuestions').val(Number(next_question_no) - 1); // stored temp value for check filled question
+  $('#question-' + (next_question_no - 1)).addClass('btn-success').removeClass('btn-secondary').removeClass('btn-dark');
+  $('#question-' + next_question_no).addClass('btn-dark').removeClass('btn-secondary');
+
+  if ($($this).attr('id') == ('update_details-' + set_no)) {
+    storedNextForm(Number(next_question_no), set_no);
   }
   else {
-    storedNextForm(Number(next_question_no) - 1, set_no);
+    if (Number(next_question_no) - 1 >= $('#storedQuestions').val()) {
+      $('#storedQuestions').val(Number(next_question_no) - 1); // stored temp value for check filled question
+    }
+    else {
+      storedNextForm(Number(next_question_no), set_no);
+    }
   }
 
   if (next_question_no == 30) { 
@@ -104,7 +114,7 @@ function storedNextForm(current_question, set_no) {
     type: 'POST',
     url: url + '/storedQuestion',
     data: {
-      'question_no': current_question + 1,
+      'question_no': current_question,
       'set_no': set_no
     },
 
@@ -113,20 +123,30 @@ function storedNextForm(current_question, set_no) {
         alert(data.message);
       }
       if (data.success == 'yes') {
-        document.getElementById('question').value = data.saved_question['question'];
-        document.getElementById('option1').value = data.saved_question['option1'];
-        document.getElementById('option2').value = data.saved_question['option2'];
-        document.getElementById('option3').value = data.saved_question['option3'];
-        document.getElementById('option4').value = data.saved_question['option4'];
+        flag_update = false;
 
-        $('#back-' + set_no).attr('data-question', current_question);
-        $('.ques_heading').text('Question-' + (current_question + 1));
-        $('input[name="answer"][value='+ data.saved_question["answer"] +']').prop('checked', true);
-        $('#save_details-' + set_no).attr('data-question', current_question + 1);
+        if (data.saved_question !== '') {
+          document.getElementById('question').value = data.saved_question['question'];
+          document.getElementById('option1').value = data.saved_question['option1'];
+          document.getElementById('option2').value = data.saved_question['option2'];
+          document.getElementById('option3').value = data.saved_question['option3'];
+          document.getElementById('option4').value = data.saved_question['option4'];
+          $('input[name="answer"][value='+ data.saved_question["answer"] +']').prop('checked', true);
 
-        if (data.saved_question['media_file'] != '') {
-          document.getElementById('media_files').innerHTML = data.saved_question['media_file'].split('/')[3];
-          // document.getElementById('media_file').value = data.saved_question['media_file'];
+          if (data.saved_question['media_file'] != '') {
+            document.getElementById('media_files').innerHTML = data.saved_question['media_file'].split('/')[3];
+          }
+
+          flag_update = true;
+        }
+
+        $('#back-' + set_no).attr('data-question', current_question - 1);
+        $('.ques_heading').text('Question-' + (current_question));
+        if ($('#save_details-' + set_no).length > 0) {
+          $('#save_details-' + set_no).attr('data-question', current_question);
+        }
+        if ($('#update_details-' + set_no).length > 0) {
+          $('#update_details-' + set_no).attr('data-question', current_question);
         }
       }
     }
@@ -166,7 +186,16 @@ function backForm($this) {
           $($this).attr('data-question', current_question - 1);
           $('.ques_heading').text('Question-' + (Number(current_question)));
           $('input[name="answer"][value='+ data.saved_question["answer"] +']').prop('checked', true);
-          $('#save_details-' + set_no).attr('data-question', current_question);
+
+          $('#question-' + current_question).addClass('btn-dark').removeClass('btn-secondary').removeClass('btn-success');
+          $('#question-' + (Number(current_question) + 1)).removeClass('btn-dark').addClass('btn-secondary');
+
+          if ($('#save_details-' + set_no).length > 0) {
+            $('#save_details-' + set_no).attr('data-question', current_question);
+          }
+          if ($('#update_details-' + set_no).length > 0) {
+            $('#update_details-' + set_no).attr('data-question', current_question);
+          }
 
           if (data.saved_question['media_file'] != '') {
             document.getElementById('media_files').innerHTML = data.saved_question['media_file'].split('/')[3];
@@ -200,3 +229,26 @@ function deleteQuizSet() {
     }
   });
 }
+
+$(document).ready(function() {
+
+  $('.question_pagination').on('click', function() {
+    var question_no = $(this).attr('data-question');
+    var set_no = $(this).attr('data-set');
+
+    storedNextForm(question_no, set_no);
+    if(flag_update == false) {
+      document.getElementById('question').value = '';
+      document.getElementById('option1').value = '';
+      document.getElementById('option2').value = '';
+      document.getElementById('option3').value = '';
+      document.getElementById('option4').value = '';
+      document.getElementById('media_file').value = '';
+      document.getElementById('media_files').innerHTML = '+ Add Image or Video (optional)';
+      $('[name="answer"]').prop('checked', false);
+    }
+    $('.question_pagination').removeClass('btn-success').addClass('btn-secondary');
+    $(this).addClass('btn-success').removeClass('btn-secondary');
+
+  });
+});
