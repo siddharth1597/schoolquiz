@@ -69,6 +69,8 @@ function saveQuestion($this) {
   }
 }
 
+// Clear the form and set the next value parameters
+
 function clearForm(next_question_no, $this, set_no) {
   $('#SavedQuiz').modal('hide');
   document.getElementById('question').value = '';
@@ -94,6 +96,8 @@ function clearForm(next_question_no, $this, set_no) {
     $('#save_details-' + set_no).text('Save Quiz');
   }
 }
+
+// Show the stored form values
 
 function storedNextForm(current_question, set_no) {
   $.ajax({

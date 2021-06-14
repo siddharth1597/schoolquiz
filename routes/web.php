@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Session;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 Route::get('/clear-cache', function () {
     $exitCode = Artisan::call('optimize');
     Session::flash('flash_message', 'Caches Cleared!');
@@ -27,13 +28,10 @@ Route::group(['middleware' => ['web']], function () {
         return view('templates.WelcomeScreen');
     });
 
+    // Homepage
     Route::get('/home', function () {
         return view('templates.home');
     })->name('home');
-
-    Route::get('/dashboard/updateQuizSet', function () {
-        return view('templates.updateSet');
-    })->name('updateQuizSet');
 
     // Error page
     Route::get('/error_not_login', function () {
@@ -54,5 +52,8 @@ Route::group(['middleware' => ['web']], function () {
 
     //Delete Quiz
     Route::post('/deleteQuiz', 'App\Http\Controllers\DashboardController@deleteQuizSet');
+
+    //Update Quiz
+    Route::get('/dashboard/updateQuizSet/set_no={set_no}', 'App\Http\Controllers\UpdateQuizController@showQuiz')->name('updateQuizSet');
 
 });

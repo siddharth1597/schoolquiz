@@ -7,7 +7,7 @@
             </h2>
         </div>
     </x-slot>
-
+    <div class="background_wall dashboard_back"></div>
     <div class="py-16 px-10 text-center">
         <div class="container mx-auto">
             <div class="row">

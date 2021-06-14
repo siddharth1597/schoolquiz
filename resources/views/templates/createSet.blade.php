@@ -1,5 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
+        <i id="fa-back" class="fas fa-arrow-left h2 text-dark position-absolute cursor-pointer" title="Go to Dashboard"></i>
         <div class="d-flex justify-between">
             <div class="d-flex">
                 <i id="fa-edit" class="fas fa-edit h2 text-dark mr-3"></i>
@@ -11,7 +12,7 @@
                 <h3 class="text-success">Quiz set {{ $quiz_set_no }}</h3>
             </div>
             <div class="d-flex">
-                <h3 class="font-semibold text-xl text-info leading-tight my-auto">
+                <h3 class="font-semibold text-xl text-info leading-tight my-auto homepage cursor-pointer">
                     {{ __('School Quiz') }}
                 </h3>
                 <i id="fa-home" class="fas fa-home h4 text-info ml-2 my-auto"></i>

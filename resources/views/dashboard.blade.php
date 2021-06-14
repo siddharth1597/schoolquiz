@@ -2,9 +2,20 @@
 
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Admin Dashboard') }}
-        </h2>
+        <div class="d-flex justify-between">
+            <div class="d-flex">
+                <i id="fa-edit" class="fas fa-user-cog h2 text-dark mr-3"></i>
+                <h2 class="font-semibold text-xl text-gray-800 leading-tight my-auto">
+                    {{ __('Admin Dashboard') }}
+                </h2>
+            </div>
+            <div class="d-flex">
+                <h3 class="font-semibold text-xl text-info leading-tight my-auto homepage cursor-pointer" title="Go to homepage">
+                    {{ __('School Quiz') }}
+                </h3>
+                <i id="fa-home" class="fas fa-home h4 text-info ml-2 my-auto"></i>
+            </div>
+        </div>
     </x-slot>
     <div class="background_wall dashboard_back"></div>
     @if (Session::has('flash_message'))
@@ -16,7 +27,7 @@
         <div class="container mx-auto">
             <div class="row">
                 <div class="col-md-4 pt-5">
-                    <div class="card shadow border border-primary cursor-pointer bg-primary" data-toggle="modal" data-target="#CreateQuiz">
+                    <div class="card shadow border border-success cursor-pointer bg-success" data-toggle="modal" data-target="#CreateQuiz">
                         <div class="card-body m-8">
                             <i class="fas fa-book h1 text-white mb-3"></i>
                             <h2 class="text-white">Create Quiz</h2>
@@ -24,7 +35,7 @@
                     </div>
                 </div>
                 <div class="col-md-4 pt-5">
-                    <div class="card shadow border border-success cursor-pointer bg-success update_quiz" data-toggle="modal" data-target="#UpdateQuiz">
+                    <div class="card shadow border cursor-pointer update_quiz" data-toggle="modal" data-target="#UpdateQuiz">
                         <div class="card-body m-8">
                             <i class="fas fa-book h1 text-white mb-3"></i>
                             <h2 class="text-white">Update Quiz</h2>

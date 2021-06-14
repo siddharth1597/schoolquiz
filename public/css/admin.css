@@ -15,6 +15,12 @@ body {
     background: radial-gradient(#28a745, #000000bf);
 }
 
+.update_quiz,
+.update_quiz_button {
+    background-color: saddlebrown !important;
+    border-color: saddlebrown !important;
+}
+
 .ques_icon {
     width: 40px;
     height: 40px;
@@ -38,4 +44,13 @@ body {
 
 .background_wall.dashboard_back {
     height: 730px;
+}
+
+.homepage {
+    z-index: 10;
+}
+
+#fa-back {
+    left: 50px;
+    z-index: 10;
 }

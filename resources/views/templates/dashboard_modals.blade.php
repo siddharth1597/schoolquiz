@@ -168,7 +168,7 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button id='continue_update' onclick='continueUpdate(quizSetList.selected)' class="btn btn-primary">Continue</button>
+        <button id='continue_update' onclick='updateQuiz()' class="btn btn-primary update_quiz_button">Continue</button>
       </div>
     </div>
   </div>

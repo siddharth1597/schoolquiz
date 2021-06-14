@@ -2,6 +2,12 @@ $(document).ready(function() {
   $('.organize-quiz').on('click', function() {
     window.location = url + '/login';
   });
+  $('.homepage').on('click', function() {
+    window.location = url + '/home';
+  });
+  $('#fa-back').on('click', function() {
+    window.location = url + '/dashboard';
+  });
 });
 
 function createSet($this) {
@@ -9,6 +15,7 @@ function createSet($this) {
   window.location = url + '/dashboard/createQuizSet/set_no=' + quiz_no;
 }
 
-function continueUpdate(set_no) {
-  window.location = url + '/dashboard/updateQuizSet';
+function updateQuiz() {
+  var set_no = $('#quizSetList').val();
+  window.location = url + '/dashboard/updateQuizSet/set_no=' + set_no;
 }

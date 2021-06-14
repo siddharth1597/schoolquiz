@@ -1,5 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
+        <i id="fa-back" class="fas fa-arrow-left h2 text-dark position-absolute cursor-pointer" title="Go to Dashboard"></i>
         <div class="d-flex justify-between">
             <div class="d-flex">
                 <i id="fa-edit" class="fas fa-edit h2 text-dark mr-3"></i>
@@ -7,28 +8,31 @@
                     {{ __('Update Quiz') }}
                 </h2>
             </div>
+            <div class="row">
+                <h3 class="text-success">Quiz set {{ $quiz_question->set_no }}</h3>
+            </div>
             <div class="d-flex">
-                <h3 class="font-semibold text-xl text-info leading-tight my-auto">
+                <h3 class="font-semibold text-xl text-info leading-tight my-auto homepage cursor-pointer">
                     {{ __('School Quiz') }}
                 </h3>
                 <i id="fa-home" class="fas fa-home h4 text-info ml-2 my-auto"></i>
             </div>
         </div>
     </x-slot>
-
+    <div class="background_wall"></div>
     <div class="py-10 px-10 text-center">
         <div class="container mx-auto">
             <div class="row">
-                <img class="w-20" src="{{ url('images/time_paper.jpg') }}" alt="quiz">
-                <h2 class="mx-2 my-3">Quiz set 1</h2>
-            </div>
-            <div class="row">
-                <div class="card shadow border border-white w-100 bg-light">
-                    <div class="card-body m-3">
-                        <h4 class="font-weight-bold">Question-1</h4>
+                <div class="card shadow border border-white w-100 card_back_color">
+                    <div class="card-body m-3" style="padding-top: 0;">
+                        <div class="d-flex justify-center mb-3">
+                            <img class="ques_icon" src="{{ url('images/options.png') }}" alt="quiz">
+                            <h4 class="ques_heading font-weight-bold m-2 text-secondary">Question-{{ $quiz_question->question_no }}</h4>
+                        </div>
                         <form>
+                            @csrf
                             <div class="form-group">
-                                <textarea class="rounded form-control" name="question" id="question" cols="115" rows="3" placeholder="Type your question here..." style="border-color: #d8dadc;"></textarea>
+                                <textarea class="rounded form-control" name="question" id="question" cols="115" rows="3" placeholder="Type your question here..." style="border-color: #d8dadc;">{{ $quiz_question->question }}</textarea>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-6 ml-3">
@@ -37,10 +41,11 @@
                                         <div class="input-group ml-3">
                                             <div class="input-group-prepend">
                                                 <div class="input-group-text">
-                                                <input type="radio" name="answer" id="answer" aria-label="Radio button for following text input">
+                                                    <input type="radio" name="answer" value="A" id="answer" aria-label="Radio button for following text input" 
+                                                    <?= $quiz_question->answer == 'A' ? 'checked' : '' ?>>
                                                 </div>
                                             </div>
-                                            <input type="text" class="form-control" placeholder="Option 1">
+                                            <input id="option1" type="text" class="form-control" placeholder="Option 1" value="{{ $quiz_question->option1 }}">
                                         </div>
                                     </div>
                                     <div class="mt-4 d-flex">
@@ -48,10 +53,11 @@
                                         <div class="input-group ml-3">
                                             <div class="input-group-prepend">
                                                 <div class="input-group-text">
-                                                <input type="radio" name="answer" id="answer" aria-label="Radio button for following text input">
+                                                    <input type="radio" name="answer" value="B" id="answer" aria-label="Radio button for following text input" 
+                                                    <?= $quiz_question->answer == 'B' ? 'checked' : '' ?>>
                                                 </div>
                                             </div>
-                                            <input type="text" class="form-control" placeholder="Option 2">
+                                            <input id="option2" type="text" class="form-control" placeholder="Option 2" value="{{ $quiz_question->option2 }}">
                                         </div>
                                     </div>
                                     <div class="mt-4 d-flex">
@@ -59,10 +65,11 @@
                                         <div class="input-group ml-3">
                                             <div class="input-group-prepend">
                                                 <div class="input-group-text">
-                                                <input type="radio" name="answer" id="answer" aria-label="Radio button for following text input">
+                                                <input type="radio" name="answer" value="C" id="answer" aria-label="Radio button for following text input" 
+                                                <?= $quiz_question->answer == 'C' ? 'checked' : '' ?>>
                                                 </div>
                                             </div>
-                                            <input type="text" class="form-control" placeholder="Option 3">
+                                            <input id="option3" type="text" class="form-control" placeholder="Option 3" value="{{ $quiz_question->option3 }}">
                                         </div>
                                     </div>
                                     <div class="mt-4 d-flex">
@@ -70,30 +77,39 @@
                                         <div class="input-group ml-3">
                                             <div class="input-group-prepend">
                                                 <div class="input-group-text">
-                                                <input type="radio" name="answer" id="answer" aria-label="Radio button for following text input">
+                                                <input type="radio" name="answer" value="D" id="answer" aria-label="Radio button for following text input" 
+                                                <?= $quiz_question->answer == 'D' ? 'checked' : '' ?>>
                                                 </div>
                                             </div>
-                                            <input type="text" class="form-control" placeholder="Option 4">
+                                            <input id="option4" type="text" class="form-control" placeholder="Option 4" value="{{ $quiz_question->option4 }}">
                                         </div>
                                     </div>
                                 </div>
-                                
+                                <input type="hidden" id="storedQuestions" value="1">
                                 <div class="form-group col-md-5 ml-5 mt-4">
                                     <div class="d-flex">
                                         <div class="custom-file">
-                                            <input required type="file" class="custom-file-input" onchange="image_file(event, this.id)" id="contact_image" name="customFile" />
-                                            <label class="custom-file-label" for="customFile" id="contact_images">+ Add Image or Video (optional)</label>
+                                            @php
+                                                if ($quiz_question->media_file != '') {
+                                                    $media_file = explode('/', $quiz_question->media_file)[3];
+                                                }
+                                                else {
+                                                    $media_file = '+ Add Image or Video (Optional)';
+                                                }
+                                            @endphp
+                                            <input required type="file" class=" cursor-pointer custom-file-input" onchange="image_file(event, this.id)" id="media_file" name="customFile" />
+                                            <label class="custom-file-label text-left" for="customFile" id="media_files">{{ $media_file }}</label>
                                             <small id="upload_msg_proof d-none" class="form-text"></small>
                                         </div>
                                     </div>
-                                    <img class="mt-3 w-80 mx-auto d-none" src="" alt="image">
+                                    <i class="far fa-image h1 mt-2" style="font-size: 9.5rem; color:#d8dadc"></i>
                                 </div>
                             </div>
                         </form>
                     </div>
                     <div class="card-footer py-4">
-                        <i class="fas fa-arrow-circle-left text-dark h4 cursor-pointer back_link float-left">  Back</i>
-                        <button id='save_details' onclick='saveQuestion()' class="btn btn-primary float-right">Update & Next</button>
+                        <i id='back-{{ $quiz_question->set_no }}' data-set='{{ $quiz_question->set_no }}' data-question="0" class="fas fa-arrow-circle-left text-dark h4 cursor-pointer back_link float-left" onclick="backForm(this)">  Back</i>
+                        <button id='save_details-{{ $quiz_question->set_no }}' data-question="1" data-set="{{ $quiz_question->set_no }}" onclick='saveQuestion(this)' class="btn btn-primary float-right">Update & Next</button>
                     </div>
                 </div>
             </div>
@@ -102,9 +118,26 @@
             </div>
         </div>
     </div>
+
+    <!--Question Saved Modal -->
+
+    <div class="modal fade" id="SavedQuiz" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">SAVED QUIZ</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Question Saved</div>
+                <div class="modal-footer"></div>
+            </div>
+        </div>
+    </div>
 </x-app-layout>
 
-<footer class="bg-dark p-3 px-5 w-100 text-right shadow">
+<footer class="position-relative bg-dark p-3 px-5 w-100 text-right shadow">
     <i class="fas fa-phone-alt text-white mr-2"></i>
     <a href="#" class="text-white">Contact us</a>
 </footer>
