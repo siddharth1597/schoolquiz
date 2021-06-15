@@ -10,10 +10,10 @@
                 </h2>
             </div>
             <div class="d-flex">
-                <h3 class="font-semibold text-xl text-info leading-tight my-auto homepage cursor-pointer" title="Go to homepage">
+                <h3 class="font-semibold text-xl text-info leading-tight my-auto welcome_screen cursor-pointer" title="Go to homepage">
                     {{ __('School Quiz') }}
                 </h3>
-                <i id="fa-home" class="fas fa-home h4 text-info ml-2 my-auto"></i>
+                <i class="fas fa-school h4 text-info ml-2 my-auto"></i>
             </div>
         </div>
     </x-slot>

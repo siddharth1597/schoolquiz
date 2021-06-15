@@ -6,7 +6,7 @@
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
-                        <x-jet-application-mark class="block h-9 w-auto" />
+                        <img class="logo" src="{{ url('images/school_quiz1.png') }}" alt="School Quiz">
                     </a>
                 </div>
 

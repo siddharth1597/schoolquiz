@@ -28,7 +28,7 @@ class CreateNewUser implements CreatesNewUsers
         ])->after(function ($validator) use ($input) {
             $admin_password = User::select('password')->where('role', 'admin')->first();
             if (!isset($input['admin_password']) || !Hash::check($input['admin_password'], $admin_password->password)) {
-                $validator->errors()->add('admin_password', __('The provided Admin Password does not match. Try Again!'));
+                $validator->errors()->add('admin_password', __('The provided Super Admin Password does not match. Try Again!'));
             }
         })->validate();
 
@@ -36,7 +36,7 @@ class CreateNewUser implements CreatesNewUsers
             'name' => $input['name'],
             'email' => $input['email'],
             'password' => Hash::make($input['password']),
-            'role' => 'super_admin',
+            'role' => 'admin',
         ]);
     }
 }

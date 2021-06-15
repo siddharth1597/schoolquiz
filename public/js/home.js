@@ -3,6 +3,9 @@ $(document).ready(function() {
     window.location = url + '/login';
   });
   $('.homepage').on('click', function() {
+    window.location = url + '/dashboard';
+  });
+  $('.welcome_screen').on('click', function() {
     window.location = url + '/home';
   });
   $('#fa-back').on('click', function() {

@@ -9,23 +9,20 @@
                 </h2>
             </div>
             <div class="row">
-                <h3 class="text-success">Quiz set {{ $quiz_set_no }}</h3>
+                <h3 class="text-success font-semibold">Quiz Set-{{ $quiz_set_no }}</h3>
             </div>
-            <div class="d-flex">
-                <h3 class="font-semibold text-xl text-info leading-tight my-auto homepage cursor-pointer">
-                    {{ __('School Quiz') }}
-                </h3>
-                <i id="fa-home" class="fas fa-home h4 text-info ml-2 my-auto"></i>
+            <div class="d-flex go_to_dashboard">
+                <img class="logo homepage" src="{{ url('images/school_quiz1.png') }}" alt="School Quiz"  title="Go to Dashboard">
             </div>
         </div>
     </x-slot>
     <div class="background_wall"></div>
     <div class="py-10 px-10 text-center">
         <div class="row d-flex justify-center mt-2 mb-4">
-            <div class="ml-1 mt-2 float-left" style="z-index: 10"><button id="question-1" data-question="1" class="btn btn-dark rounded shadow question_pagination" title="Question 1">1</button></div>
+            <div class="ml-1 mt-2 float-left" style="z-index: 10"><button id="question-1" data-question="1" class="btn btn-dark rounded shadow create_question_pagination" title="Question 1">1</button></div>
             @php
                 for ($i = 2 ; $i < 31 ; $i++) {
-                    echo '<div class="ml-1 mt-2 float-left" style="z-index: 10"><button id=question-' . $i . ' data-question=' . $i . ' class="btn btn-secondary rounded shadow question_pagination" title="Question ' . $i . '">' . $i . '</button></div>';
+                    echo '<div class="ml-1 mt-2 float-left" style="z-index: 10"><button id=question-' . $i . ' data-question=' . $i . ' class="btn btn-secondary rounded shadow create_question_pagination" title="Question ' . $i . '">' . $i . '</button></div>';
                 }
             @endphp
         </div>
@@ -34,7 +31,7 @@
                 <div class="card shadow border border-white w-100 card_back_color">
                     <div class="card-body m-3" style="padding-top: 0;">
                         <div class="d-flex justify-center mb-3">
-                            <img class="ques_icon" src="{{ url('images/options.png') }}" alt="quiz">
+                            <img class="ques_icon" src="{{ url('images/quiz_icon.png') }}" alt="quiz">
                             <h4 class="ques_heading font-weight-bold m-2 text-secondary">Question-1</h4>
                         </div>
                         <form>

@@ -1,6 +1,5 @@
 // To save the Questions
 
-var flag_update = false;
 
 function saveQuestion($this) {
   
@@ -86,6 +85,10 @@ function clearForm(next_question_no, $this, set_no) {
   $('#back-' + set_no).attr('data-question', next_question_no - 1);
   $('.ques_heading').text('Question-' + next_question_no);
   $('[name="answer"]').prop('checked', false);
+  
+  if (next_question_no == 30) { 
+    $('#save_details-' + set_no).text('Save Quiz');
+  }
 
   $('#question-' + (next_question_no - 1)).addClass('btn-success').removeClass('btn-secondary').removeClass('btn-dark');
   $('#question-' + next_question_no).addClass('btn-dark').removeClass('btn-secondary');
@@ -100,10 +103,6 @@ function clearForm(next_question_no, $this, set_no) {
     else {
       storedNextForm(Number(next_question_no), set_no);
     }
-  }
-
-  if (next_question_no == 30) { 
-    $('#save_details-' + set_no).text('Save Quiz');
   }
 }
 
@@ -123,8 +122,6 @@ function storedNextForm(current_question, set_no) {
         alert(data.message);
       }
       if (data.success == 'yes') {
-        flag_update = false;
-
         if (data.saved_question !== '') {
           document.getElementById('question').value = data.saved_question['question'];
           document.getElementById('option1').value = data.saved_question['option1'];
@@ -192,6 +189,9 @@ function backForm($this) {
 
           if ($('#save_details-' + set_no).length > 0) {
             $('#save_details-' + set_no).attr('data-question', current_question);
+            if (current_question < 30) { 
+              $('#save_details-' + set_no).text('Submit & Next');
+            }
           }
           if ($('#update_details-' + set_no).length > 0) {
             $('#update_details-' + set_no).attr('data-question', current_question);
@@ -231,22 +231,28 @@ function deleteQuizSet() {
 }
 
 $(document).ready(function() {
+  var flag_update = false;
 
   $('.question_pagination').on('click', function() {
     var question_no = $(this).attr('data-question');
     var set_no = $(this).attr('data-set');
+    
+    // Clear media file
+    document.getElementById('media_file').value = '';
+    document.getElementById('media_files').innerHTML = '+ Add Image or Video (optional)';
 
-    storedNextForm(question_no, set_no);
     if(flag_update == false) {
       document.getElementById('question').value = '';
       document.getElementById('option1').value = '';
       document.getElementById('option2').value = '';
       document.getElementById('option3').value = '';
       document.getElementById('option4').value = '';
-      document.getElementById('media_file').value = '';
-      document.getElementById('media_files').innerHTML = '+ Add Image or Video (optional)';
       $('[name="answer"]').prop('checked', false);
     }
+      
+    flag_update = false;
+    storedNextForm(question_no, set_no);
+
     $('.question_pagination').removeClass('btn-success').addClass('btn-secondary');
     $(this).addClass('btn-success').removeClass('btn-secondary');
 

@@ -6,10 +6,10 @@
 
         <x-jet-validation-errors class="mb-4" />
 
-        <h3 class="font-semibold text-center text-xl my-2 text-gray-700">Super Admin Registration</h3>
+        <h3 class="font-semibold text-center text-xl my-2 text-gray-700">Admin Registration</h3>
         <form method="POST" action="{{ route('register') }}">
             @csrf
-            <p class="my-3 text-red-900 text-center">Only Admin has access to add the Super Admin**</p>
+            <p class="my-3 text-red-900 text-center">Only Super Admin has access to add the Admin**</p>
             <div>
                 <x-jet-label for="name" value="{{ __('Name') }}" />
                 <x-jet-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
@@ -31,7 +31,7 @@
             </div>
 
             <div class="mt-4">
-                <x-jet-label for="admin_password" value="{{ __('Enter Admin Password to verify') }}" />
+                <x-jet-label for="admin_password" value="{{ __('Enter Super Admin Password to verify') }}" />
                 <x-jet-input id="admin_password" class="block mt-1 w-full" type="password" name="admin_password" required autocomplete="new-password" />
             </div>
 

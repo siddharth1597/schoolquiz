@@ -9,13 +9,10 @@
                 </h2>
             </div>
             <div class="row">
-                <h3 class="text-success">Quiz set {{ $quiz_question->set_no }}</h3>
+                <h3 class="text-success font-semibold">Quiz Set-{{ $quiz_question->set_no }}</h3>
             </div>
-            <div class="d-flex">
-                <h3 class="font-semibold text-xl text-info leading-tight my-auto homepage cursor-pointer">
-                    {{ __('School Quiz') }}
-                </h3>
-                <i id="fa-home" class="fas fa-home h4 text-info ml-2 my-auto"></i>
+            <div class="d-flex go_to_dashboard">
+                <img class="logo homepage" src="{{ url('images/school_quiz1.png') }}" alt="School Quiz" title="Go to Dashboard">
             </div>
         </div>
     </x-slot>
@@ -34,7 +31,7 @@
                 <div class="card shadow border border-white w-100 card_back_color">
                     <div class="card-body m-3" style="padding-top: 0;">
                         <div class="d-flex justify-center mb-3">
-                            <img class="ques_icon" src="{{ url('images/options.png') }}" alt="quiz">
+                            <img class="ques_icon" src="{{ url('images/quiz_icon.png') }}" alt="quiz">
                             <h4 class="ques_heading font-weight-bold m-2 text-secondary">Question-{{ $quiz_question->question_no }}</h4>
                         </div>
                         <form>

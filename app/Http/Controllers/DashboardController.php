@@ -36,7 +36,7 @@ class DashboardController extends Controller
         $quiz_delete = quiz_create::where('set_no', $request->set_no)->delete();
         $quiz_delete = quiz_set::where('set_no', $request->set_no)->delete();
 
-        Session::flash('flash_message', 'Quiz Set-' .  $request->set_no . 'Deleted successfully.');
+        Session::flash('flash_message', 'Quiz Set-' .  $request->set_no . ' Deleted successfully.');
         Session::flash('flash_type', 'alert-success');
 
         return response()->json(['success' => 'yes']);
