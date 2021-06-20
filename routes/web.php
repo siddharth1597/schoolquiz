@@ -29,9 +29,7 @@ Route::group(['middleware' => ['web']], function () {
     });
 
     // Homepage
-    Route::get('/home', function () {
-        return view('templates.home');
-    })->name('home');
+    Route::get('/home', 'App\Http\Controllers\HomeController@show')->name('home');
 
     // Error page
     Route::get('/error_not_login', function () {
@@ -55,5 +53,8 @@ Route::group(['middleware' => ['web']], function () {
 
     //Update Quiz
     Route::get('/dashboard/updateQuizSet/set_no={set_no}', 'App\Http\Controllers\UpdateQuizController@showQuiz')->name('updateQuizSet');
+
+    //Saved Quiz
+    Route::get('/home/savedQuizSet/set_no={set_no}', 'App\Http\Controllers\SavedQuizController@showQuiz')->name('savedQuizSet');
 
 });

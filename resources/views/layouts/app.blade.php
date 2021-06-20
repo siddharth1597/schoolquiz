@@ -17,6 +17,7 @@
         <link rel="stylesheet" href="{{ url('bootstrap4.6.0/css/bootstrap.min.css') }}">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
         <link rel="stylesheet" href="{{ url('css/admin.css') }}">
+        <link rel="stylesheet" href="{{ url('css/user.css') }}">
 
         @livewireStyles
 
@@ -38,6 +39,7 @@
         <script src="{{ url('/js/home.js') }}"></script>
         <script src="{{ url('/js/contact-us.js') }}"></script>
         <script src="{{ url('/js/quiz-admin.js') }}"></script>
+        <script src="{{ url('/js/quiz-user.js') }}"></script>
 
     </head>
     <body class="font-sans antialiased">
@@ -47,7 +49,7 @@
             <!-- Page Heading -->
             @if (isset($header))
                 <header class="bg-white shadow position-relative">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                    <div class="max-w-7xl mx-auto py-3 px-4">
                         {{ $header }}
                     </div>
                 </header>

@@ -22,3 +22,8 @@ function updateQuiz() {
   var set_no = $('#quizSetList').val();
   window.location = url + '/dashboard/updateQuizSet/set_no=' + set_no;
 }
+
+function startQuiz() {
+  var set_no = $('#quizSetList').val();
+  window.location = url + '/home/savedQuizSet/set_no=' + set_no;
+}
