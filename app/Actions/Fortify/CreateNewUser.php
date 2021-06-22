@@ -26,7 +26,7 @@ class CreateNewUser implements CreatesNewUsers
             'password' => $this->passwordRules(),
             'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['required', 'accepted'] : '',
         ])->after(function ($validator) use ($input) {
-            $admin_password = User::select('password')->where('role', 'admin')->first();
+            $admin_password = User::select('password')->where('role', 'super_admin')->first();
             if (!isset($input['admin_password']) || !Hash::check($input['admin_password'], $admin_password->password)) {
                 $validator->errors()->add('admin_password', __('The provided Super Admin Password does not match. Try Again!'));
             }

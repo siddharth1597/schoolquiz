@@ -16,8 +16,8 @@
 
     </head>
     <body class="antialiased">
-        <div style="height: 100%; position: absolute;">
-            <img src="{{ url('/images/animation_1.gif') }}" style="width: 100%; height:100%" alt="School Quiz">
+        <div style="height: 100vh;">
+            <img src="{{ url('/images/welcome.gif') }}" style="width: 100%; height:100%" alt="School Quiz">
         </div>
     </body>
 
