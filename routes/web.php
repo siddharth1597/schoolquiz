@@ -43,6 +43,8 @@ Route::group(['middleware' => ['web']], function () {
     Route::post('/dashboard/contact', 'App\Http\Controllers\ContactUsController@saveContactData');
     Route::post('imageUpload', 'App\Http\Controllers\ContactUsController@uploadFile');
 
+    Route::get('/home/contact-page', 'App\Http\Controllers\ContactUsController@show')->name('contactPage');
+
     // Create Quiz
     Route::get('/dashboard/createQuizSet/set_no={set_no}', 'App\Http\Controllers\CreateQuizController@show')->name('createQuizSet');
     Route::post('/saveQuestion', 'App\Http\Controllers\CreateQuizController@saveQuestion');
