@@ -58,5 +58,6 @@ Route::group(['middleware' => ['web']], function () {
 
     //Saved Quiz
     Route::get('/home/savedQuizSet/set_no={set_no}', 'App\Http\Controllers\SavedQuizController@showQuiz')->name('savedQuizSet');
+    Route::post('/getQuestions', 'App\Http\Controllers\SavedQuizController@getQuestions');
 
 });

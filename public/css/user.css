@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans+Caption&display=swap');
+
 .stopwatch {
   border: 3px solid #786f6f;
   padding: 5px 6px;
@@ -5,6 +7,7 @@
 
 .contact-us-back {
   background-color: currentColor;
+  font-family: 'PT Sans Caption', sans-serif;
 }
 
 .contact_background_wall {
@@ -21,4 +24,13 @@
 .home_icon {
   z-index: 10;
   cursor: pointer;
+}
+
+.background_wall.saved_set {
+  height: 1100px;
+}
+
+#team_id {
+  height: fit-content;
+  margin-top: 5px !important;
 }

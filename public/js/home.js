@@ -5,7 +5,7 @@ $(document).ready(function() {
   $('.homepage').on('click', function() {
     window.location = url + '/dashboard';
   });
-  $('.welcome_screen').on('click', function() {
+  $('.welcome_screen, .home_icon').on('click', function() {
     window.location = url + '/home';
   });
   $('#fa-back').on('click', function() {

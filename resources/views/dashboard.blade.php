@@ -72,8 +72,3 @@
 
     @include('templates.dashboard_modals')
 </x-app-layout>
-
-<footer class="bg-dark p-3 px-5 w-100 text-right shadow position-relative">
-    <i class="fas fa-phone-alt text-white mr-2"></i>
-    <a href="#" class="text-white">Contact us</a>
-</footer>

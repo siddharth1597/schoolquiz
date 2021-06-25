@@ -12,7 +12,9 @@ use App\Models\contact_us;
 class ContactUsController extends Controller
 {
   public function show() {
-    return view('templates.contactUsPage');
+
+    $contact = contact_us::all();
+    return view('templates.contactUsPage', ['contact' => $contact[0]]);
   }
 
   public function saveContactData(Request $request) {

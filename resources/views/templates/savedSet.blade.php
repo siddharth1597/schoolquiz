@@ -16,7 +16,7 @@
             </div>
         </div>
     </x-slot>
-    <div class="background_wall"></div>
+    <div class="background_wall saved_set"></div>
     <div class="py-10 px-10 text-center">
         <div class="container mx-auto">
             <div class="row">
@@ -25,6 +25,7 @@
                         <div class="d-flex justify-center mb-3">
                             <img class="ques_icon" src="{{ url('images/quiz_icon.png') }}" alt="quiz">
                             <h4 class="ques_heading font-weight-bold m-2 text-secondary">Question-1</h4>
+                            <span id="team_id" class="badge badge-success p-2 my-auto"></span>
                         </div>
                         <form>
                             @csrf
@@ -80,24 +81,17 @@
                                 </div>
                                 <input type="hidden" id="storedQuestions" value="1">
                                 <div class="form-group col-md-5 ml-5 mt-4">
-                                    <div class="d-flex">
-                                        <div class="custom-file">
-                                            <input required type="file" class=" cursor-pointer custom-file-input" onchange="image_file(event, this.id)" id="media_file" name="customFile" />
-                                            <label class="custom-file-label text-left" for="customFile" id="media_files">+ Add Image or Video (optional)</label>
-                                            <small id="upload_msg_proof d-none" class="form-text"></small>
-                                        </div>
-                                    </div>
-                                    <i class="far fa-image h1 mt-2" style="font-size: 9.5rem; color:#d8dadc"></i>
+                                    <img class="mx-auto" id="question_media" src="{{ url('images/media_icon.png') }}" alt="media file">
                                 </div>
                             </div>
                         </form>
                     </div>
                     <div class="card-footer py-4 justify-between d-flex">
-                    <i id='back-{{ $quiz_set_no }}' class="invisible fas fa-arrow-circle-left text-dark h4 float-left">  Back</i>
+                        <i id='back-{{ $quiz_set_no }}' class="invisible fas fa-arrow-circle-left text-dark h4 float-left">  Back</i>
                         <div class="stopwatch bg-success rounded-lg">
                             <div id="stopwatch" class="mb-0 text-center font-weight-bold text-white h4">70</div>
                         </div>
-                        <button id='save_details-{{ $quiz_set_no }}' data-question="1" data-set="{{ $quiz_set_no }}" onclick='saveQuestion(this)' class="btn btn-primary float-right">Submit</button>
+                        <button id='save_details-{{ $quiz_set_no }}' data-question="1" data-set="{{ $quiz_set_no }}" data-team="A" onclick='saveQuestion(this)' class="btn btn-primary float-right">Submit</button>
                     </div>
                 </div>
             </div>
@@ -131,9 +125,13 @@
             </div>
         </div>
     </div>
+    @include('templates.user_modals')
+    <script>
+        $(document).ready(function() {
+            $('#StartQuiz').modal('show');
+            $('#StartQuiz').on('shown.bs.modal', function() {
+                $(this).find('button').focus();
+            })
+        });
+    </script>
 </x-app-layout>
-
-<footer class="position-relative bg-dark p-3 px-5 w-100 text-right shadow">
-    <i class="fas fa-phone-alt text-white mr-2"></i>
-    <a href="#" class="text-white">Contact us</a>
-</footer>
