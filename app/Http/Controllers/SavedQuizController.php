@@ -9,9 +9,19 @@ use App\Models\quiz_create;
 
 class SavedQuizController extends Controller
 {
+    public function showAnimation(Request $request)
+    {
+        return view('templates.StartQuizAnimation', ['set_no' => $request->set_no]);
+    }
+
     public function showQuiz(Request $request) 
     {
         $quiz_set_no = $request->set_no;
+
+        // initialize teams point.
+        Session::put('Team_A', 0);
+        Session::put('Team_B', 0);
+        Session::put('Team_C', 0);
 
         return view('templates.savedSet', ['quiz_set_no' => $quiz_set_no]);
     }
@@ -20,8 +30,9 @@ class SavedQuizController extends Controller
     {
         $set_no = $request->set_no;
         $question_no = $request->question_no;
+        $team = $this->getTeamId($question_no);
 
-        Session::put('next_question_no', $question_no);
+        Session::put('current_question_no', $question_no);
         Session::put('set_no', $set_no);
 
         $saved_quiz = quiz_create::where([
@@ -38,12 +49,48 @@ class SavedQuizController extends Controller
 
         return response()->json([
             'success' => 'yes',
-            'saved_question' => $saved_quiz[0]
+            'saved_question' => $saved_quiz[0],
+            'team' => $team,
+            'question' => $question_no,
         ]);
     }
 
+    public function submitAnswers(Request $request)
+    {
+        $answer = $request->answer;
+        $set_no = Session::get('set_no');
+        $team = $request->team;
+        $question_no = $request->question_no;
+        $next_question = $question_no + 1;
+        $next_team = $this->getTeamId($next_question);
+
+        $get_answer = quiz_create::select('answer')
+            ->where([
+                'question_no' => $question_no,
+                'set_no' => $set_no
+            ])->get();
+
+        if ($get_answer[0]->answer == $answer) {
+            $this->saveTeamPoints($team);
+
+            return response()->json([
+                'status' => 'matched',
+                'next_question' => $next_question,
+                'next_team' => $next_team
+            ]);
+        }
+        else {
+            return response()->json([
+                'status' => 'unmatched',
+                'next_question' => $next_question,
+                'next_team' => $next_team
+            ]);
+        }
+
+    }
+
+    // get the team code by question_no
     public function getTeamId($question_no) {
-        // gives you the team code
         $team = '';
         for ($i = 1 ; $i <= 3 ; $i++) {
             for ($question = $i ; $question <= 30 ; $question = $question + 3) {
@@ -61,5 +108,16 @@ class SavedQuizController extends Controller
             }
         }
         return $team;
+    }
+
+    public function saveTeamPoints($team)
+    {
+        $point_rate = 5; // 1 right question = 5 points.
+        $team_code = 'Team_' . $team;
+
+        if (Session::has($team_code)) {
+            $points = Session::get($team_code) + (1 * $point_rate);
+            Session::put($team_code, $points);
+        }
     }
 }

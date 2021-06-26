@@ -1,3 +1,4 @@
+<div class="schoolquiz_animation"></div>
 <x-app-layout>
     <x-slot name="header">
         <i id="fa-back" class="d-none fas fa-arrow-left h2 text-dark position-absolute cursor-pointer" title="Go to Dashboard"></i>
@@ -20,7 +21,7 @@
     <div class="py-10 px-10 text-center">
         <div class="container mx-auto">
             <div class="row">
-                <div class="card shadow border border-white w-100 card_back_color">
+                <div class="saved_quiz card shadow border border-white w-100 card_back_color">
                     <div class="card-body m-3" style="padding-top: 0;">
                         <div class="d-flex justify-center mb-3">
                             <img class="ques_icon" src="{{ url('images/quiz_icon.png') }}" alt="quiz">
@@ -30,52 +31,52 @@
                         <form>
                             @csrf
                             <div class="form-group">
-                                <textarea class="rounded form-control" name="question" id="question" cols="115" rows="3" placeholder="Type your question here..." style="border-color: #d8dadc;"></textarea>
+                                <h5 class="form-control shadow-sm rounded quiz_options" id="question" style="border-color: #d8dadc;"></h5>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-6 ml-3">
                                     <div class="mt-4 d-flex">
                                         <h4 class="m-auto">A. </h4>
-                                        <div class="input-group ml-3">
+                                        <div class="input-group ml-3 shadow-sm">
                                             <div class="input-group-prepend">
                                                 <div class="input-group-text">
                                                 <input type="radio" name="answer" value="A" id="answer" aria-label="Radio button for following text input">
                                                 </div>
                                             </div>
-                                            <input id="option1" type="text" class="form-control" placeholder="Option 1">
+                                            <h5 id="option1" class="form-control text-left quiz_options"></h5>
                                         </div>
                                     </div>
                                     <div class="mt-4 d-flex">
                                         <h4 class="m-auto">B. </h4>
-                                        <div class="input-group ml-3">
+                                        <div class="input-group ml-3 shadow-sm">
                                             <div class="input-group-prepend">
                                                 <div class="input-group-text">
                                                 <input type="radio" name="answer" value="B" id="answer" aria-label="Radio button for following text input">
                                                 </div>
                                             </div>
-                                            <input id="option2" type="text" class="form-control" placeholder="Option 2">
+                                            <h5 id="option2" class="form-control text-left quiz_options"></h5>
                                         </div>
                                     </div>
                                     <div class="mt-4 d-flex">
                                         <h4 class="m-auto">C. </h4>
-                                        <div class="input-group ml-3">
+                                        <div class="input-group ml-3 shadow-sm">
                                             <div class="input-group-prepend">
                                                 <div class="input-group-text">
                                                 <input type="radio" name="answer" value="C" id="answer" aria-label="Radio button for following text input">
                                                 </div>
                                             </div>
-                                            <input id="option3" type="text" class="form-control" placeholder="Option 3">
+                                            <h5 id="option3" class="form-control text-left quiz_options"></h5>
                                         </div>
                                     </div>
                                     <div class="mt-4 d-flex">
                                         <h4 class="m-auto">D. </h4>
-                                        <div class="input-group ml-3">
+                                        <div class="input-group ml-3 shadow-sm">
                                             <div class="input-group-prepend">
                                                 <div class="input-group-text">
                                                 <input type="radio" name="answer" value="D" id="answer" aria-label="Radio button for following text input">
                                                 </div>
                                             </div>
-                                            <input id="option4" type="text" class="form-control" placeholder="Option 4">
+                                            <h5 id="option4" class="form-control text-left quiz_options"></h5>
                                         </div>
                                     </div>
                                 </div>
@@ -88,10 +89,10 @@
                     </div>
                     <div class="card-footer py-4 justify-between d-flex">
                         <i id='back-{{ $quiz_set_no }}' class="invisible fas fa-arrow-circle-left text-dark h4 float-left">  Back</i>
-                        <div class="stopwatch bg-success rounded-lg">
+                        <div class="stopwatch rounded-lg">
                             <div id="stopwatch" class="mb-0 text-center font-weight-bold text-white h4">70</div>
                         </div>
-                        <button id='save_details-{{ $quiz_set_no }}' data-question="1" data-set="{{ $quiz_set_no }}" data-team="A" onclick='saveQuestion(this)' class="btn btn-primary float-right">Submit</button>
+                        <button id='save_details' data-question="1" data-set="{{ $quiz_set_no }}" data-team="A" onclick='submitAnswer(this)' tabindex="0" class="btn btn-primary float-right">Submit</button>
                     </div>
                 </div>
             </div>
@@ -104,7 +105,7 @@
                 @endphp
             </div>
             <div>
-                <img class="w-25 mx-auto" src="{{ url('images/quiz-logo-poll.jpg') }}" alt="quiz">
+                <img class="w-25 mx-auto" src="{{ url('images/screen_show.jpg') }}" alt="quiz">
             </div>
         </div>
     </div>
@@ -115,12 +116,14 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">SAVED QUIZ</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">ALERT</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">Question Saved</div>
+                <div class="modal-body">
+                    <div class="error_msg text-danger"></div>
+                </div>
                 <div class="modal-footer"></div>
             </div>
         </div>
@@ -128,10 +131,11 @@
     @include('templates.user_modals')
     <script>
         $(document).ready(function() {
+            $('footer').hide();
             $('#StartQuiz').modal('show');
             $('#StartQuiz').on('shown.bs.modal', function() {
                 $(this).find('button').focus();
-            })
+            });
         });
     </script>
 </x-app-layout>

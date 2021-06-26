@@ -37,13 +37,13 @@
                         <form>
                             @csrf
                             <div class="form-group">
-                                <textarea class="rounded form-control" name="question" id="question" cols="115" rows="3" placeholder="Type your question here..." style="border-color: #d8dadc;"></textarea>
+                                <textarea class="rounded shadow-sm form-control" name="question" id="question" cols="115" rows="3" placeholder="Type your question here..." style="border-color: #d8dadc;"></textarea>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-6 ml-3">
                                     <div class="mt-4 d-flex">
                                         <h4 class="m-auto">A. </h4>
-                                        <div class="input-group ml-3">
+                                        <div class="input-group ml-3 shadow-sm">
                                             <div class="input-group-prepend">
                                                 <div class="input-group-text">
                                                 <input type="radio" name="answer" value="A" id="answer" aria-label="Radio button for following text input">
@@ -54,7 +54,7 @@
                                     </div>
                                     <div class="mt-4 d-flex">
                                         <h4 class="m-auto">B. </h4>
-                                        <div class="input-group ml-3">
+                                        <div class="input-group ml-3 shadow-sm">
                                             <div class="input-group-prepend">
                                                 <div class="input-group-text">
                                                 <input type="radio" name="answer" value="B" id="answer" aria-label="Radio button for following text input">
@@ -65,7 +65,7 @@
                                     </div>
                                     <div class="mt-4 d-flex">
                                         <h4 class="m-auto">C. </h4>
-                                        <div class="input-group ml-3">
+                                        <div class="input-group ml-3 shadow-sm">
                                             <div class="input-group-prepend">
                                                 <div class="input-group-text">
                                                 <input type="radio" name="answer" value="C" id="answer" aria-label="Radio button for following text input">
@@ -76,7 +76,7 @@
                                     </div>
                                     <div class="mt-4 d-flex">
                                         <h4 class="m-auto">D. </h4>
-                                        <div class="input-group ml-3">
+                                        <div class="input-group ml-3 shadow-sm">
                                             <div class="input-group-prepend">
                                                 <div class="input-group-text">
                                                 <input type="radio" name="answer" value="D" id="answer" aria-label="Radio button for following text input">
@@ -90,8 +90,8 @@
                                 <div class="form-group col-md-5 ml-5 mt-4">
                                     <div class="d-flex">
                                         <div class="custom-file">
-                                            <input required type="file" class=" cursor-pointer custom-file-input" onchange="image_file(event, this.id)" id="media_file" name="customFile" />
-                                            <label class="custom-file-label text-left" for="customFile" id="media_files">+ Add Image or Video (optional)</label>
+                                            <input required type="file" class="shadow-sm cursor-pointer custom-file-input" onchange="image_file(event, this.id)" id="media_file" name="customFile" />
+                                            <label class="custom-file-label text-left shadow-sm" for="customFile" id="media_files">+ Add Image or Video (optional)</label>
                                             <small id="upload_msg_proof d-none" class="form-text"></small>
                                         </div>
                                     </div>

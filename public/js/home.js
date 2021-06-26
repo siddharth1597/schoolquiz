@@ -25,5 +25,5 @@ function updateQuiz() {
 
 function startQuiz() {
   var set_no = $('#quizSetList').val();
-  window.location = url + '/home/savedQuizSet/set_no=' + set_no;
+  window.location = url + '/home/startQuizAnimation/set_no=' + set_no;
 }
