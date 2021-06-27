@@ -1,5 +1,6 @@
 var idleInterval = '';
 var stopwatch_interval = '';
+var store_team_points = [];
 
 // Key Press events for submitting through keyboard
 $(document).ready(function() {
@@ -22,6 +23,15 @@ $(document).ready(function() {
       $('#save_details').click();
     }
   };
+
+  $('#quiz_result').on('click', function() {
+    if ($(this).hasClass('half_rounds_completed')) {
+      playQuiz($(this));
+    }
+    else if ($(this).hasClass('all_rounds_completed')) {
+      window.location = url + '/home/savedQuiz/winnerTeam';
+    }
+  });
 })
 
 // Timer 
@@ -57,12 +67,13 @@ function stopwatch() {
       var current_team = $('#save_details').attr('data-team');
       var next_question = Number(current_question) + 1;
       var next_team = current_team == 'A' ? 'B' : (current_team == 'B' ? 'C' : 'A');
-      
+
       // set pagination
       $('#question-' + current_question).addClass('btn-success').removeClass('btn-secondary').removeClass('btn-dark');
       $('#question-' + next_question).addClass('btn-dark').removeClass('btn-secondary');
 
-      showContinueModal(status_gif, status, next_team, next_question);
+      clearSavedForm();
+      showContinueModal(status_gif, status, next_team, next_question, store_team_points);
     }
   }, 1000);
 }
@@ -96,15 +107,48 @@ function idleCounter() {
 }
 
 // show modal after every question.
-function showContinueModal(status_gif, status, next_team, next_question) {
-  $('#ContinueQuiz').find('.continue_team').text('Team ' + next_team);
-  $('#continue_question').attr('data-question', next_question);
-  $('#ContinueQuiz').find('img').attr('src', status_gif).attr('alt', status);
+function showContinueModal(status_gif, status, next_team, next_question, team_points) {
+  if (next_question != 16 && next_question != 31) {
+    $('#ContinueQuiz').find('.continue_team').text('Team ' + next_team);
+    $('#ContinueQuiz').find('#continue_question').attr('data-question', next_question);
+    $('#ContinueQuiz').find('img').attr('src', status_gif).attr('alt', status);
 
-  $('#ContinueQuiz').modal('show');
-  $('#ContinueQuiz').on('shown.bs.modal', function() {
+    $('#ContinueQuiz').modal('show');
+    $('#ContinueQuiz').on('shown.bs.modal', function() {
+        $(this).find('button').focus();
+    });
+  }
+  else if (next_question == 16 || next_question == 31) {
+    if (next_question == 16) {
+      $('#ResultQuiz').find('#quiz_result').attr('data-question', next_question);
+    }
+    if (next_question == 31) {
+      $('#ResultQuiz').find('#quiz_result').text('See Results');
+      $('#ResultQuiz').find('#quiz_result').removeClass('half_rounds_completed').addClass('all_rounds_completed');
+    }
+    if (team_points != null) {
+      $('#ResultQuiz').find('#team_a_points').text(team_points['A'] + ' points');
+      $('#ResultQuiz').find('#team_b_points').text(team_points['B'] + ' points');
+      $('#ResultQuiz').find('#team_c_points').text(team_points['C'] + ' points');
+    }
+    $('#ResultQuiz').modal('show');
+    $('#ResultQuiz').on('shown.bs.modal', function() {
       $(this).find('button').focus();
-  });
+    });
+  }
+}
+
+function clearSavedForm() {
+  stopwatch_interval = '';
+  $('#stopwatch').html('70');
+
+  document.getElementById('question').innerHTML = '';
+  document.getElementById('option1').innerHTML = '';
+  document.getElementById('option2').innerHTML = '';
+  document.getElementById('option3').innerHTML = '';
+  document.getElementById('option4').innerHTML = '';
+  $('input[name="answer"]').prop('checked', false);
+  $('question_media').attr('src', '/images/quiz-logo-poll.jpg');
 }
 
 function playQuiz($this) {
@@ -144,13 +188,27 @@ function playQuiz($this) {
           $('#save_details').attr('data-question', data.question);
           $('#save_details').attr('data-team', data.team);
 
-          $('#StartQuiz').modal('hide');
-          $('#ContinueQuiz').modal('hide');
+          if ($('#StartQuiz').is(':visible')) {
+            $('#StartQuiz').modal('hide');
+          }
+          if ($('#ContinueQuiz').is(':visible')) {
+            $('#ContinueQuiz').modal('hide');
+          }
+          if ($('#ResultQuiz').is(':visible')) {
+            $('#ResultQuiz').modal('hide');
+          }
+
+          $('#stopwatch').html('70');
           stopwatch();
         }
         else {
           // when no question is saved on the particular set.
-          $('#ContinueQuiz').modal('hide');
+          if ($('#ContinueQuiz').is(':visible')) {
+            $('#ContinueQuiz').modal('hide');
+          }
+          if ($('#ResultQuiz').is(':visible')) {
+            $('#ResultQuiz').modal('hide');
+          }
           $('#SavedQuiz').find('.modal-body .error_msg').html('No further questions are available. Please select another quiz set.');
           $('#SavedQuiz').find('.modal-body').append('<a href="/home">Click here to go to Homepage</a>');
           $('#SavedQuiz').attr('data-backdrop', 'static');
@@ -191,14 +249,9 @@ function submitAnswer($this) {
       },
 
       success: function (data) {
-        
-        document.getElementById('question').innerHTML = '';
-        document.getElementById('option1').innerHTML = '';
-        document.getElementById('option2').innerHTML = '';
-        document.getElementById('option3').innerHTML = '';
-        document.getElementById('option4').innerHTML = '';
-        $('input[name="answer"]').prop('checked', false);
-        $('question_media').attr('src', '/images/quiz-logo-poll.jpg');
+        // clear the stopwatch
+        clearInterval(stopwatch_interval);
+        clearSavedForm();
 
         // pagination button set
         $('#question-' + question_no).addClass('btn-success').removeClass('btn-secondary').removeClass('btn-dark');
@@ -213,12 +266,10 @@ function submitAnswer($this) {
           status = 'Wrong Answer';
         }
 
-        // set data on modal
-        showContinueModal(status_gif, status, data.next_team, data.next_question)
+        store_team_points = data.team_points;
 
-        // clear the stopwatch
-        clearInterval(stopwatch_interval);
-        $('#stopwatch').html('70');
+        // set data on modal
+        showContinueModal(status_gif, status, data.next_team, data.next_question, data.team_points);
 
         // start idle counter
         //idleCounter();

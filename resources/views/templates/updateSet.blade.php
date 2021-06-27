@@ -114,7 +114,7 @@
                     </div>
                     <div class="card-footer py-4">
                         <i id='back-{{ $quiz_question->set_no }}' data-set='{{ $quiz_question->set_no }}' data-question="0" class="fas fa-arrow-circle-left text-dark h4 cursor-pointer back_link float-left" onclick="backForm(this)">  Back</i>
-                        <button id='update_details-{{ $quiz_question->set_no }}' data-question="1" data-set="{{ $quiz_question->set_no }}" onclick='saveQuestion(this)' class="btn btn-primary float-right">Update & Next</button>
+                        <button id='update_details-{{ $quiz_question->set_no }}' data-question="1" data-set="{{ $quiz_question->set_no }}" onclick='saveQuestion(this, "update")' class="btn btn-primary float-right">Update & Next</button>
                     </div>
                 </div>
             </div>

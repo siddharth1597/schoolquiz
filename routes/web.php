@@ -42,7 +42,6 @@ Route::group(['middleware' => ['web']], function () {
     // Contact-us
     Route::post('/dashboard/contact', 'App\Http\Controllers\ContactUsController@saveContactData');
     Route::post('imageUpload', 'App\Http\Controllers\ContactUsController@uploadFile');
-
     Route::get('/home/contact-page', 'App\Http\Controllers\ContactUsController@show')->name('contactPage');
 
     // Create Quiz
@@ -61,5 +60,8 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/home/savedQuizSet/set_no={set_no}', 'App\Http\Controllers\SavedQuizController@showQuiz')->name('savedQuizSet');
     Route::post('/getQuestions', 'App\Http\Controllers\SavedQuizController@getQuestions');
     Route::post('/submitAnswer', 'App\Http\Controllers\SavedQuizController@submitAnswers');
+
+    //Winner Team
+    Route::get('/home/savedQuiz/winnerTeam', 'App\Http\Controllers\WinnerController@show')->name('winnerTeam');
 
 });

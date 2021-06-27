@@ -1,7 +1,7 @@
 // To save the Questions
 
 
-function saveQuestion($this) {
+function saveQuestion($this, config_type) {
   
   var question = document.getElementById('question').value;
   var option1 = document.getElementById('option1').value;
@@ -24,6 +24,7 @@ function saveQuestion($this) {
   form_data.append("option4", option4);
   form_data.append("set_no", set_no);
   form_data.append("question_no", question_no);
+  form_data.append("config_type", config_type);
 
   if (question && option1 && option2 && option3 && option4) {
     

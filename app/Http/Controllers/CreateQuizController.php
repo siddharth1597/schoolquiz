@@ -85,20 +85,23 @@ class CreateQuizController extends Controller
                         $quiz_create->media_file = $media_file;
                         $quiz_create->save();
 
-                        //In progress quiz  - by default set = 0
-                        $set = quiz_set::where('set_no', 0)->count();
-                        if ($set == 0) {
-                            $quiz_set = new quiz_set();
-                            $quiz_set->set_no = 0;
-                            $quiz_set->save();
-                        }
+                        // only for create quiz
+                        if ($request->config_type == 'create') {
+                            //In progress quiz  - by default set = 0
+                            $set = quiz_set::where('set_no', 0)->count();
+                            if ($set == 0) {
+                                $quiz_set = new quiz_set();
+                                $quiz_set->set_no = 0;
+                                $quiz_set->save();
+                            }
 
-                        if ($question_no == 30) {
-                            $quiz_set = new quiz_set();
-                            $quiz_set->set_no = $set_no;
-                            $quiz_set->save(); // save original set no
+                            if ($question_no == 30) {
+                                $quiz_set = new quiz_set();
+                                $quiz_set->set_no = $set_no;
+                                $quiz_set->save(); // save original set no
 
-                            quiz_set::where('set_no', 0)->delete(); // delete temporary set = 0
+                                quiz_set::where('set_no', 0)->delete(); // delete temporary set = 0
+                            }
                         }
                     }
                     else {
@@ -135,14 +138,14 @@ class CreateQuizController extends Controller
             ]);
         }
 
-        if ($question_no < 31) {
+        if ($question_no < 30) {
             Session::put('next_question_no', $question_no + 1);
             Session::put('set_no', $set_no);
         }
         else {
             Session::forget('next_question_no');
             Session::forget('set_no');
-            Session::flash('flash_message', 'Quiz ' . $set_no . ' is created successfully.');
+            Session::flash('flash_message', 'Quiz Set-' . $set_no . ' is created successfully.');
             Session::flash('flash_type', 'alert-success');
         }
 

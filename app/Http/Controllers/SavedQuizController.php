@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
-use App\Models\quiz_set;
 use App\Models\quiz_create;
 
 class SavedQuizController extends Controller
@@ -72,20 +71,19 @@ class SavedQuizController extends Controller
 
         if ($get_answer[0]->answer == $answer) {
             $this->saveTeamPoints($team);
-
-            return response()->json([
-                'status' => 'matched',
-                'next_question' => $next_question,
-                'next_team' => $next_team
-            ]);
+            $status = 'matched';
         }
         else {
-            return response()->json([
-                'status' => 'unmatched',
-                'next_question' => $next_question,
-                'next_team' => $next_team
-            ]);
+            $status = 'unmatched';
         }
+        $team_points = $this->getTeamPoints();
+
+        return response()->json([
+            'status' => $status,
+            'next_question' => $next_question,
+            'next_team' => $next_team,
+            'team_points' => $team_points
+        ]);
 
     }
 
@@ -108,6 +106,14 @@ class SavedQuizController extends Controller
             }
         }
         return $team;
+    }
+
+    public function getTeamPoints() {
+        $team_points = [];
+        $team_points['A'] = Session::get('Team_A');
+        $team_points['B'] = Session::get('Team_B');
+        $team_points['C'] = Session::get('Team_C');
+        return $team_points;
     }
 
     public function saveTeamPoints($team)
