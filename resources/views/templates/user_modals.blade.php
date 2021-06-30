@@ -13,7 +13,7 @@
       </div>
       <div class="modal-footer">
         <!-- At first time only. -->
-        <button autofocus id='play_set-{{ $quiz_set_no }}' data-set="{{ $quiz_set_no }}" data-question="1" onclick='playQuiz(this)' class="btn btn-success">Start Quiz</button>
+        <button autofocus id='play_set' data-set="{{ $quiz_set_no }}" data-question="1" onclick='playQuiz(this)' class="btn btn-success">Start Quiz</button>
       </div>
     </div>
   </div>

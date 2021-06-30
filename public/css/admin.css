@@ -69,6 +69,7 @@ body {
 
 .background_wall.dashboard_back {
     height: 730px;
+    opacity: .2;
 }
 
 .homepage {
@@ -78,4 +79,9 @@ body {
 #fa-back {
     left: 50px;
     z-index: 10;
+}
+
+.media_image {
+    width: 70%;
+    height: 210px;
 }

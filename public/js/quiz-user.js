@@ -1,29 +1,42 @@
-var idleInterval = '';
-var stopwatch_interval = '';
+var idleInterval = null;
+var stopwatch_interval = null;
 var store_team_points = [];
+var IDLE_TIMEOUT = 5; //5 seconds idle timeout
 
 // Key Press events for submitting through keyboard
+
+$(document).on('keypress', function (event) {
+  var key_code = event.code;
+
+  if (key_code == 'KeyA') {
+    $('input[name="answer"][value="A"]').prop('checked', true);
+  }
+  else if (key_code == 'KeyB') {
+    $('input[name="answer"][value="B"]').prop('checked', true);
+  }
+  else if (key_code == 'KeyC') {
+    $('input[name="answer"][value="C"]').prop('checked', true);
+  }
+  else if (key_code == 'KeyD') {
+    $('input[name="answer"][value="D"]').prop('checked', true);
+  }
+  else if (key_code == 'Enter' || key_code == 'NumpadEnter') {
+    if(($("#ResultQuiz").data('bs.modal') || {})._isShown) {
+      $('#quiz_result').click();
+    }
+    else if(($("#ContinueQuiz").data('bs.modal') || {})._isShown) {
+      $('#continue_question')[0].click();
+    }
+    else if(($("#StartQuiz").data('bs.modal') || {})._isShown) {
+      $('#play_set')[0].click();
+    }
+    else {
+      $('#save_details')[0].click();
+    }
+  }
+});
+
 $(document).ready(function() {
-  document.onkeypress = function (event) {
-    var key_code = event.code;
-
-    if (key_code == 'KeyA') {
-      $('input[name="answer"][value="A"]').prop('checked', true);
-    }
-    else if (key_code == 'KeyB') {
-      $('input[name="answer"][value="B"]').prop('checked', true);
-    }
-    else if (key_code == 'KeyC') {
-      $('input[name="answer"][value="C"]').prop('checked', true);
-    }
-    else if (key_code == 'KeyD') {
-      $('input[name="answer"][value="D"]').prop('checked', true);
-    }
-    else if (key_code == 'Enter' || key_code == 'NumpadEnter') {
-      $('#save_details').click();
-    }
-  };
-
   $('#quiz_result').on('click', function() {
     if ($(this).hasClass('half_rounds_completed')) {
       playQuiz($(this));
@@ -32,10 +45,13 @@ $(document).ready(function() {
       window.location = url + '/home/savedQuiz/winnerTeam';
     }
   });
-})
+});
 
-// Timer 
+
+// CountDown Timer 
 function stopwatch() {
+  clearInterval(stopwatch_interval);
+
   var total_time = 71; // 71 seconds
   var count = 1;
 
@@ -59,7 +75,6 @@ function stopwatch() {
 
     // If the count down is over, write some text 
     if (current < 0) {
-      clearInterval(stopwatch_interval);
       document.getElementById("stopwatch").innerHTML = "Time's up";
       var status_gif = '\\images/very_poor.gif';
       var status = 'Very Poor';
@@ -81,7 +96,6 @@ function stopwatch() {
 
 // Check idle count
 function idleCounter() {
-  var IDLE_TIMEOUT = 5; //seconds
   var idleCounter = 0;
 
   document.onclick = function () {
@@ -101,7 +115,7 @@ function idleCounter() {
 
   idleInterval = setInterval(function() {
     idleCounter++;
-    if (idleCounter >= IDLE_TIMEOUT) {
+    if (idleCounter > IDLE_TIMEOUT) {
       $('.schoolquiz_animation').show();
     }
   }, 1000);
@@ -109,6 +123,7 @@ function idleCounter() {
 
 // show modal after every question.
 function showContinueModal(status_gif, status, next_team, next_question, team_points, audio) {
+
   if (next_question != 16 && next_question != 31) {
     // Status Audio
     var sound = new Audio(audio);
@@ -142,10 +157,17 @@ function showContinueModal(status_gif, status, next_team, next_question, team_po
       $(this).find('button').focus();
     });
   }
+
+  // start idle counter
+  idleCounter();
 }
 
+// Clear the form after every question.
 function clearSavedForm() {
-  stopwatch_interval = '';
+
+  // clear the stopwatch
+  clearInterval(stopwatch_interval);
+  stopwatch_interval = null;
   $('#stopwatch').html('70');
 
   document.getElementById('question').innerHTML = '';
@@ -154,15 +176,17 @@ function clearSavedForm() {
   document.getElementById('option3').innerHTML = '';
   document.getElementById('option4').innerHTML = '';
   $('input[name="answer"]').prop('checked', false);
-  $('question_media').attr('src', '/images/quiz-logo-poll.jpg');
+  $('#question_media').attr('src', '\\images/media_icon.png').attr('alt', 'No Media Image');
 }
 
+// Get the question data.
 function playQuiz($this) {
   var question_no = $($this).attr('data-question');
   var set_no = $($this).attr('data-set');
 
   // clear idle counter
   clearInterval(idleInterval);
+  idleInterval = null;
 
   $.ajax({
     type: 'POST',
@@ -187,7 +211,7 @@ function playQuiz($this) {
           document.getElementById('option4').innerHTML = data.saved_question['option4'];
 
           if (data.saved_question['media_file'] != '') {
-            $('question_media').attr('src', data.saved_question['media_file']);
+            $('#question_media').attr('src', data.saved_question['media_file'] + '?v=' + (new Date()).getTime()).attr('alt', 'Quiz Media Image');
           }
 
           $('.ques_heading').text('Question-' + data.question);
@@ -204,7 +228,6 @@ function playQuiz($this) {
             $('#ResultQuiz').modal('hide');
           }
 
-          $('#stopwatch').html('70');
           stopwatch();
         }
         else {
@@ -228,6 +251,7 @@ function playQuiz($this) {
   });
 }
 
+// Submit the Answer.
 function submitAnswer($this) {
   var question_no = $($this).attr('data-question');
   var team = $($this).attr('data-team');
@@ -256,14 +280,11 @@ function submitAnswer($this) {
       },
 
       success: function (data) {
-        // clear the stopwatch
-        clearInterval(stopwatch_interval);
         clearSavedForm();
 
         // pagination button set
         $('#question-' + question_no).addClass('btn-success').removeClass('btn-secondary').removeClass('btn-dark');
         $('#question-' + (Number(question_no) + 1)).addClass('btn-dark').removeClass('btn-secondary');
-
 
         if (data.status == 'matched') {
           status_gif = '\\images/right_answer.gif';
@@ -276,13 +297,11 @@ function submitAnswer($this) {
           audio = '\\sounds/wrong_answer.mp3';
         }
 
+        // store team current points after every submit.
         store_team_points = data.team_points;
 
         // set data on modal
         showContinueModal(status_gif, status, data.next_team, data.next_question, data.team_points, audio);
-
-        // start idle counter
-        //idleCounter();
       }
     });
   }
@@ -291,6 +310,7 @@ function submitAnswer($this) {
   }
 }
 
+// Winner Page Audio play.
 function winner_sound() {
   var audio = '\\sounds/the_winner.mp3';
   var sound = new Audio(audio);

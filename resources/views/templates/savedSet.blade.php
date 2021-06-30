@@ -82,7 +82,7 @@
                                 </div>
                                 <input type="hidden" id="storedQuestions" value="1">
                                 <div class="form-group col-md-5 ml-5 mt-4">
-                                    <img class="mx-auto" id="question_media" src="{{ url('images/media_icon.png') }}" alt="media file">
+                                    <img id="question_media" class="shadow rounded m-auto" src="{{ url('images/media_icon.png') }}" alt="No Media Image">
                                 </div>
                             </div>
                         </form>

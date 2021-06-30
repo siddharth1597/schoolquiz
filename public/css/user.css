@@ -93,3 +93,8 @@
   bottom: 0;
   font-family: 'Londrina Shadow', cursive;
 }
+
+#question_media {
+  width: 75%;
+  height: 225px;
+}

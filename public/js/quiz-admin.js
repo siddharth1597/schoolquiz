@@ -1,6 +1,5 @@
 // To save the Questions
 
-
 function saveQuestion($this, config_type) {
   
   var question = document.getElementById('question').value;
@@ -74,6 +73,7 @@ function saveQuestion($this, config_type) {
 // Clear the form and set the next value parameters
 
 function clearForm(next_question_no, $this, set_no) {
+
   $('#SavedQuiz').modal('hide');
   document.getElementById('question').value = '';
   document.getElementById('option1').value = '';
@@ -91,8 +91,14 @@ function clearForm(next_question_no, $this, set_no) {
     $('#save_details-' + set_no).text('Save Quiz');
   }
 
-  $('#question-' + (next_question_no - 1)).addClass('btn-success').removeClass('btn-secondary').removeClass('btn-dark');
-  $('#question-' + next_question_no).addClass('btn-dark').removeClass('btn-secondary');
+  if ($('#save_details-' + set_no).length > 0) {
+    $('#question-' + (next_question_no - 1)).addClass('btn-success').removeClass('btn-secondary').removeClass('btn-dark');
+    $('#question-' + next_question_no).addClass('btn-dark').removeClass('btn-secondary');
+  }
+  else {
+    $('#question-' + (next_question_no - 1)).removeClass('btn-success').addClass('btn-secondary');
+    $('#question-' + next_question_no).addClass('btn-success').removeClass('btn-secondary');
+  }
 
   if ($($this).attr('id') == ('update_details-' + set_no)) {
     storedNextForm(Number(next_question_no), set_no);
@@ -133,6 +139,14 @@ function storedNextForm(current_question, set_no) {
 
           if (data.saved_question['media_file'] != '') {
             document.getElementById('media_files').innerHTML = data.saved_question['media_file'].split('/')[3];
+            if ($('#update_details-' + set_no).length > 0) {
+              $('.media_image').attr('src', data.saved_question['media_file'] + '?v=' + (new Date()).getTime()).attr('alt', 'Quiz Media Image');
+            }
+          }
+          else {
+            $('.media_image').attr('src', '\\images/media_icon.png').attr('alt', 'No Media Image');
+            document.getElementById('media_file').value = '';
+            document.getElementById('media_files').innerHTML = '+ Add Image or Video (optional)';
           }
 
           flag_update = true;
@@ -185,22 +199,31 @@ function backForm($this) {
           $('.ques_heading').text('Question-' + (Number(current_question)));
           $('input[name="answer"][value='+ data.saved_question["answer"] +']').prop('checked', true);
 
-          $('#question-' + current_question).addClass('btn-dark').removeClass('btn-secondary').removeClass('btn-success');
-          $('#question-' + (Number(current_question) + 1)).removeClass('btn-dark').addClass('btn-secondary');
-
           if ($('#save_details-' + set_no).length > 0) {
+            $('#question-' + current_question).addClass('btn-dark').removeClass('btn-secondary').removeClass('btn-success');
+            $('#question-' + (Number(current_question) + 1)).removeClass('btn-dark').addClass('btn-secondary');
+
             $('#save_details-' + set_no).attr('data-question', current_question);
             if (current_question < 30) { 
               $('#save_details-' + set_no).text('Submit & Next');
             }
           }
           if ($('#update_details-' + set_no).length > 0) {
+            $('#question-' + current_question).addClass('btn-success').removeClass('btn-secondary');
+            $('#question-' + (Number(current_question) + 1)).removeClass('btn-success').addClass('btn-secondary');
             $('#update_details-' + set_no).attr('data-question', current_question);
           }
 
           if (data.saved_question['media_file'] != '') {
             document.getElementById('media_files').innerHTML = data.saved_question['media_file'].split('/')[3];
-            // document.getElementById('media_file').value = data.saved_question['media_file'];
+            if ($('#update_details-' + set_no).length > 0) {
+              $('.media_image').attr('src', data.saved_question['media_file'] + '?v=' + (new Date()).getTime()).attr('alt', 'Quiz Media Image');
+            }
+          }
+          else {
+            $('.media_image').attr('src', '\\images/media_icon.png').attr('alt', 'No Media Image');
+            document.getElementById('media_file').value = '';
+            document.getElementById('media_files').innerHTML = '+ Add Image or Video (optional)';
           }
         }
       }
@@ -231,14 +254,17 @@ function deleteQuizSet() {
   });
 }
 
+// Pagination update
+
 $(document).ready(function() {
   var flag_update = false;
 
   $('.question_pagination').on('click', function() {
     var question_no = $(this).attr('data-question');
     var set_no = $(this).attr('data-set');
-    
+
     // Clear media file
+    $('.media_image').attr('src', '\\images/media_icon.png').attr('alt', 'No Media Image');
     document.getElementById('media_file').value = '';
     document.getElementById('media_files').innerHTML = '+ Add Image or Video (optional)';
 

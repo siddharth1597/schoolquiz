@@ -29,11 +29,11 @@ $(document).ready(function() {
         success:function(data)
         {
           if (data.class_name == 'text-success') {
-            $this.parent().next().removeClass('d-none').attr('src', data.image_url);
-            $this.closest('#upload_msg_proof').addClass(data.class_name).removeClass('text-danger').html(data.message);
+            $this.parent().next().removeClass('d-none').attr('src', data.image_url + '?v=' + (new Date()).getTime());
+            $this.siblings().find('#upload_msg_proof').addClass(data.class_name).removeClass('text-danger').html(data.message);
           }
           else {
-            $this.closest('#upload_msg_proof').addClass(data.class_name).removeClass('text-success').html(data.message);
+            $this.siblings().find('#upload_msg_proof').addClass(data.class_name).removeClass('text-success').html(data.message);
           }
           $this.closest('#upload_msg_proof').show();
         }

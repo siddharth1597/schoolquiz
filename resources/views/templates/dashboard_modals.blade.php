@@ -26,15 +26,18 @@
                 <div class="custom-file">
                   <input required type="file" class="custom-file-input image_file" data-type="profile" onchange="image_file(event, this.id)" id="contact_image" name="contact_image" />
                   <label class="custom-file-label" for="contact_image" id="contact_images">Choose image</label>
-                  <small id="upload_msg_proof" class="form-text">
-                  </small>
+                  <small id="upload_msg_proof" class="form-text"></small>
                 </div>
                 <input type="button" name="upload" id="upload_contact_image" class="btn btn-success ml-2 upload_image" value="Upload">
               </div>
               @php
-                $image = !isset($contacts->profile_image) ? '' : $contacts->profile_image;
+                $none = '';
+                $image = empty($contacts->profile_image) ? '' : $contacts->profile_image;
+                if ($image == '') {
+                  $none = 'd-none';
+                }
               @endphp
-              <img class="mt-2 w-50 mx-auto d-none contact_image" src="{{ $image }}" alt="profile image">
+              <img class="mt-3 w-40 mx-auto contact_image {{ $none }}" src="{{ url($image) }}" alt="profile image">
             </div>
             <div class="form-group col-md-6">
               <input type="text" class="form-control" id="contact_name" value="{{ $contacts->name }}" placeholder="Name" required>
@@ -95,9 +98,13 @@
                 <input type="button" name="upload" id="upload_contact_icon" class="btn btn-success ml-2 upload_image" value="Upload">
               </div>
               @php
-                $icon = !isset($contacts->home_icon) ? '' : $contacts->home_icon;
+                $none = '';
+                $icon = empty($contacts->home_icon) ? '' : $contacts->home_icon;
+                if ($icon == '') {
+                  $none = 'd-none';
+                }
               @endphp
-              <img class="mt-2 w-50 mx-auto d-none contact_image" src="{{ $icon }}" alt="home">
+              <img class="mt-3 w-40 mx-auto contact_image {{ $none }}" src="{{ url($icon) }}" alt="home">
             </div>
           </div>
           

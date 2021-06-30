@@ -96,18 +96,22 @@
                                         <div class="custom-file">
                                             @php
                                                 if ($quiz_question->media_file != '') {
-                                                    $media_file = explode('/', $quiz_question->media_file)[3];
+                                                    $media_file = $quiz_question->media_file;
+                                                    $media_file_name = explode('/', $media_file)[3];
+                                                    $alt = 'Quiz Media Image';
                                                 }
                                                 else {
-                                                    $media_file = '+ Add Image or Video (Optional)';
+                                                    $media_file = '\\images/media_icon.png';
+                                                    $media_file_name = '+ Add Image or Video (Optional)';
+                                                    $alt = 'No Media Image';
                                                 }
                                             @endphp
                                             <input required type="file" class="shadow-sm cursor-pointer custom-file-input" onchange="image_file(event, this.id)" id="media_file" name="customFile" />
-                                            <label class="custom-file-label text-left shadow-sm" for="customFile" id="media_files">{{ $media_file }}</label>
+                                            <label class="custom-file-label text-left shadow-sm" for="customFile" id="media_files">{{ $media_file_name }}</label>
                                             <small id="upload_msg_proof d-none" class="form-text"></small>
                                         </div>
                                     </div>
-                                    <i class="far fa-image h1 mt-2" style="font-size: 9.5rem; color:#d8dadc"></i>
+                                    <img class="shadow rounded m-auto media_image" src="{{ $media_file }}" alt="{{ $alt }}">
                                 </div>
                             </div>
                         </form>

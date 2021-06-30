@@ -12,10 +12,10 @@
                 Go to Dashboard
             </div>
             @php
-                $icon = '/uploads/Contact_us/' . $contact->home_icon;
+                $icon = $contact->home_icon;
             @endphp
             <div class="d-flex">
-                <img class="logo home_icon" src="{{$icon }}" alt="School Quiz"  title="Go to Home Screen">
+                <img class="logo home_icon" src="{{ url($icon) }}" alt="School Quiz"  title="Go to Home Screen">
             </div>
         </div>
     </x-slot>
@@ -23,14 +23,14 @@
     <div class="py-10 px-10 text-center">
         <div class="container mx-auto">
             @php
-                $profile = '/uploads/Contact_us/' . $contact->profile_image;
+                $profile = $contact->profile_image;
             @endphp
             <div class="card shadow border border-white w-100 contact-us-back">
                 <div class="card-body m-3">
                     <h2 id="title" class="font-semibold text-white">{{ $contact->title }}</h2>
                     <div class="row mt-5">
                         <div class="col-md-5">
-                            <img class="w-40 contact_image float-right bg-white rounded-lg mr-3" src="{{ $profile }}" alt="profile image">
+                            <img class="w-40 contact_image float-right bg-white rounded-lg mr-3" src="{{ url($profile) }}" alt="profile image">
                         </div>
                         <div class="col-md-5 d-flex flex-column text-left my-auto text-white">
                             <h3 id="name" class="mb-3">{{ $contact->name }}</h3>

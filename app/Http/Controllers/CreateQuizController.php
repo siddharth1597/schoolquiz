@@ -27,6 +27,7 @@ class CreateQuizController extends Controller
     public function saveQuestion(Request $request)
     {
 
+        $edit_type = '';
         $fileNameToStore = '';
         $validation = Validator::make($request->all(), [
             'media_file' => 'nullable|mimes:png,jpg,jpeg,mp4,gif|max:10000'
@@ -103,6 +104,7 @@ class CreateQuizController extends Controller
                                 quiz_set::where('set_no', 0)->delete(); // delete temporary set = 0
                             }
                         }
+                        $edit_type = ' created ';
                     }
                     else {
                         $quiz_create_update = quiz_create::where([
@@ -117,6 +119,7 @@ class CreateQuizController extends Controller
                             'answer' => $request->answer,
                             'media_file' => $media_file,
                         ]);
+                        $edit_type = ' updated ';
                     }
                     Session::forget('question_media');
                 }
@@ -145,7 +148,7 @@ class CreateQuizController extends Controller
         else {
             Session::forget('next_question_no');
             Session::forget('set_no');
-            Session::flash('flash_message', 'Quiz Set-' . $set_no . ' is created successfully.');
+            Session::flash('flash_message', 'Quiz Set-' . $set_no . ' is' . $edit_type . 'successfully.');
             Session::flash('flash_type', 'alert-success');
         }
 

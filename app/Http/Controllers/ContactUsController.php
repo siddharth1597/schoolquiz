@@ -52,9 +52,12 @@ class ContactUsController extends Controller
               'pincode' => $request->pincode,
               'whatsapp_no' => $request->whatsapp_no,
               'phone_no' => $request->phone_no,
-              'home_icon' => Session::get('icon'),
-              'profile_image' => Session::get('profile_image')
+              'home_icon' => '/uploads/Contact_us/' . Session::get('icon'),
+              'profile_image' => '/uploads/Contact_us/' . Session::get('profile_image')
           ]);
+  
+      Session::forget('profile_image');
+      Session::forget('icon');
   }
   
   public function createValues($request) {
@@ -72,53 +75,56 @@ class ContactUsController extends Controller
       $contact->home_icon = '/uploads/Contact_us/' . Session::get('icon');
       $contact->profile_image = '/uploads/Contact_us/' . Session::get('profile_image');
       $contact->save();
+
+      Session::forget('profile_image');
+      Session::forget('icon');
   }
 
   public function uploadFile(Request $request) {
       
-      $secure_no = substr(str_shuffle("0123456789abcdefghijklmnopqrstvwxyzABCDEFGHIJKLMNOPQRSTVWXYZ"), 0, 6);
-  
+    $secure_no = substr(str_shuffle("0123456789abcdefghijklmnopqrstvwxyzABCDEFGHIJKLMNOPQRSTVWXYZ"), 0, 6);
+
+    if ($request->image_type == 'icon') {
+        $type = 'icon_' . $secure_no;
+    } 
+    else {
+        $type = 'profile_' . $secure_no;
+    }
+
+    $form_file = 'image';
+    $validation = Validator::make($request->all(), [
+      $form_file => 'required|mimes:png,jpg,jpeg|max:2048'
+    ]);
+
+    if ($validation->validate()) {
+      $file = $request->file($form_file);
+      $new_name = $type . '.' . $file->getClientOriginalExtension();
+
+      $path = public_path() . '/uploads/Contact_us';
+
+      if (!File::exists($path)) {
+        File::makeDirectory($path, $mode = 0777, true, true);
+      }
+      $file->move(public_path('uploads/Contact_us'), $new_name);
+
       if ($request->image_type == 'icon') {
-          $type = 'icon_' . $secure_no;
-      } 
-      else {
-          $type = 'profile_' . $secure_no;
+        Session::put('icon', $new_name);
       }
-  
-      $form_file = 'image';
-      $validation = Validator::make($request->all(), [
-        $form_file => 'required|mimes:png,jpg,jpeg|max:2048'
+      else {
+        Session::put('profile_image', $new_name);
+      }
+      
+      return response()->json([
+        'message' => 'Image Uploaded Successfully',
+        'class_name' => 'text-success',
+        'image_url' => '/uploads/Contact_us/' . $new_name
       ]);
-  
-      if ($validation->validate()) {
-        $file = $request->file($form_file);
-        $new_name = $type . '.' . $file->getClientOriginalExtension();
-
-        $path = public_path() . '/uploads/Contact_us';
-  
-        if (!File::exists($path)) {
-          File::makeDirectory($path, $mode = 0777, true, true);
-        }
-        $file->move(public_path('uploads/Contact_us'), $new_name);
-
-        if ($request->image_type == 'icon') {
-          Session::put('icon', $new_name);
-        }
-        else {
-          Session::put('profile_image', $new_name);
-        }
-        
-        return response()->json([
-          'message' => 'Image Uploaded Successfully',
-          'class_name' => 'text-success',
-          'image_url' => '/uploads/Contact_us/' . $new_name
-        ]);
-      } 
-      else {
-        return response()->json([
-          'message'   => $validation->errors()->all(),
-          'class_name'  => 'text-danger'
-        ]);
-      }
+    } 
+    else {
+      return response()->json([
+        'message'   => $validation->errors()->all(),
+        'class_name'  => 'text-danger'
+      ]);
+    }
   }
 }
