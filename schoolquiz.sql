@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 13, 2021 at 11:09 PM
+-- Generation Time: Jun 30, 2021 at 10:45 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.3
 
@@ -51,7 +51,7 @@ CREATE TABLE `contact_uses` (
 --
 
 INSERT INTO `contact_uses` (`id`, `role`, `title`, `name`, `designation`, `email`, `address`, `city`, `pincode`, `whatsapp_no`, `phone_no`, `home_icon`, `profile_image`, `created_at`, `updated_at`) VALUES
-(1, 'admin', 'Innovation', 'Siddharth Rastogi', 'Developer', 'sidd15597@gmail.com', 'Hno 93 Ballabh street Mandi chowk near Dr. Pushpendra', 'Moradabad', 244001, 8938052752, 8938052752, NULL, NULL, '2021-06-10 14:12:01', '2021-06-13 14:46:57');
+(1, 'admin', 'Innovation of SidTechTalks', 'Siddharth Rastogi', 'Full Stack developer', 'sidd15597@gmail.com', 'Ballabh street Mandi chowk', 'Moradabad', 244001, 8938052752, 8938052752, '/uploads/Contact_us/icon_oi2lfy.png', '/uploads/Contact_us/profile_xJnIQB.jpg', '2021-06-10 14:12:01', '2021-06-30 09:59:39');
 
 -- --------------------------------------------------------
 
@@ -149,14 +149,40 @@ CREATE TABLE `quiz_creates` (
 --
 
 INSERT INTO `quiz_creates` (`id`, `set_no`, `question_no`, `question`, `option1`, `option2`, `option3`, `option4`, `answer`, `media_file`, `created_at`, `updated_at`) VALUES
-(2, 1, 1, 'What is the capital of India', 'Delhi', 'Moradabad', 'Mumbai', 'Bengaluru', 'A', '/uploads/Quiz_Media/Media_s1_q1.jpg', '2021-06-12 11:46:57', '2021-06-12 11:46:57'),
-(3, 1, 2, 'What is the capital of UP?', 'Bareilly', 'Moradabad', 'Lucknow', 'noida', 'C', '/uploads/Quiz_Media/Media_s1_q2.jpg', '2021-06-12 11:48:16', '2021-06-12 11:48:16'),
-(4, 1, 3, 'how many meters are in the 2 kilometers', '1000m', '200m', '20000m', '2000m', 'D', '/uploads/Quiz_Media/Media_s1_q3.mp4', '2021-06-12 11:50:10', '2021-06-12 11:50:10'),
-(16, 2, 1, 'What is your name?', 'Siddharth', 'Sanjeev', 'Rekha', 'Shivani', 'A', '/uploads/Quiz_Media/Media_s2_q1.png', '2021-06-13 12:03:00', '2021-06-13 12:03:00'),
-(17, 2, 2, 'What is the full form of CSE ?', 'Computer Source Engineer', 'Computer Science Electronics', 'Computer Science Engineering', 'Current Science Electrons', 'C', '/uploads/Quiz_Media/Media_s2_q2.png', '2021-06-13 12:04:02', '2021-06-13 12:07:57'),
-(18, 2, 3, 'what is the capital of Maharashtra?', 'Delhi', 'Bangalore', 'Chennai', 'Mumbai', 'D', '', '2021-06-13 12:09:10', '2021-06-13 12:09:10'),
-(32, 3, 1, 'jkjlkjl', 'popkpo', '200m', 'Chennai', 'Mumbai', 'B', '', '2021-06-13 14:24:27', '2021-06-13 14:24:27'),
-(33, 4, 1, 'uygyug', '1000m', 'Bangalore', 'Chennai', 'ghddj ggh jh', 'B', '', '2021-06-13 14:33:11', '2021-06-13 14:33:11');
+(46, 1, 1, 'what is the capital of India?', 'Delhi', 'Bangalore', 'Chennai', 'Mumbai', 'A', '', '2021-06-20 12:38:00', '2021-06-30 15:01:20'),
+(47, 1, 2, 'what is the capital of UP?', 'Moradabad', 'Meerut', 'Lucknow', 'Rampur', 'C', '/uploads/Quiz_Media/Media_s1_q2.jpg', '2021-06-20 12:39:29', '2021-06-30 15:01:25'),
+(48, 1, 3, 'Who is the PM of India?', 'Rahul', 'Rajendra', 'Manhoman', 'Modi', 'D', '', '2021-06-20 12:40:11', '2021-06-30 14:50:32'),
+(49, 1, 4, 'What is the name of country where first covid case found?', 'China', 'India', 'UAE', 'Israel', 'A', '/uploads/Quiz_Media/Media_s1_q4.jpg', '2021-06-20 12:41:38', '2021-06-30 14:50:42'),
+(50, 2, 1, 'What is CS?', 'Controller Science', 'Computer Arhitect', 'Computer Science and Eng', 'Counter Strike', 'C', '', '2021-06-20 12:44:24', '2021-06-20 12:44:24'),
+(51, 2, 2, 'how many mts are in 1km ?', '1000m', '200m', '20000m', '2000m', 'A', '', '2021-06-20 12:45:11', '2021-06-20 12:45:11'),
+(52, 2, 3, 'Which is the first programming language?', 'Java', 'Javascript', 'c', 'c++', 'C', '/uploads/Quiz_Media/Media_s2_q3.jpg', '2021-06-20 12:47:44', '2021-06-20 12:47:44'),
+(53, 2, 4, 'what is the statement used for conditions in a programming language?', 'while', 'if', 'else', 'for', 'B', '', '2021-06-20 12:48:36', '2021-06-20 12:48:36'),
+(54, 1, 5, 'Which one of the following river flows between Vindhyan and Satpura ranges?', 'Narmada', 'Mahanadi', 'Son', 'Netravati', 'A', '', '2021-06-27 04:23:26', '2021-06-27 04:23:26'),
+(55, 1, 6, 'The Central Rice Research Station is situated in?', 'Chennai', 'Cuttack', 'Bangalore', 'Quilon', 'B', '/uploads/Quiz_Media/Media_s1_q6.jpg', '2021-06-27 04:24:10', '2021-06-27 04:24:10'),
+(56, 1, 7, 'Who among the following wrote Sanskrit grammar?', 'Kalidasa', 'Charak', 'Panini', 'Aryabhatt', 'C', '', '2021-06-27 04:24:43', '2021-06-27 04:24:43'),
+(57, 1, 8, 'Which among the following headstreams meets the Ganges in last?', 'Alaknanda', 'Pindar', 'Mandakini', 'Bhagirathi', 'D', '/uploads/Quiz_Media/Media_s1_q8.jpg', '2021-06-27 04:25:25', '2021-06-27 04:25:25'),
+(58, 1, 9, 'The metal whose salts are sensitive to light is?', 'Zinc', 'Silver', 'Copper', 'Aluminum', 'B', '', '2021-06-27 04:26:04', '2021-06-27 04:26:04'),
+(59, 1, 10, 'Patanjali is well known for the compilation of –', 'Yoga Sutra', 'Panchatantra', 'Brahma Sutra', 'Ayurveda', 'A', '', '2021-06-27 04:26:51', '2021-06-27 04:26:51'),
+(60, 1, 11, 'Which one of the following rivers originates in Brahmagiri range of Western Ghats?', 'Pennar', 'Cauvery', 'Krishna', 'Tapti', 'B', '', '2021-06-27 04:27:32', '2021-06-27 04:27:32'),
+(61, 1, 12, 'The country that has the highest in Barley Production?', 'China', 'India', 'Russia', 'France', 'C', '', '2021-06-27 04:27:58', '2021-06-27 04:27:58'),
+(62, 1, 13, 'Tsunamis are not caused by', 'Hurricanes', 'Earthquakes', 'Undersea landslides', 'Volcanic eruptions', 'A', '/uploads/Quiz_Media/Media_s1_q13.jpg', '2021-06-27 04:28:39', '2021-06-27 04:28:39'),
+(63, 1, 14, 'Chambal river is a part of –', 'Sabarmati basin', 'Ganga basin', 'Narmada basin', 'Godavari basin', 'C', '', '2021-06-27 04:30:07', '2021-06-27 04:30:07'),
+(64, 1, 15, 'D.D.T. was invented by?', 'Mosley', 'Rudolf', 'Karl Benz', 'Dalton', 'A', '/uploads/Quiz_Media/Media_s1_q15.jpg', '2021-06-27 04:30:41', '2021-06-27 04:30:41'),
+(65, 1, 16, 'Indus river originates in –', 'Kinnaur', 'Ladakh', 'Nepal', 'Tibet', 'D', '', '2021-06-27 04:31:16', '2021-06-27 04:31:16'),
+(66, 1, 17, 'The hottest planet in the solar system?', 'Mercury', 'Venus', 'Mars', 'Jupiter', 'B', '', '2021-06-27 04:31:41', '2021-06-27 04:31:41'),
+(67, 1, 18, 'With which of the following rivers does Chambal river merge?', 'Banas', 'Ganga', 'Narmada', 'Yamuna', 'D', '', '2021-06-27 04:32:14', '2021-06-27 04:32:14'),
+(68, 1, 19, 'Where was the electricity supply first introduced in India –', 'Mumbai', 'Dehradun', 'Darjeeling', 'Chennai', 'C', '/uploads/Quiz_Media/Media_s1_q19.jpg', '2021-06-27 04:33:05', '2021-06-27 04:33:05'),
+(69, 1, 20, 'Which one of the following ports is the oldest port in India?', 'Mumbai Port', 'Chennai Port', 'Kolkata Port', 'Vishakhapatnam Port', 'B', '', '2021-06-27 04:35:12', '2021-06-27 04:35:12'),
+(70, 1, 21, 'Which of the following is not a nuclear power center?', 'Narora', 'Kota', 'Chamera', 'Kakrapara', 'C', '', '2021-06-27 04:35:41', '2021-06-27 04:35:41'),
+(71, 1, 22, 'For the Olympics and World Tournaments, the dimensions of basketball court are', '27 m x 16 m', '28 m x 15 m', '26 m x 14 m', '28 m x 16 m', 'B', '', '2021-06-27 04:36:21', '2021-06-27 04:36:21'),
+(72, 1, 23, 'Film and TV institute of India is located at', 'Pune (Maharashtra)', 'Pimpri (Maharashtra)', 'Perambur (Tamilnadu)', 'Rajkot (Gujarat)', 'A', '/uploads/Quiz_Media/Media_s1_q23.jpg', '2021-06-27 04:37:01', '2021-06-27 04:37:01'),
+(73, 1, 24, 'The biggest part of the brain is', 'Spinal cord', 'Cerebellum', 'Cerebrum', 'Brain Stem', 'C', '/uploads/Quiz_Media/Media_s1_q24.jpg', '2021-06-27 04:39:56', '2021-06-30 10:40:43'),
+(74, 1, 25, 'At room temperature, which is the only metal that is in liquid form?', 'Iron', 'Aluminum', 'Mercury', 'Silver', 'C', '/uploads/Quiz_Media/Media_s1_q25.jpg', '2021-06-27 04:40:51', '2021-06-27 04:40:51'),
+(75, 1, 26, 'Which is the country which has the Great Barrier Reef?', 'London', 'Australia', 'Ireland', 'New Zealand', 'B', '', '2021-06-27 04:41:29', '2021-06-27 04:41:29'),
+(76, 1, 27, 'Which of the following Company buy eBay’s Indian operation?', 'Amazon', 'Flipkart', 'Snapdeal', 'PayTM', 'B', '/uploads/Quiz_Media/Media_s1_q27.jpg', '2021-06-27 04:42:28', '2021-06-27 04:42:28'),
+(77, 1, 28, 'The unit of electrical resistance of a conductor is—', 'farad', 'volt', 'ampere', 'ohm', 'D', '/uploads/Quiz_Media/Media_s1_q27.jpg', '2021-06-27 04:43:22', '2021-06-27 04:43:22'),
+(78, 1, 29, 'Which of the following countries has approved world’s first dengue vaccine?', 'United Kingdom', 'Canada', 'Mexico', 'France', 'C', '', '2021-06-27 04:44:03', '2021-06-27 04:44:03'),
+(79, 1, 30, 'Which of the following is the largest air pollutant?', 'Carbon dioxide', 'Carbon monoxide', 'Sulphur dioxide', 'Hydrocarbons', 'B', '/uploads/Quiz_Media/Media_s1_q30.jpg', '2021-06-27 04:44:51', '2021-06-30 10:46:19');
 
 -- --------------------------------------------------------
 
@@ -176,10 +202,8 @@ CREATE TABLE `quiz_sets` (
 --
 
 INSERT INTO `quiz_sets` (`id`, `set_no`, `created_at`, `updated_at`) VALUES
-(3, 1, '2021-06-12 11:50:11', '2021-06-12 11:50:11'),
-(9, 2, '2021-06-13 12:09:10', '2021-06-13 12:09:10'),
-(17, 3, '2021-06-13 14:24:28', '2021-06-13 14:24:28'),
-(19, 4, '2021-06-13 14:33:11', '2021-06-13 14:33:11');
+(27, 1, '2021-06-20 12:41:38', '2021-06-20 12:41:38'),
+(29, 2, '2021-06-20 12:48:36', '2021-06-20 12:48:36');
 
 -- --------------------------------------------------------
 
@@ -201,7 +225,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('82xEynsUaVh3kDSzbhyrSyzz6RUrGtHRRXdygd8j', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.101 Safari/537.36', 'YTo2OntzOjY6Il90b2tlbiI7czo0MDoienBoTG9WcnB0aHhyUWRVWmJFSmZOeUhhUVJlYzl4ZDhRY25qWTh4TCI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9kYXNoYm9hcmQiO31zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO3M6MTc6InBhc3N3b3JkX2hhc2hfd2ViIjtzOjYwOiIkMnkkMTAkQmNvNTgzNUIvekZHWlhhZjY3V01WdWh4MUVPd3FPZFJXOUtoOGZqekMyZi5tUzVwUnJlQ1ciO3M6MjE6InBhc3N3b3JkX2hhc2hfc2FuY3R1bSI7czo2MDoiJDJ5JDEwJEJjbzU4MzVCL3pGR1pYYWY2N1dNVnVoeDFFT3dxT2RSVzlLaDhmanpDMmYubVM1cFJyZUNXIjt9', 1623618488);
+('CBo4RaMkXaZwkig9YIkeNYiezWUU9ksQd9dgXKZp', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.114 Safari/537.36', 'YToxMTp7czo2OiJfdG9rZW4iO3M6NDA6Ink4SXJ6c0VmZXE2SzV5eDBHR2ZUNGZCVEl1YkJlaTVHQ3hOSHNWQkEiO3M6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjM5OiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvaG9tZS9jb250YWN0LXBhZ2UiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjE5OiJjdXJyZW50X3F1ZXN0aW9uX25vIjtzOjE6IjMiO3M6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7czoxNzoicGFzc3dvcmRfaGFzaF93ZWIiO3M6NjA6IiQyeSQxMCRCY281ODM1Qi96RkdaWGFmNjdXTVZ1aHgxRU93cU9kUlc5S2g4Zmp6QzJmLm1TNXBScmVDVyI7czoyMToicGFzc3dvcmRfaGFzaF9zYW5jdHVtIjtzOjYwOiIkMnkkMTAkQmNvNTgzNUIvekZHWlhhZjY3V01WdWh4MUVPd3FPZFJXOUtoOGZqekMyZi5tUzVwUnJlQ1ciO3M6NjoiVGVhbV9BIjtpOjA7czo2OiJUZWFtX0IiO2k6MDtzOjY6IlRlYW1fQyI7aTowO3M6MTQ6InF1ZXN0aW9uX21lZGlhIjtzOjM2OiIvdXBsb2Fkcy9RdWl6X01lZGlhL01lZGlhX3MxX3EyMy5qcGciO30=', 1625085549);
 
 -- --------------------------------------------------------
 
@@ -228,8 +252,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `role`, `email`, `email_verified_at`, `password`, `two_factor_secret`, `two_factor_recovery_codes`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Admin', 'admin', 'admin@myschoolquiz.in', NULL, '$2y$10$Bco5835B/zFGZXaf67WMVuhx1EOwqOdRW9Kh8fjzC2f.mS5pRreCW', NULL, NULL, 'E01olgcp4pfleOtpcBXjhy0PJMkoIhiaGTGIzwePtIyEt2yuSoeN4U3WjkpQ', '2021-05-29 14:00:48', '2021-05-29 14:00:48'),
-(8, 'Siddharth Rastogi', 'super_admin', 'sidd15597@gmail.com', NULL, '$2y$10$QMAgqwtm2B6KtQ/ADjDBRO8FTJAYiCIoXiLKpP2uRV/tnzC22TgN.', NULL, NULL, NULL, '2021-06-05 03:41:53', '2021-06-05 03:41:53');
+(1, 'Admin', 'super_admin', 'admin@myschoolquiz.in', NULL, '$2y$10$Bco5835B/zFGZXaf67WMVuhx1EOwqOdRW9Kh8fjzC2f.mS5pRreCW', NULL, NULL, 'X5uKCtK0m9dQVxtdod86D3oPls6zlcVdrCdcXOowror9og1rPHxZmM7Vnmng', '2021-05-29 14:00:48', '2021-05-29 14:00:48'),
+(9, 'Simran', 'admin', 'simran@gmail.com', NULL, '$2y$10$hZVjN.BBK/zgkaIozkoiPOz9kLYR1OE6owAlr7sP6qdlMqTppzXSi', NULL, NULL, NULL, '2021-06-15 05:21:18', '2021-06-15 05:22:57'),
+(10, 'Siddharth', 'super_admin', 'sid15597@gmail.com', NULL, '$2y$10$8Sq.s0Wx4fpdTmraRlbxgOATnbGyrcxm9eVV00nhcnsQSjj8VB3HO', NULL, NULL, NULL, '2021-06-22 13:05:52', '2021-06-22 13:05:52');
 
 --
 -- Indexes for dumped tables
@@ -327,19 +352,19 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `quiz_creates`
 --
 ALTER TABLE `quiz_creates`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
 
 --
 -- AUTO_INCREMENT for table `quiz_sets`
 --
 ALTER TABLE `quiz_sets`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
