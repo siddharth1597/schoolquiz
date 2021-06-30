@@ -49,7 +49,7 @@
       <div class="modal-body">
         <div class="form-group">
           <div class="d-flex mt-4 justify-center">
-            <p class="text-dark font-semibold">Results after <span class="badge badge-success p-2 ml-2">Round 5</span></p>
+            <p class="text-dark font-semibold">Results after <span class="badge badge-success p-2 ml-2 round_no">Round 5</span></p>
           </div>
           <div class="row results d-block">
             <div class="row justify-center shadow-sm">

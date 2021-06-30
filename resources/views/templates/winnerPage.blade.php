@@ -26,4 +26,9 @@
             </div>
         </div>
     </div>
+
+    <script>
+        // play the sound of winner.
+        winner_sound();
+    </script>
 </x-app-layout>

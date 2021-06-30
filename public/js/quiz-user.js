@@ -71,9 +71,10 @@ function stopwatch() {
       // set pagination
       $('#question-' + current_question).addClass('btn-success').removeClass('btn-secondary').removeClass('btn-dark');
       $('#question-' + next_question).addClass('btn-dark').removeClass('btn-secondary');
+      var audio = '\\sounds/very_poor.mp3';
 
       clearSavedForm();
-      showContinueModal(status_gif, status, next_team, next_question, store_team_points);
+      showContinueModal(status_gif, status, next_team, next_question, store_team_points, audio);
     }
   }, 1000);
 }
@@ -107,8 +108,12 @@ function idleCounter() {
 }
 
 // show modal after every question.
-function showContinueModal(status_gif, status, next_team, next_question, team_points) {
+function showContinueModal(status_gif, status, next_team, next_question, team_points, audio) {
   if (next_question != 16 && next_question != 31) {
+    // Status Audio
+    var sound = new Audio(audio);
+    sound.play();
+
     $('#ContinueQuiz').find('.continue_team').text('Team ' + next_team);
     $('#ContinueQuiz').find('#continue_question').attr('data-question', next_question);
     $('#ContinueQuiz').find('img').attr('src', status_gif).attr('alt', status);
@@ -131,6 +136,7 @@ function showContinueModal(status_gif, status, next_team, next_question, team_po
       $('#ResultQuiz').find('#team_b_points').text(team_points['B'] + ' points');
       $('#ResultQuiz').find('#team_c_points').text(team_points['C'] + ' points');
     }
+    $('#ResultQuiz').find('.round_no').text('Round ' + ((next_question - 1) / 3));
     $('#ResultQuiz').modal('show');
     $('#ResultQuiz').on('shown.bs.modal', function() {
       $(this).find('button').focus();
@@ -228,6 +234,7 @@ function submitAnswer($this) {
   var answer = '';
   var status_gif = '';
   var status = '';
+  var audio = '';
 
   if ($('input[name="answer"]').is(":checked")) {
     answer = $('input[name="answer"]:checked').val();
@@ -257,19 +264,22 @@ function submitAnswer($this) {
         $('#question-' + question_no).addClass('btn-success').removeClass('btn-secondary').removeClass('btn-dark');
         $('#question-' + (Number(question_no) + 1)).addClass('btn-dark').removeClass('btn-secondary');
 
+
         if (data.status == 'matched') {
           status_gif = '\\images/right_answer.gif';
           status = 'Right Answer';
+          audio = '\\sounds/right_answer.mp3';
         }
         else if (data.status == 'unmatched') {
           status_gif = '\\images/wrong_answer.gif';
           status = 'Wrong Answer';
+          audio = '\\sounds/wrong_answer.mp3';
         }
 
         store_team_points = data.team_points;
 
         // set data on modal
-        showContinueModal(status_gif, status, data.next_team, data.next_question, data.team_points);
+        showContinueModal(status_gif, status, data.next_team, data.next_question, data.team_points, audio);
 
         // start idle counter
         //idleCounter();
@@ -279,4 +289,10 @@ function submitAnswer($this) {
   else {
     alert('Something went wrong');
   }
+}
+
+function winner_sound() {
+  var audio = '\\sounds/the_winner.mp3';
+  var sound = new Audio(audio);
+  sound.play();
 }
