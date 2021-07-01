@@ -14,20 +14,19 @@ class WinnerController extends Controller
         $team_points = $getTeamPoints->getTeamPoints();
         $title = 'Quiz is Tied between';
 
-        if ($team_points['A'] == $team_points['B']) {
+        if ($team_points['A'] == $team_points['B'] && $team_points['B'] > $team_points['C']) {
             $team_name = 'Team-A and Team-B';
         }
-        if ($team_points['A'] == $team_points['C']) {
+        elseif ($team_points['A'] == $team_points['C'] && $team_points['C'] > $team_points['B']) {
             $team_name = 'Team-A and Team-C';
         }
-        if ($team_points['B'] == $team_points['C']) {
+        elseif ($team_points['B'] == $team_points['C'] && $team_points['C'] > $team_points['A']) {
             $team_name = 'Team-B and Team-C';
         }
-        if ($team_points['A'] == $team_points['B'] && $team_points['B'] == $team_points['C']) {
+        elseif ($team_points['A'] == $team_points['B'] && $team_points['B'] == $team_points['C']) {
             $team_name = 'Team-A, Team-B and Team-C';
         }
-        if ($team_points['A'] != $team_points['B'] && $team_points['B'] != $team_points['C']
-        && $team_points['A'] != $team_points['C']) {
+        else {
             $winner = array_keys($team_points, max($team_points));
             $team_name = 'Team-' . $winner[0];
             $title = 'The Winner is';

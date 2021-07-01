@@ -12,6 +12,7 @@
                 Go to Dashboard
             </div>
             <div class="d-flex">
+                <span class="home_icon badge badge-dark mr-2 my-auto">Home</span>
                 <img class="logo home_icon" src="{{ url('/images/school_quiz1.png') }}" alt="School Quiz" title="Go to Home Screen">
             </div>
         </div>

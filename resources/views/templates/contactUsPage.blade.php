@@ -15,6 +15,7 @@
                 $icon = $contact->home_icon;
             @endphp
             <div class="d-flex">
+                <span class="home_icon badge badge-dark mr-2 my-auto">Home</span>
                 <img class="logo home_icon" src="{{ url($icon) }}" alt="School Quiz"  title="Go to Home Screen">
             </div>
         </div>
