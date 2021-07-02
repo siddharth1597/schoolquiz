@@ -4,6 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
+        <meta name="url" content="{{ url('') }}">
 
         <title>{{ config('app.name', 'SchoolQuiz') }}</title>
         <link rel="icon" href="{!! url('images/school_quiz1.png') !!}" type = "image/x-icon">
@@ -16,6 +17,11 @@
 
         <!-- Scripts -->
         <script src="{{ mix('js/app.js') }}" defer></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script>
+            var url = $('meta[name=url]').attr('content');
+        </script>
+        <script src="{{ url('js/home.js') }}"></script>
     </head>
     <body>
         <div class="font-sans text-gray-900 antialiased">

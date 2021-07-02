@@ -4,24 +4,42 @@ var store_team_points = [];
 var IDLE_TIMEOUT = 5; //5 seconds idle timeout
 
 // Key Press events for submitting through keyboard
+$('html').bind('keydown', function(e)
+{
+   if(e.keyCode == 32 )
+   {
+      return false;
+   }
+});
 
 $(document).on('keypress', function (event) {
   var key_code = event.code;
 
   if (key_code == 'KeyA') {
-    $('input[name="answer"][value="A"]').prop('checked', true);
+    if(!($("#ContinueQuiz").data('bs.modal') || {})._isShown) {
+      $('input[name="answer"][value="A"]').prop('checked', true);
+    }
   }
   else if (key_code == 'KeyB') {
-    $('input[name="answer"][value="B"]').prop('checked', true);
+    if(!($("#ContinueQuiz").data('bs.modal') || {})._isShown) {
+      $('input[name="answer"][value="B"]').prop('checked', true);
+    }
   }
   else if (key_code == 'KeyC') {
-    $('input[name="answer"][value="C"]').prop('checked', true);
+    if(!($("#ContinueQuiz").data('bs.modal') || {})._isShown) {
+      $('input[name="answer"][value="C"]').prop('checked', true);
+    }
   }
   else if (key_code == 'KeyD') {
-    $('input[name="answer"][value="D"]').prop('checked', true);
+    if(!($("#ContinueQuiz").data('bs.modal') || {})._isShown) {
+      $('input[name="answer"][value="D"]').prop('checked', true);
+    }
   }
   else if (key_code == 'Enter' || key_code == 'NumpadEnter') {
-    if(($("#ResultQuiz").data('bs.modal') || {})._isShown) {
+    if($('.schoolquiz_animation').css('display') != 'none') {
+      $('.schoolquiz_animation').hide();
+    }
+    else if(($("#ResultQuiz").data('bs.modal') || {})._isShown) {
       $('#quiz_result').click();
     }
     else if(($("#ContinueQuiz").data('bs.modal') || {})._isShown) {
@@ -181,6 +199,8 @@ function clearSavedForm() {
 
 // Get the question data.
 function playQuiz($this) {
+  $('.loading').css('display', 'flex');
+  $('input[name="answer"]').prop('checked', false); // to clear any selected option for safety
   var question_no = $($this).attr('data-question');
   var set_no = $($this).attr('data-set');
 
@@ -217,6 +237,7 @@ function playQuiz($this) {
           $('.ques_heading').text('Question-' + data.question);
           $('#save_details').attr('data-question', data.question);
           $('#save_details').attr('data-team', data.team);
+          $('.loading').css('display', 'none');
 
           if ($('#StartQuiz').is(':visible')) {
             $('#StartQuiz').modal('hide');
@@ -270,6 +291,7 @@ function submitAnswer($this) {
   }
 
   if (answer && team && question_no) {
+    $('.loading').css('display', 'flex');
     $.ajax({
       type: 'POST',
       url: url + '/submitAnswer',
@@ -299,6 +321,7 @@ function submitAnswer($this) {
 
         // store team current points after every submit.
         store_team_points = data.team_points;
+        $('.loading').css('display', 'none');
 
         // set data on modal
         showContinueModal(status_gif, status, data.next_team, data.next_question, data.team_points, audio);

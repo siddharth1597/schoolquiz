@@ -35,7 +35,7 @@
       </div>
       <div class="modal-footer mx-auto">
         <!-- start after submit of question 1 -->
-        <button autofocus id='continue_question' data-question="" data-set="{{ $quiz_set_no }}" onclick='playQuiz(this)' class="btn btn-dark">Go Ahead</button>
+        <button id='continue_question' data-question="" data-set="{{ $quiz_set_no }}" onclick='playQuiz(this)' class="btn btn-dark">Go Ahead</button>
       </div>
     </div>
   </div>

@@ -26,6 +26,7 @@ function saveQuestion($this, config_type) {
   form_data.append("config_type", config_type);
 
   if (question && option1 && option2 && option3 && option4) {
+    $('.loading').css('display', 'flex');
     
     if ($('input[name="answer"]').is(":checked")) {
       answer = $('input[name="answer"]:checked').val();
@@ -51,6 +52,7 @@ function saveQuestion($this, config_type) {
         }
         if (data.success == 'yes') {
           if (data.next_question_no <= 30) {
+            $('.loading').css('display', 'none');
             $('#SavedQuiz').find('.modal-body').html('Question-' + question_no + ' is saved.');
             $('#SavedQuiz').modal('show');
 
@@ -116,6 +118,7 @@ function clearForm(next_question_no, $this, set_no) {
 // Show the stored form values
 
 function storedNextForm(current_question, set_no) {
+  $('.loading').css('display', 'flex');
   $.ajax({
     type: 'POST',
     url: url + '/storedQuestion',
@@ -160,6 +163,7 @@ function storedNextForm(current_question, set_no) {
         if ($('#update_details-' + set_no).length > 0) {
           $('#update_details-' + set_no).attr('data-question', current_question);
         }
+        $('.loading').css('display', 'none');
       }
     }
   });
@@ -169,6 +173,7 @@ function storedNextForm(current_question, set_no) {
 
 function backForm($this) {
 
+  $('.loading').css('display', 'flex');
   var current_question = $($this).attr('data-question');
   var set_no = $($this).attr('data-set');
 
@@ -225,6 +230,7 @@ function backForm($this) {
             document.getElementById('media_file').value = '';
             document.getElementById('media_files').innerHTML = '+ Add Image or Video (optional)';
           }
+          $('.loading').css('display', 'none');
         }
       }
     });

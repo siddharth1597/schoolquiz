@@ -1,7 +1,8 @@
 <x-guest-layout>
+    <span id="login_back" class="font-bold ml-5 mt-5 absolute text-lg cursor-pointer text-gray-600 hover:text-gray-900" title="Go to Dashboard"> << back</span>
     <x-jet-authentication-card>
         <x-slot name="logo">
-            <x-jet-authentication-card-logo />
+            <img class="w-20 logo" src="{{ url('images/school_quiz1.png') }}" alt="School Quiz"  title="School Quiz">
         </x-slot>
 
         <x-jet-validation-errors class="mb-4" />

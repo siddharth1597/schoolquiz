@@ -46,6 +46,10 @@
 
         <div class="min-h-screen">
 
+            <!-- loading -->
+            <div class="loading">
+                <img class="w-40 m-auto" src="{{ url('images/loading.gif') }}" alt="loading">
+            </div>
             <!-- Page Heading -->
             @if (isset($header))
                 <header class="bg-white shadow position-relative">

@@ -11,6 +11,12 @@ $(document).ready(function() {
   $('#fa-back').on('click', function() {
     window.location = url + '/dashboard';
   });
+  $('#login_back').on('click', function() {
+    window.location = url + '/home';
+  });
+  $('#registration_back').on('click', function() {
+    window.location = url + '/login';
+  });
 });
 
 function createSet($this) {
