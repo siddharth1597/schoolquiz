@@ -30,7 +30,7 @@ class CreateQuizController extends Controller
         $edit_type = '';
         $fileNameToStore = '';
         $validation = Validator::make($request->all(), [
-            'media_file' => 'nullable|mimes:png,jpg,jpeg,mp4,gif|max:10000'
+            'media_file' => 'nullable|mimes:png,jpg,jpeg,gif|max:5000'
         ]);
         if ($validation->validate()) {
 

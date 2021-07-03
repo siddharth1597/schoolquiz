@@ -259,6 +259,7 @@ function playQuiz($this) {
           if ($('#ResultQuiz').is(':visible')) {
             $('#ResultQuiz').modal('hide');
           }
+          $('.loading').css('display', 'none');
           $('#SavedQuiz').find('.modal-body .error_msg').html('No further questions are available. Please select another quiz set.');
           $('#SavedQuiz').find('.modal-body').append('<a href="/home">Click here to go to Homepage</a>');
           $('#SavedQuiz').attr('data-backdrop', 'static');
