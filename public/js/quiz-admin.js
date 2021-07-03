@@ -47,12 +47,9 @@ function saveQuestion($this, config_type) {
       processData: false,
 
       success: function (data) {
-        if(data.message) {
-          alert(data.message);
-        }
+        $('.loading').css('display', 'none');
         if (data.success == 'yes') {
           if (data.next_question_no <= 30) {
-            $('.loading').css('display', 'none');
             $('#SavedQuiz').find('.modal-body').html('Question-' + question_no + ' is saved.');
             $('#SavedQuiz').modal('show');
 
@@ -62,6 +59,13 @@ function saveQuestion($this, config_type) {
           }
           else {
             window.location = url + '/dashboard';
+          }
+        }
+        else {
+          if(data.message) {
+            $('#SavedQuiz').find('.modal-body').html('<div class="text-danger">' + data.message + '</div>');
+            $('#SavedQuiz').modal('show');
+            return;
           }
         }
       }

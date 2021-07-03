@@ -32,7 +32,7 @@ class CreateQuizController extends Controller
         $validation = Validator::make($request->all(), [
             'media_file' => 'nullable|mimes:png,jpg,jpeg,gif|max:5000'
         ]);
-        if ($validation->validate()) {
+        if ($validation->passes()) {
 
             if (Session::has('next_question_no')) {
                 $session_question = Session::get('next_question_no');
@@ -137,6 +137,7 @@ class CreateQuizController extends Controller
         }
         else {
             return response()->json([
+                'success' => 'no',
                 'message' => $validation->errors()->all(),
             ]);
         }
