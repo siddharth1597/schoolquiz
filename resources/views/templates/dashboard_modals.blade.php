@@ -165,7 +165,7 @@
                 <label class="input-group-text" for="quizSetList">Quiz</label>
               </div>
               <select class="custom-select" id="quizSetList">
-                <option selected>--Select Set--</option>
+                <option value="0" selected>--Select Set--</option>
                 @foreach($quiz_sets as $quiz_set)
                 <option value="{{ $quiz_set->set_no }}">Set {{ $quiz_set->set_no }}</option>
                 @endforeach
@@ -203,7 +203,7 @@
                 <label class="input-group-text" for="deleteQuizSet">Quiz</label>
               </div>
               <select class="custom-select" id="deleteQuizSet">
-                <option selected>--Select Set--</option>
+                <option value="0" selected>--Select Set--</option>
                 @foreach($quiz_sets as $quiz_set)
                 <option value="{{ $quiz_set->set_no }}">Set {{ $quiz_set->set_no }}</option>
                 @endforeach

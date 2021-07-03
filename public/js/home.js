@@ -21,15 +21,30 @@ $(document).ready(function() {
 
 function createSet($this) {
   var quiz_no = $($this).attr('data-set');
-  window.location = url + '/dashboard/createQuizSet/set_no=' + quiz_no;
+  if (quiz_no != 0) {
+    window.location = url + '/dashboard/createQuizSet/set_no=' + quiz_no;
+  }
+  else {
+    alert('Please select Quiz Set to continue');
+  }
 }
 
 function updateQuiz() {
   var set_no = $('#quizSetList').val();
-  window.location = url + '/dashboard/updateQuizSet/set_no=' + set_no;
+  if (set_no != 0) {
+    window.location = url + '/dashboard/updateQuizSet/set_no=' + set_no;
+  }
+  else {
+    alert('Please select Quiz Set to continue');
+  }
 }
 
 function startQuiz() {
   var set_no = $('#quizSetList').val();
-  window.location = url + '/home/startQuizAnimation/set_no=' + set_no;
+  if (set_no != 0) {
+    window.location = url + '/home/startQuizAnimation/set_no=' + set_no;
+  }
+  else {
+    alert('Please select Quiz Set to continue');
+  }
 }

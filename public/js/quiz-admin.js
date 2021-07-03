@@ -246,22 +246,27 @@ function backForm($this) {
 function deleteQuizSet() {
 
   var set_no = $('#deleteQuizSet').val();
-  $.ajax({
-    type: 'POST',
-    url: url + '/deleteQuiz',
-    data: {
-      'set_no': set_no
-    },
+  if (set_no != 0) {
+    $.ajax({
+      type: 'POST',
+      url: url + '/deleteQuiz',
+      data: {
+        'set_no': set_no
+      },
 
-    success: function (data) {
-      if (data.success == 'yes') {
-        window.location = url + '/dashboard';
+      success: function (data) {
+        if (data.success == 'yes') {
+          window.location = url + '/dashboard';
+        }
+        else {
+          alert('Something went wrong. Try again');
+        }
       }
-      else {
-        alert('Something went wrong. Try again');
-      }
-    }
-  });
+    });
+  }
+  else {
+    alert('Please select Quiz Set to continue');
+  }
 }
 
 // Pagination update
