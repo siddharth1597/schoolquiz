@@ -40,21 +40,25 @@ class ContactUsController extends Controller
   }
 
   public function updateValues($request) {
-      
+      $values_update = [
+        'title' => $request->title,
+        'name' => $request->name,
+        'designation' => $request->designation,
+        'email' => $request->email,
+        'address' => $request->address,
+        'city' => $request->city,
+        'pincode' => $request->pincode,
+        'whatsapp_no' => $request->whatsapp_no,
+        'phone_no' => $request->phone_no
+      ];
+      if (Session::has('profile_image') && Session::get('profile_image') != '') {
+        $values_update['profile_image'] = '/uploads/Contact_us/' . Session::get('profile_image');
+      }
+      if (Session::has('icon') && Session::get('icon') != '') {
+        $values_update['home_icon'] = '/uploads/Contact_us/' . Session::get('icon');
+      }
       $update = contact_us::where('role', 'admin')
-          ->update([
-              'title' => $request->title,
-              'name' => $request->name,
-              'designation' => $request->designation,
-              'email' => $request->email,
-              'address' => $request->address,
-              'city' => $request->city,
-              'pincode' => $request->pincode,
-              'whatsapp_no' => $request->whatsapp_no,
-              'phone_no' => $request->phone_no,
-              'home_icon' => '/uploads/Contact_us/' . Session::get('icon'),
-              'profile_image' => '/uploads/Contact_us/' . Session::get('profile_image')
-          ]);
+          ->update($values_update);
   
       Session::forget('profile_image');
       Session::forget('icon');
