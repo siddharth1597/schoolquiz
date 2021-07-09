@@ -104,10 +104,11 @@ function stopwatch() {
       // set pagination
       $('#question-' + current_question).addClass('btn-success').removeClass('btn-secondary').removeClass('btn-dark');
       $('#question-' + next_question).addClass('btn-dark').removeClass('btn-secondary');
-      var audio = '\\sounds/very_poor.mp3';
+      var audio1 = '\\sounds/bell.mp3';
+      var audio2 = '\\sounds/very_poor.mp3';
 
       clearSavedForm();
-      showContinueModal(status_gif, status, next_team, next_question, store_team_points, audio);
+      showContinueModal(status_gif, status, next_team, next_question, store_team_points, audio1, audio2);
     }
   }, 1000);
 }
@@ -140,13 +141,14 @@ function idleCounter() {
 }
 
 // show modal after every question.
-function showContinueModal(status_gif, status, next_team, next_question, team_points, audio) {
+function showContinueModal(status_gif, status, next_team, next_question, team_points, audio1, audio2) {
+  // Status Audio
+  var sound1 = new Audio(audio1);
+  var sound2 = new Audio(audio2);
+  sound1.play();
+  sound2.play();
 
   if (next_question != 16 && next_question != 31) {
-    // Status Audio
-    var sound = new Audio(audio);
-    sound.play();
-
     $('#ContinueQuiz').find('.continue_team').text('Team ' + next_team);
     $('#ContinueQuiz').find('#continue_question').attr('data-question', next_question);
     $('#ContinueQuiz').find('img').attr('src', status_gif).attr('alt', status);
@@ -280,7 +282,8 @@ function submitAnswer($this) {
   var answer = '';
   var status_gif = '';
   var status = '';
-  var audio = '';
+  var audio1 = '';
+  var audio2 = '';
 
   if ($('input[name="answer"]').is(":checked")) {
     answer = $('input[name="answer"]:checked').val();
@@ -312,12 +315,14 @@ function submitAnswer($this) {
         if (data.status == 'matched') {
           status_gif = '\\images/right_answer.gif';
           status = 'Right Answer';
-          audio = '\\sounds/right_answer.mp3';
+          audio1 = '\\sounds/applause.mp3';
+          audio2 = '\\sounds/right_answer.mp3';
         }
         else if (data.status == 'unmatched') {
           status_gif = '\\images/wrong_answer.gif';
           status = 'Wrong Answer';
-          audio = '\\sounds/wrong_answer.mp3';
+          audio1 = '\\sounds/buzzer.mp3';
+          audio2 = '\\sounds/wrong_answer.mp3';
         }
 
         // store team current points after every submit.
@@ -325,7 +330,7 @@ function submitAnswer($this) {
         $('.loading').css('display', 'none');
 
         // set data on modal
-        showContinueModal(status_gif, status, data.next_team, data.next_question, data.team_points, audio);
+        showContinueModal(status_gif, status, data.next_team, data.next_question, data.team_points, audio1, audio2);
       }
     });
   }
@@ -336,7 +341,10 @@ function submitAnswer($this) {
 
 // Winner Page Audio play.
 function winner_sound() {
-  var audio = '\\sounds/the_winner.mp3';
-  var sound = new Audio(audio);
-  sound.play();
+  var audio1 = '\\sounds/the_winner.mp3';
+  var audio2 = '\\sounds/victory.mp3';
+  var sound1 = new Audio(audio1);
+  var sound2 = new Audio(audio2);
+  sound1.play();
+  sound2.play();
 }

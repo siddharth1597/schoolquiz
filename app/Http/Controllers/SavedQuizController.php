@@ -118,7 +118,7 @@ class SavedQuizController extends Controller
 
     public function saveTeamPoints($team)
     {
-        $point_rate = 5; // 1 right question = 5 points.
+        $point_rate = 10; // 1 right question = 10 points.
         $team_code = 'Team_' . $team;
 
         if (Session::has($team_code)) {

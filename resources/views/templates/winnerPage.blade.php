@@ -17,7 +17,7 @@
             </div>
         </div>
     </x-slot>
-    <div class="pb-10 px-10 text-center">
+    <div class="text-center">
         <div class="container mx-auto" style="max-width: inherit;">
             <div class="col-md-12 m-auto position-relative">
                 <h1 class="winner_title font-weight-bold position-absolute justify-center w-100">{{ $title }}</h1>

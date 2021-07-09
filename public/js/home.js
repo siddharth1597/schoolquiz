@@ -17,6 +17,9 @@ $(document).ready(function() {
   $('#registration_back').on('click', function() {
     window.location = url + '/login';
   });
+  $('#download_app').on('click', function() {
+    window.location = 'http://download.myschoolquiz.in';
+  });
 });
 
 function createSet($this) {

@@ -4,14 +4,15 @@
         <i id="fa-back" class="d-none fas fa-arrow-left h2 text-dark position-absolute cursor-pointer" title="Go to Dashboard"></i>
         <div class="d-flex justify-between">
             <div class="d-flex">
-                <i id="fa-edit" class="fas fa-school h2 text-dark mr-3"></i>
-                <h2 class="font-semibold text-xl text-gray-800 leading-tight my-auto">
+                <div class="d-flex">
+                    <img class="logo" src="{{ url('images/school_quiz1.png') }}" alt="School Quiz"  title="School Quiz">
+                </div>
+                <h2 class="font-semibold text-xl text-gray-800 leading-tight my-auto ml-2">
                     {{ __('School Quiz') }}
                 </h2>
             </div>
-            <div class="d-flex">
-                <img class="logo" src="{{ url('images/school_quiz1.png') }}" alt="School Quiz"  title="School Quiz">
-            </div>
+            
+            <i id="fa-edit" class="fas fa-school h2 text-dark mr-3"></i>
             <div class="invisible">
                 Go to Dahsboard
             </div>

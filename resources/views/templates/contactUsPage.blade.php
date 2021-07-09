@@ -43,18 +43,18 @@
                     <div class="row mt-4 d-block">
                         <div class="row mt-2">
                             <div class="col-md-5">
-                                <i class="fab fa-whatsapp text-success float-right h3"></i>
-                            </div>
-                            <div class="col-md-5 text-left my-auto">
-                                <h5 id="whatsapp_no" class="text-success">{{ $contact->whatsapp_no }}</h5>
-                            </div>
-                        </div>
-                        <div class="row mt-2">
-                            <div class="col-md-5">
                                 <i class="fa fa-phone-alt text-light float-right h5"></i>
                             </div>
                             <div class="col-md-5 text-left text-white my-auto">
                                 <h5 id="phone_no">{{ $contact->phone_no }}</h5>
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-md-5">
+                                <i class="fab fa-whatsapp text-success float-right h3"></i>
+                            </div>
+                            <div class="col-md-5 text-left my-auto">
+                                <h5 id="whatsapp_no" class="text-success">{{ $contact->whatsapp_no }}</h5>
                             </div>
                         </div>
                         <div class="row mt-2">
@@ -68,9 +68,9 @@
                     </div>
                 </div>
             </div>
-            <!-- <div>
-                <img class="w-25 mx-auto" src="{{ url('images/quiz-logo-poll.jpg') }}" alt="quiz">
-            </div> -->
+            <div class="mt-5 mx-auto">
+                <button id="download_app" class="btn btn-dark py-2 px-3">Download App</button>
+            </div>
         </div>
     </div>
 </x-app-layout>
