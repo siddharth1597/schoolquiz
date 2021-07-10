@@ -76,6 +76,7 @@ function stopwatch() {
 
   $('.stopwatch').addClass('bg-success').removeClass('bg-warning').removeClass('bg-danger');
 
+  // this function will start after pause_time
   setTimeout(function() {
 
     // Update the count down every 1 second
