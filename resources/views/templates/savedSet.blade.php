@@ -91,7 +91,7 @@
                     <div class="card-footer py-4 justify-between d-flex">
                         <i id='back-{{ $quiz_set_no }}' class="invisible fas fa-arrow-circle-left text-dark h4 float-left">  Back</i>
                         <div class="stopwatch rounded-lg">
-                            <div id="stopwatch" class="mb-0 text-center font-weight-bold text-white h4">70</div>
+                            <div id="stopwatch" class="mb-0 text-center font-weight-bold text-white h4">60</div>
                         </div>
                         <button id='save_details' data-question="1" data-set="{{ $quiz_set_no }}" data-team="A" onclick='submitAnswer(this)' tabindex="0" class="btn btn-primary float-right">Submit</button>
                     </div>

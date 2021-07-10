@@ -70,47 +70,52 @@ $(document).ready(function() {
 function stopwatch() {
   clearInterval(stopwatch_interval);
 
-  var total_time = 71; // 71 seconds
+  var total_time = 60; // 60 seconds
   var count = 1;
+  var pause_time = 10000; // 10sec pause time before start timer.
 
   $('.stopwatch').addClass('bg-success').removeClass('bg-warning').removeClass('bg-danger');
 
-  // Update the count down every 1 second
-  stopwatch_interval = setInterval(function () {
+  setTimeout(function() {
 
-    var current = total_time - count;
+    // Update the count down every 1 second
+    stopwatch_interval = setInterval(function () {
 
-    // Output the result in an element with id="stopwatch"
-    document.getElementById("stopwatch").innerHTML = current;
-    count++;
+      var current = total_time - count;
 
-    if (current < 40) {
-      $('.stopwatch').removeClass('bg-success').addClass('bg-warning');
-    }
-    if (current < 20) {
-      $('.stopwatch').removeClass('bg-warning').addClass('bg-danger');
-    }
+      // Output the result in an element with id="stopwatch"
+      document.getElementById("stopwatch").innerHTML = current;
+      count++;
 
-    // If the count down is over, write some text 
-    if (current < 0) {
-      document.getElementById("stopwatch").innerHTML = "Time's up";
-      var status_gif = '\\images/very_poor.gif';
-      var status = 'Very Poor';
-      var current_question = $('#save_details').attr('data-question');
-      var current_team = $('#save_details').attr('data-team');
-      var next_question = Number(current_question) + 1;
-      var next_team = current_team == 'A' ? 'B' : (current_team == 'B' ? 'C' : 'A');
+      if (current < 30) {
+        $('.stopwatch').removeClass('bg-success').addClass('bg-warning');
+      }
+      if (current < 15) {
+        $('.stopwatch').removeClass('bg-warning').addClass('bg-danger');
+      }
 
-      // set pagination
-      $('#question-' + current_question).addClass('btn-success').removeClass('btn-secondary').removeClass('btn-dark');
-      $('#question-' + next_question).addClass('btn-dark').removeClass('btn-secondary');
-      var audio1 = '\\sounds/bell.mp3';
-      var audio2 = '\\sounds/very_poor.mp3';
+      // If the count down is over, write some text 
+      if (current < 0) {
+        document.getElementById("stopwatch").innerHTML = "Time's up";
+        var status_gif = '\\images/very_poor.gif';
+        var status = 'Very Poor';
+        var current_question = $('#save_details').attr('data-question');
+        var current_team = $('#save_details').attr('data-team');
+        var next_question = Number(current_question) + 1;
+        var next_team = current_team == 'A' ? 'B' : (current_team == 'B' ? 'C' : 'A');
 
-      clearSavedForm();
-      showContinueModal(status_gif, status, next_team, next_question, store_team_points, audio1, audio2);
-    }
-  }, 1000);
+        // set pagination
+        $('#question-' + current_question).addClass('btn-success').removeClass('btn-secondary').removeClass('btn-dark');
+        $('#question-' + next_question).addClass('btn-dark').removeClass('btn-secondary');
+        var audio1 = '\\sounds/bell.mp3';
+        var audio2 = '\\sounds/very_poor.mp3';
+
+        clearSavedForm();
+        showContinueModal(status_gif, status, next_team, next_question, store_team_points, audio1, audio2);
+      }
+    }, 1000);
+
+  }, pause_time);
 }
 
 // Check idle count
@@ -188,7 +193,7 @@ function clearSavedForm() {
   // clear the stopwatch
   clearInterval(stopwatch_interval);
   stopwatch_interval = null;
-  $('#stopwatch').html('70');
+  $('#stopwatch').html('60');
 
   document.getElementById('question').innerHTML = '';
   document.getElementById('option1').innerHTML = '';
