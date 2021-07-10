@@ -1,5 +1,6 @@
 var idleInterval = null;
 var stopwatch_interval = null;
+var stopwatch_timeout = null;
 var store_team_points = [];
 var IDLE_TIMEOUT = 5; //5 seconds idle timeout
 
@@ -77,7 +78,7 @@ function stopwatch() {
   $('.stopwatch').addClass('bg-success').removeClass('bg-warning').removeClass('bg-danger');
 
   // this function will start after pause_time
-  setTimeout(function() {
+  stopwatch_timeout = setTimeout(function() {
 
     // Update the count down every 1 second
     stopwatch_interval = setInterval(function () {
@@ -190,6 +191,10 @@ function showContinueModal(status_gif, status, next_team, next_question, team_po
 
 // Clear the form after every question.
 function clearSavedForm() {
+
+  // clear the timeout
+  clearTimeout(stopwatch_timeout);
+  stopwatch_timeout = null;
 
   // clear the stopwatch
   clearInterval(stopwatch_interval);
