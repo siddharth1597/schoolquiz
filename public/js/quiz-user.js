@@ -375,5 +375,5 @@ function winner_sound(team_name) {
       var sound_c = new Audio(team_c);
       sound_c.play();
     }
-  }, 1700);
+  }, 2000);
 }
