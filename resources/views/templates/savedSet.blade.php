@@ -25,9 +25,9 @@
                 <div class="saved_quiz card shadow border border-white w-100 card_back_color">
                     <div class="card-body m-3" style="padding-top: 0;">
                         <div class="d-flex justify-center mb-3">
-                            <img class="ques_icon" src="{{ url('images/quiz_icon.png') }}" alt="quiz">
+                            <!-- <img class="ques_icon" src="{{ url('images/quiz_icon.png') }}" alt="quiz"> -->
                             <h4 class="ques_heading font-weight-bold m-2 text-secondary">Question-1</h4>
-                            <span id="team_id" class="badge badge-success p-2 my-auto"></span>
+                            <span id="team_id" class="badge badge-success p-2 my-auto ml-2"></span>
                         </div>
                         <form>
                             @csrf

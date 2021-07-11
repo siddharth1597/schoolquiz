@@ -1,7 +1,7 @@
 <!--Start-Quiz Modal -->
 
 <div class="modal fade" tabindex="-1" id="StartQuiz" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">START QUIZ</h5>
@@ -11,7 +11,7 @@
           <p class="text-success">Get ready to play the quiz!!</p>
         </div>
       </div>
-      <div class="modal-footer">
+      <div class="modal-footer pt-4">
         <!-- At first time only. -->
         <button autofocus id='play_set' data-set="{{ $quiz_set_no }}" data-question="1" onclick='playQuiz(this)' class="btn btn-success">Start Quiz</button>
       </div>

@@ -7,9 +7,9 @@
                     {{ __('School Quiz Dashboard') }}
                 </h2>
             </div>
-            <div class="go_to_dashboard">
+            <!-- <div class="go_to_dashboard">
                 <img class="logo homepage" src="{{ url('images/school_quiz1.png') }}" alt="School Quiz"  title="Go to Dashboard">
-            </div>
+            </div> -->
         </div>
     </x-slot>
     <div class="background_wall dashboard_back"></div>
@@ -20,10 +20,10 @@
             </div> -->
             
             <div>
-                <img class="w-25 mx-auto" src="{{ url('images/quiz-logo-poll.jpg') }}" alt="quiz">
+                <img class="home_image mx-auto" src="{{ url('images/School_Quiz_Logo.jpg') }}" alt="quiz">
             </div>
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-6 mt-2">
                     <div class="card shadow border border-white cursor-pointer saved-quiz" data-toggle="modal" data-target="#StartQuiz">
                         <div class="card-body m-12">
                             <i class="fas fa-book h1 text-white mb-3"></i>
@@ -31,11 +31,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6 mt-2">
                     <div class="card shadow bor der border-white cursor-pointer organize-quiz">
                         <div class="card-body m-12">
                             <i class="fas fa-book h1 text-white mb-3"></i>
-                            <h2 class="text-white">Organize Quiz</h2>
+                            <h2 class="text-white">Make Quiz</h2>
                         </div>
                     </div>
                 </div>
