@@ -351,11 +351,29 @@ function submitAnswer($this) {
 }
 
 // Winner Page Audio play.
-function winner_sound() {
+function winner_sound(team_name) {
   var audio1 = '\\sounds/the_winner.mp3';
   var audio2 = '\\sounds/victory.mp3';
+  var team_a = '\\sounds/team_a.mp3';
+  var team_b = '\\sounds/team_b.mp3';
+  var team_c = '\\sounds/team_c.mp3';
   var sound1 = new Audio(audio1);
   var sound2 = new Audio(audio2);
+
   sound1.play();
   sound2.play();
+  setTimeout (function() {
+    if (team_name.trim() == 'Team-A') {
+      var sound_a = new Audio(team_a);
+      sound_a.play();
+    }
+    else if (team_name.trim() == 'Team-B') {
+      var sound_b = new Audio(team_b);
+      sound_b.play();
+    }
+    else if (team_name.trim() == 'Team-C') {
+      var sound_c = new Audio(team_c);
+      sound_c.play();
+    }
+  }, 1700);
 }

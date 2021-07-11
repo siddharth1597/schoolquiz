@@ -69,7 +69,8 @@
                 </div>
             </div>
             <div class="mt-5 mx-auto">
-                <button id="download_app" class="btn btn-dark py-2 px-3">Download App</button>
+                <img class="winner_page_image mt-4 rounded-lg m-auto" src="{{ url('/images/School_Quiz_Logo.jpg') }}" alt="logo">
+                <button id="download_app" class="btn btn-primary py-2 px-3">Download App</button>
             </div>
         </div>
     </div>
