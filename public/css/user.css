@@ -1,14 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Londrina+Shadow&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans+Caption&display=swap');
 .stopwatch {
   box-shadow:  0 0 0.125rem 0.25rem #2933423d !important;
   padding: 5px 6px;
 }
 
-.contact-us-back {@import url('https://fonts.googleapis.com/css2?family=PT+Sans+Caption&display=swap');
-  background-color: currentColor;
+.contact-us-back {
   font-family: 'PT Sans Caption', sans-serif;
-  z-index: 2;
 }
 
 .contact_background_wall {
@@ -87,7 +85,7 @@
   font-size: 64px;
   z-index: 2;
   top: 80px;
-  font-family: 'Londrina Shadow', cursive;
+  font-family: auto;
 }
 
 .winner_team {
@@ -97,7 +95,7 @@
   z-index: 2;
   transform: translate(0, -160px);
   bottom: 0;
-  font-family: 'Londrina Shadow', cursive;
+  font-family: auto;
 }
 
 #question_media {
@@ -117,12 +115,17 @@
 
 #download_app {
   position: relative;
+  z-index: 10;
 }
 
 .winner_page_image {
   top: 0;
   left: 20px;
   z-index: 9;
-  width: 150px;
-  opacity: .8;
+  width: 55px;
+  opacity: 1;
+}
+
+.contact_image {
+  z-index: 2;
 }
