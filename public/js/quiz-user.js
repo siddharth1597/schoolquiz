@@ -357,11 +357,26 @@ function winner_sound(team_name) {
   var team_a = '\\sounds/team_a.mp3';
   var team_b = '\\sounds/team_b.mp3';
   var team_c = '\\sounds/team_c.mp3';
+  var tied_team = '\\sounds/quiz_tied.mp3';
+  var sound_tied = new Audio(tied_team);
   var sound1 = new Audio(audio1);
   var sound2 = new Audio(audio2);
 
-  sound1.play();
+  if (team_name.trim() == 'Team-A') {
+    sound1.play();
+  }
+  else if (team_name.trim() == 'Team-B') {
+    sound1.play();
+  }
+  else if (team_name.trim() == 'Team-C') {
+    sound1.play();
+  }
+  else {
+    sound_tied.play();
+  }
+
   sound2.play();
+
   setTimeout (function() {
     if (team_name.trim() == 'Team-A') {
       var sound_a = new Audio(team_a);
