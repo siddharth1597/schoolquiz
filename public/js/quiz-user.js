@@ -186,7 +186,7 @@ function showContinueModal(status_gif, status, next_team, next_question, team_po
   }
 
   // start idle counter
-  idleCounter();
+  // idleCounter();
 }
 
 // Clear the form after every question.
@@ -218,8 +218,8 @@ function playQuiz($this) {
   var set_no = $($this).attr('data-set');
 
   // clear idle counter
-  clearInterval(idleInterval);
-  idleInterval = null;
+  // clearInterval(idleInterval);
+  // idleInterval = null;
 
   $.ajax({
     type: 'POST',
