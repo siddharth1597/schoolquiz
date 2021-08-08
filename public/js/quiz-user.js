@@ -13,7 +13,7 @@ $('html').bind('keydown', function(e)
    }
 });
 
-$(document).on('keypress', function (event) {
+$(document).on('keyup', function (event) {
   var key_code = event.code;
 
   if (key_code == 'KeyA') {
@@ -52,6 +52,8 @@ $(document).on('keypress', function (event) {
     else {
       $('#save_details')[0].click();
     }
+    event.stopPropagation();
+    event.preventDefault();
   }
 });
 
@@ -161,9 +163,7 @@ function showContinueModal(status_gif, status, next_team, next_question, team_po
     $('#ContinueQuiz').find('img').attr('src', status_gif).attr('alt', status);
 
     $('#ContinueQuiz').modal('show');
-    $('#ContinueQuiz').on('shown.bs.modal', function() {
-        $(this).find('button').focus();
-    });
+
   }
   else if (next_question == 16 || next_question == 31) {
     if (next_question == 16) {

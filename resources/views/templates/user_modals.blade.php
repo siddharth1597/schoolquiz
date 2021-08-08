@@ -13,7 +13,7 @@
       </div>
       <div class="modal-footer pt-4">
         <!-- At first time only. -->
-        <button autofocus id='play_set' data-set="{{ $quiz_set_no }}" data-question="1" onclick='playQuiz(this)' class="btn btn-success">Start Quiz</button>
+        <button id='play_set' data-set="{{ $quiz_set_no }}" data-question="1" onclick='playQuiz(this)' class="btn btn-success">Start Quiz</button>
       </div>
     </div>
   </div>
@@ -74,7 +74,7 @@
         </div>
       </div>
       <div class="modal-footer mx-auto">
-        <button autofocus id='quiz_result' data-question="" data-set="{{ $quiz_set_no }}" class="btn btn-dark half_rounds_completed">Go Ahead</button>
+        <button id='quiz_result' data-question="" data-set="{{ $quiz_set_no }}" class="btn btn-dark half_rounds_completed">Go Ahead</button>
       </div>
     </div>
   </div>
