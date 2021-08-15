@@ -41,13 +41,19 @@ $(document).on('keyup', function (event) {
       $('.schoolquiz_animation').hide();
     }
     else if(($("#ResultQuiz").data('bs.modal') || {})._isShown) {
-      $('#quiz_result').click();
+      if (!$("#quiz_result").is(":focus")) {
+        $('#quiz_result')[0].click();
+      }
     }
     else if(($("#ContinueQuiz").data('bs.modal') || {})._isShown) {
-      $('#continue_question')[0].click();
+      if (!$("#continue_question").is(":focus")) {
+        $('#continue_question')[0].click();
+      }
     }
     else if(($("#StartQuiz").data('bs.modal') || {})._isShown) {
-      $('#play_set')[0].click();
+      if (!$("#play_set").is(":focus")) {
+        $('#play_set')[0].click();
+      }
     }
     else {
       $('#save_details')[0].click();
