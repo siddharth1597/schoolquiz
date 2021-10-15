@@ -17,7 +17,7 @@
   position: absolute;
   width: 100%;
   height: 750px;
-  margin-top: -75px;
+  margin-top: -50px;
   z-index: 1;
 }
 
@@ -128,4 +128,47 @@
 
 .contact_image {
   z-index: 2;
+}
+
+/************Mobile Compatible****************/
+
+@media screen and (max-width: 767px) {
+  #download_app {
+    display: none;
+  }
+
+  .contact_background_wall {
+    margin-top: 45px;
+  }
+
+  .winner_page_image {
+    width: 40px;
+  }
+
+  .mobile-contact-page {
+    padding: 1.5rem 0 0;
+  }
+
+  .mobile-contact-page #title {
+    font-size: 1.5rem;
+  }
+
+  .contact_image {
+    margin: 0 auto !important;
+    float: none !important;
+  }
+  
+  .mobile-contact-page #name, .mobile-contact-page #designation,
+  .mobile-contact-page #address, .mobile-contact-page #city_state {
+    text-align: center;
+  }
+
+  .contact-details {
+    margin-top: 20px !important;
+  }
+
+  .connect-info > .row > div:first-child {
+    flex: 0 0 33.333333%;
+    max-width: 33.333333%;
+  }
 }

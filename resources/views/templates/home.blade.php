@@ -23,7 +23,7 @@
                 <img class="home_image mx-auto" src="{{ url('images/School_Quiz_Logo.jpg') }}" alt="quiz">
             </div>
             <div class="row">
-                <div class="col-md-6 mt-2">
+                <div class="col-md-6 mt-2 save-card">
                     <div class="card shadow border border-white cursor-pointer saved-quiz" data-toggle="modal" data-target="#StartQuiz">
                         <div class="card-body m-12">
                             <i class="fas fa-book h1 text-white mb-3"></i>
@@ -31,10 +31,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 mt-2">
+                <div class="col-md-6 mt-2 make-card">
                     <div class="card shadow bor der border-white cursor-pointer organize-quiz">
                         <div class="card-body m-12">
-                            <i class="fas fa-book h1 text-white mb-3"></i>
+                            <i class="fas fa-marker h1 text-white mb-3"></i>
                             <h2 class="text-white">Make Quiz</h2>
                         </div>
                     </div>
