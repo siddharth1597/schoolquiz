@@ -65,7 +65,7 @@
             </main>
 
         </div>
-        <footer class="position-relative bg-dark p-3 px-5 w-100 text-right shadow">
+        <footer class="position-relative bg-dark p-3 px-5 w-100 text-right shadow footer">
             <i class="fas fa-phone-alt text-white mr-2"></i>
             <a href="/home/contact-page" class="text-white">Contact us</a>
         </footer>

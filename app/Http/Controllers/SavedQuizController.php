@@ -46,11 +46,14 @@ class SavedQuizController extends Controller
             Session::put('question_media', $saved_quiz[0]->media_file);
         }
 
+        $team_points = $this->getTeamPoints();
+
         return response()->json([
             'success' => 'yes',
             'saved_question' => $saved_quiz[0],
             'team' => $team,
             'question' => $question_no,
+            'team_points' => $team_points
         ]);
     }
 

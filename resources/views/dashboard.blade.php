@@ -13,7 +13,7 @@
                 <h3 class="font-semibold text-xl text-info leading-tight my-auto welcome_screen cursor-pointer" title="Go to homepage">
                     {{ __('School Quiz') }}
                 </h3>
-                <i class="fas fa-school h4 text-info ml-2 my-auto"></i>
+                <i class="fas fa-school h4 text-info ml-2 my-auto welcome_screen icon"></i>
             </div>
         </div>
     </x-slot>

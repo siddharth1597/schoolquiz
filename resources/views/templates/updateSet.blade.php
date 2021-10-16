@@ -104,7 +104,7 @@
                                                 }
                                                 else {
                                                     $media_file = '\\images/media_icon.png';
-                                                    $media_file_name = '+ Add Image or Video (Optional)';
+                                                    $media_file_name = '+ Add Image (Optional)';
                                                     $alt = 'No Media Image';
                                                 }
                                             @endphp

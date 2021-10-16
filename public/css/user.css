@@ -171,4 +171,111 @@
     flex: 0 0 33.333333%;
     max-width: 33.333333%;
   }
+
+  /******Play Quiz*******/
+
+  .play-set {
+    padding-top: 2rem !important;
+  }
+
+  .play-set > div > div:nth-child(3) {
+    display: none;
+  }
+
+  .quiz-header.saved > div > div:nth-child(1) h2 {
+    font-size: 1.15rem !important;
+    margin: auto 0 !important;
+    margin-left: 5px !important;
+  }
+
+  .ques_heading {
+    font-size: 1.25rem !important;
+  }
+
+  .detail-section {
+    flex-direction: column-reverse;
+  }
+
+  #question_media {
+    width: 85%;
+    height: 30%;
+  }
+
+  .cross {
+    display: block !important;
+    z-index: 2;
+  }
+
+  /******Results*******/
+
+  .results > div > h5 {
+    font-size: 1rem !important;
+  }
+
+  .results > div > h5:nth-child(1) {
+    width: 0%;
+  }
+
+  .results > div > h5:nth-child(2) {
+    width: 30%;
+  }
+
+  .results > div > h5:nth-child(3) {
+    width: 35%;
+  }
+
+
+  /******Winners*******/
+
+  .winner_title {
+    font-size: 36px;
+    letter-spacing: 2px;
+  }
+
+  .winner_cup {
+    width: 100%;
+    top: 12%;
+    left: 0;
+  }
+
+  .winner-page > div {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .winner-page > div > div {
+    height: 100vh;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .winner_team {
+    transform: initial;
+    top: 52%;
+    font-size: 32px;
+    letter-spacing: 2px;
+  }
+
+  .winner_celeb {
+    height: inherit;
+  }
+
+  .winner-header .invisible {
+    display: none;
+  }
+
+  .home_icon {
+    padding: 5px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .team-points.mobile-screen {
+    display: flex !important;
+    z-index: 1;
+  }
+
+  .team-points.header {
+    display: none !important;
+  }
 }
