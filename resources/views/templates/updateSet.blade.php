@@ -1,23 +1,25 @@
 <x-app-layout>
     <x-slot name="header">
-        <i id="fa-back" class="fas fa-arrow-left h2 text-dark position-absolute cursor-pointer" title="Go to Dashboard"></i>
-        <div class="d-flex justify-between">
-            <div class="d-flex">
-                <i id="fa-edit" class="fas fa-edit h2 text-dark mr-3"></i>
-                <h2 class="font-semibold text-xl text-gray-800 leading-tight my-auto">
-                    {{ __('Update Quiz') }}
-                </h2>
-            </div>
-            <div class="row">
-                <h3 class="text-success font-semibold">Quiz Set-{{ $quiz_question->set_no }}</h3>
-            </div>
-            <div class="d-flex go_to_dashboard">
-                <img class="logo homepage" src="{{ url('images/school_quiz1.png') }}" alt="School Quiz" title="Go to Dashboard">
+        <div class="quiz-header">
+            <i id="fa-back" class="fas fa-arrow-left h2 text-dark position-absolute cursor-pointer" title="Go to Dashboard"></i>
+            <div class="d-flex justify-between">
+                <div class="d-flex">
+                    <i id="fa-edit" class="fas fa-edit h2 text-dark mr-3"></i>
+                    <h2 class="font-semibold text-xl text-gray-800 leading-tight my-auto">
+                        {{ __('Update Quiz') }}
+                    </h2>
+                </div>
+                <div class="row">
+                    <h3 class="text-success font-semibold">Quiz Set-{{ $quiz_question->set_no }}</h3>
+                </div>
+                <div class="d-flex go_to_dashboard">
+                    <img class="logo homepage" src="{{ url('images/school_quiz1.png') }}" alt="School Quiz" title="Go to Dashboard">
+                </div>
             </div>
         </div>
     </x-slot>
     <div class="background_wall"></div>
-    <div class="py-10 px-10 text-center">
+    <div class="py-10 px-10 text-center update-set">
         <div class="row d-flex justify-center mt-2 mb-4">
             <div class="ml-1 mt-2 float-left" style="z-index: 10"><button id="question-1" data-set="{{ $quiz_question->set_no }}" data-question="1" class="btn btn-success rounded shadow question_pagination" title="Go to Question 1">1</button></div>
             @php
@@ -40,7 +42,7 @@
                                 <textarea class="shadow-sm rounded form-control" name="question" id="question" cols="115" rows="3" placeholder="Type your question here..." style="border-color: #d8dadc;">{{ $quiz_question->question }}</textarea>
                             </div>
                             <div class="form-row">
-                                <div class="form-group col-md-6 ml-3">
+                                <div class="form-group col-md-6 ml-3 question-options">
                                     <div class="mt-4 d-flex">
                                         <h4 class="m-auto">A. </h4>
                                         <div class="input-group ml-3 shadow-sm">
@@ -91,7 +93,7 @@
                                     </div>
                                 </div>
                                 <input type="hidden" id="storedQuestions" value="1">
-                                <div class="form-group col-md-5 ml-5 mt-4">
+                                <div class="form-group col-md-5 ml-5 mt-4 question-media">
                                     <div class="d-flex">
                                         <div class="custom-file">
                                             @php
@@ -102,7 +104,7 @@
                                                 }
                                                 else {
                                                     $media_file = '\\images/media_icon.png';
-                                                    $media_file_name = '+ Add Image or Video (Optional)';
+                                                    $media_file_name = '+ Add Image (Optional)';
                                                     $alt = 'No Media Image';
                                                 }
                                             @endphp

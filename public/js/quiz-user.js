@@ -243,6 +243,9 @@ function playQuiz($this) {
       if (data.success == 'yes') {
         if (data.saved_question !== '') {
           $('#team_id').text('Team-' + data.team);
+          $('.team_a_points').text('Team-A: ' + data.team_points['A']);
+          $('.team_b_points').text('Team-B: ' + data.team_points['B']);
+          $('.team_c_points').text('Team-C: ' + data.team_points['C']);
           document.getElementById('question').innerHTML = data.saved_question['question'];
           document.getElementById('option1').innerHTML = data.saved_question['option1'];
           document.getElementById('option2').innerHTML = data.saved_question['option2'];

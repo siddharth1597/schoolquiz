@@ -13,7 +13,7 @@
                 <h3 class="font-semibold text-xl text-info leading-tight my-auto welcome_screen cursor-pointer" title="Go to homepage">
                     {{ __('School Quiz') }}
                 </h3>
-                <i class="fas fa-school h4 text-info ml-2 my-auto"></i>
+                <i class="fas fa-school h4 text-info ml-2 my-auto welcome_screen icon"></i>
             </div>
         </div>
     </x-slot>
@@ -23,7 +23,7 @@
             <strong>{{ Session::get('flash_message') }}</strong>
         </div>
     @endif
-    <div class="py-2 px-10 text-center mb-10">
+    <div class="py-2 px-10 text-center mb-10 dashboard-quiz">
         <div class="container mx-auto">
             <div class="row">
                 <div class="col-md-4 pt-5">
@@ -37,7 +37,7 @@
                 <div class="col-md-4 pt-5">
                     <div class="card shadow border cursor-pointer update_quiz" data-toggle="modal" data-target="#UpdateQuiz">
                         <div class="card-body m-8">
-                            <i class="fas fa-book h1 text-white mb-3"></i>
+                            <i class="fas fa-book-open h1 text-white mb-3"></i>
                             <h2 class="text-white">Update Quiz</h2>
                         </div>
                     </div>
@@ -45,7 +45,7 @@
                 <div class="col-md-4 pt-5">
                     <div class="card shadow border border-danger cursor-pointer bg-danger delete_quiz" data-toggle="modal" data-target="#DeleteQuiz">
                         <div class="card-body m-8">
-                            <i class="fas fa-book h1 text-white mb-3"></i>
+                            <i class="fas fa-trash-alt h1 text-white mb-3"></i>
                             <h2 class="text-white">Delete Quiz</h2>
                         </div>
                     </div>
@@ -58,8 +58,8 @@
                 <div class="col-md-6 pt-5">
                     <div class="card shadow border border-info cursor-pointer bg-info" data-toggle="modal" data-target="#ContactUsModal">
                         <div class="card-body m-8">
-                            <i class="fas fa-book h1 text-white mb-3"></i>
-                            <h2 class="text-white">Customize Contact-us</h2>
+                            <i class="fas fa-marker h1 text-white mb-3"></i>
+                            <h2 class="text-white">Edit Contact-us</h2>
                         </div>
                     </div>
                 </div>

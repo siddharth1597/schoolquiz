@@ -1,27 +1,37 @@
 <div class="schoolquiz_animation"></div>
 <x-app-layout>
     <x-slot name="header">
-        <i id="fa-back" class="d-none fas fa-arrow-left h2 text-dark position-absolute cursor-pointer" title="Go to Dashboard"></i>
-        <div class="d-flex justify-between">
-            <div class="d-flex">
+        <div class="quiz-header saved">
+            <i id="fa-back" class="d-none fas fa-arrow-left h2 text-dark position-absolute cursor-pointer" title="Go to Dashboard"></i>
+            <div class="d-flex justify-between">
                 <div class="d-flex">
-                    <img class="logo" src="{{ url('images/school_quiz1.png') }}" alt="School Quiz"  title="School Quiz">
+                    <div class="d-flex">
+                        <img class="logo" src="{{ url('images/School_Quiz_Logo.jpg') }}" alt="School Quiz"  title="School Quiz">
+                    </div>
+                    <h2 class="font-semibold text-xl text-gray-800 leading-tight my-auto ml-2">
+                        {{ __('School Quiz') }}
+                    </h2>
                 </div>
-                <h2 class="font-semibold text-xl text-gray-800 leading-tight my-auto ml-2">
-                    {{ __('School Quiz') }}
-                </h2>
-            </div>
-            
-            <i id="fa-edit" class="fas fa-school h2 text-dark mr-3"></i>
-            <div class="invisible">
-                Go to Dahsboard
+                <div class="cross my-auto d-none">
+                    <i class="fas fa-times-circle text-danger h4 home_icon"></i>
+                </div>
+                <div class="d-flex team-points header">
+                    <span class="team_a_points badge badge-dark p-2 my-auto ml-2"></span>
+                    <span class="team_b_points badge badge-dark p-2 my-auto ml-2"></span>
+                    <span class="team_c_points badge badge-dark p-2 my-auto ml-2"></span>
+                </div>
             </div>
         </div>
     </x-slot>
     <div class="background_wall saved_set"></div>
-    <div class="py-10 px-10 text-center">
+    <div class="py-10 px-10 text-center play-set">
         <div class="container mx-auto">
             <div class="row">
+                <div class="d-none team-points mobile-screen mx-auto mb-3">
+                    <span class="team_a_points badge badge-dark p-2 my-auto ml-2"></span>
+                    <span class="team_b_points badge badge-dark p-2 my-auto ml-2"></span>
+                    <span class="team_c_points badge badge-dark p-2 my-auto ml-2"></span>
+                </div>
                 <div class="saved_quiz card shadow border border-white w-100 card_back_color">
                     <div class="card-body m-3" style="padding-top: 0;">
                         <div class="d-flex justify-center mb-3">
@@ -34,8 +44,8 @@
                             <div class="form-group">
                                 <h5 class="form-control shadow-sm rounded quiz_options" id="question" style="border-color: #d8dadc;"></h5>
                             </div>
-                            <div class="form-row">
-                                <div class="form-group col-md-6 ml-3">
+                            <div class="form-row detail-section">
+                                <div class="form-group col-md-6 ml-3 question-options">
                                     <div class="mt-4 d-flex">
                                         <h4 class="m-auto">A. </h4>
                                         <div class="input-group ml-3 shadow-sm">
@@ -82,7 +92,7 @@
                                     </div>
                                 </div>
                                 <input type="hidden" id="storedQuestions" value="1">
-                                <div class="form-group col-md-5 ml-5 mt-4">
+                                <div class="form-group col-md-5 ml-5 mt-4 question-media">
                                     <img id="question_media" class="shadow rounded m-auto" src="{{ url('images/media_icon.png') }}" alt="No Media Image">
                                 </div>
                             </div>

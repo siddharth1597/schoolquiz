@@ -1,23 +1,29 @@
 <x-app-layout>
     <x-slot name="header">
-        <i id="fa-back" class="d-none fas fa-arrow-left h2 text-dark position-absolute cursor-pointer" title="Go to Dashboard"></i>
-        <div class="d-flex justify-between">
-            <div class="d-flex">
-                <i id="fa-edit" class="fas fa-trophy h2 text-dark mr-3 my-auto""></i>
-                <h2 class=" font-semibold text-xl text-gray-800 leading-tight my-auto">
-                    {{ __('Results') }}
-                    </h2>
-            </div>
-            <div class="invisible">
-                Go to Dashboard
-            </div>
-            <div class="d-flex">
-                <span class="home_icon badge badge-dark mr-2 my-auto">Home</span>
-                <img class="logo home_icon" src="{{ url('/images/school_quiz1.png') }}" alt="School Quiz" title="Go to Home Screen">
+        <div class="winner-header">
+            <i id="fa-back" class="d-none fas fa-arrow-left h2 text-dark position-absolute cursor-pointer" title="Go to Dashboard"></i>
+            <div class="d-flex justify-between winner_page">
+                <div class="d-flex">
+                    <i id="fa-edit" class="fas fa-trophy h2 text-dark mr-3 my-auto""></i>
+                    <h2 class=" font-semibold text-xl text-gray-800 leading-tight my-auto">
+                        {{ __('Results') }}
+                        </h2>
+                </div>
+                <div class="invisible">
+                    Go to Dashboard
+                </div>
+                <div class="d-flex">
+                    <span class="home_icon badge badge-dark mr-2 my-auto">
+                        Home
+                    </span>
+                    <a href="/home/contact-page" class="home_icon badge badge-warning mr-2 my-auto">
+                        Contact us
+                    </a>
+                </div>
             </div>
         </div>
     </x-slot>
-    <div class="text-center">
+    <div class="text-center winner-page">
         <div class="container mx-auto" style="max-width: inherit;">
             <div class="col-md-12 m-auto position-relative">
                 <img class="winner_page_image mt-4 rounded-lg position-absolute" src="{{ url('/images/School_Quiz_Logo.jpg') }}" alt="logo">
@@ -32,6 +38,9 @@
 
     <script>
         // play the sound of winner.
+        $(document).ready(function() {
+            $('footer').hide();
+        });
         winner_sound("<?php echo $team_name; ?>");
     </script>
 </x-app-layout>
