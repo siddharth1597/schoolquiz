@@ -132,7 +132,7 @@
 
 /************Mobile Compatible****************/
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 991px) {
   #download_app {
     display: none;
   }
@@ -192,13 +192,9 @@
     font-size: 1.25rem !important;
   }
 
-  .detail-section {
-    flex-direction: column-reverse;
-  }
-
   #question_media {
     width: 85%;
-    height: 30%;
+    height: 85%;
   }
 
   .cross {
@@ -267,9 +263,7 @@
   .home_icon {
     padding: 5px;
   }
-}
 
-@media screen and (max-width: 767px) {
   .team-points.mobile-screen {
     display: flex !important;
     z-index: 1;
@@ -277,5 +271,11 @@
 
   .team-points.header {
     display: none !important;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .detail-section {
+    flex-direction: column-reverse;
   }
 }

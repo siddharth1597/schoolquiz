@@ -45,7 +45,7 @@
                                 <h5 class="form-control shadow-sm rounded quiz_options" id="question" style="border-color: #d8dadc;"></h5>
                             </div>
                             <div class="form-row detail-section">
-                                <div class="form-group col-md-6 ml-3 question-options">
+                                <div class="form-group col-md-6 ml-3 mx-auto question-options">
                                     <div class="mt-4 d-flex">
                                         <h4 class="m-auto">A. </h4>
                                         <div class="input-group ml-3 shadow-sm">
@@ -92,7 +92,7 @@
                                     </div>
                                 </div>
                                 <input type="hidden" id="storedQuestions" value="1">
-                                <div class="form-group col-md-5 ml-5 mt-4 question-media">
+                                <div class="form-group col-md-5 ml-5 mt-4 mx-auto question-media">
                                     <img id="question_media" class="shadow rounded m-auto" src="{{ url('images/media_icon.png') }}" alt="No Media Image">
                                 </div>
                             </div>

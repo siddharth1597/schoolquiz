@@ -42,7 +42,7 @@
                                 <textarea class="shadow-sm rounded form-control" name="question" id="question" cols="115" rows="3" placeholder="Type your question here..." style="border-color: #d8dadc;">{{ $quiz_question->question }}</textarea>
                             </div>
                             <div class="form-row">
-                                <div class="form-group col-md-6 ml-3 question-options">
+                                <div class="form-group col-md-6 ml-3 mx-auto question-options">
                                     <div class="mt-4 d-flex">
                                         <h4 class="m-auto">A. </h4>
                                         <div class="input-group ml-3 shadow-sm">
@@ -93,7 +93,7 @@
                                     </div>
                                 </div>
                                 <input type="hidden" id="storedQuestions" value="1">
-                                <div class="form-group col-md-5 ml-5 mt-4 question-media">
+                                <div class="form-group col-md-5 ml-5 mt-4 mx-auto question-media">
                                     <div class="d-flex">
                                         <div class="custom-file">
                                             @php

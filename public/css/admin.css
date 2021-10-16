@@ -92,7 +92,7 @@ body {
 
 /************Mobile Compatible****************/
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 991px) {
     #fa-home {
         font-size: 1.75rem !important;
     }
@@ -106,7 +106,7 @@ body {
     }
 
     .background_wall.dashboard_back {
-        top: 10px;
+        top: 36px;
     }
 
     .saved-quiz .card-body, .organize-quiz .card-body, .dashboard-quiz .card-body {
@@ -118,15 +118,11 @@ body {
     }
     
     .saved-quiz .card-body h2, .organize-quiz .card-body h2, .dashboard-quiz .card-body h2 {
-        font-size: 1.5rem;
+        font-size: 1.25rem;
     }
 
     .save-card, .make-card {
         margin-top: 1.5rem !important;
-    }
-
-    .dashboard-quiz > .container > .row:nth-child(2) > div:first-child {
-        display: none;
     }
 
     .modal-title {
@@ -254,6 +250,12 @@ body {
 
     .welcome_screen.icon {
         display: block;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .dashboard-quiz > .container > .row:nth-child(2) > div:first-child {
+        display: none;
     }
 }
 
