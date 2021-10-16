@@ -99,8 +99,8 @@
 }
 
 #question_media {
-  width: 75%;
-  height: 225px;
+  width: 80%;
+  height: 85%;
 }
 
 .loading {
@@ -133,6 +133,13 @@
 /************Mobile Compatible****************/
 
 @media screen and (max-width: 991px) {
+  #question_media {
+    width: 95%;
+    height: 85%;
+  }
+}
+
+@media screen and (max-width: 767px) {
   #download_app {
     display: none;
   }
@@ -193,8 +200,8 @@
   }
 
   #question_media {
-    width: 85%;
-    height: 85%;
+    width: 70%;
+    height: 70%;
   }
 
   .cross {
@@ -272,10 +279,15 @@
   .team-points.header {
     display: none !important;
   }
-}
 
-@media screen and (max-width: 767px) {
   .detail-section {
     flex-direction: column-reverse;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  #question_media {
+    width: 85%;
+    height: 85%;
   }
 }
