@@ -135,7 +135,7 @@
 @media screen and (max-width: 991px) {
   #question_media {
     width: 95%;
-    height: 85%;
+    height: auto;
   }
 }
 
@@ -201,7 +201,7 @@
 
   #question_media {
     width: 70%;
-    height: 70%;
+	height: auto;
   }
 
   .cross {
@@ -288,6 +288,6 @@
 @media screen and (max-width: 420px) {
   #question_media {
     width: 85%;
-    height: 85%;
+	height: auto;
   }
 }
