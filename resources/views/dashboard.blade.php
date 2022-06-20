@@ -10,10 +10,10 @@
                 </h2>
             </div>
             <div class="d-flex">
-                <h3 class="font-semibold text-xl text-info leading-tight my-auto welcome_screen cursor-pointer" title="Go to homepage">
-                    {{ __('School Quiz') }}
+                <h3 class="font-semibold text-xl text-dark leading-tight my-auto welcome_screen cursor-pointer" title="Go to homepage">
+                    {{ __('Home') }}
                 </h3>
-                <i class="fas fa-school h4 text-info ml-2 my-auto welcome_screen icon"></i>
+                <i class="fas fa-school h4 purple-text ml-2 my-auto welcome_screen icon"></i>
             </div>
         </div>
     </x-slot>
@@ -27,44 +27,44 @@
         <div class="container mx-auto">
             <div class="row">
                 <div class="col-md-4 pt-5">
-                    <div class="card shadow border border-success cursor-pointer bg-success" data-toggle="modal" data-target="#CreateQuiz">
+                    <div class="card shadow border new-card cursor-pointer" data-toggle="modal" data-target="#CreateQuiz">
                         <div class="card-body m-8">
-                            <i class="fas fa-book h1 text-white mb-3"></i>
-                            <h2 class="text-white">Create Quiz</h2>
+                            <i class="fas fa-book h1 text-success mb-3"></i>
+                            <h2 class="text-dark">Create Quiz</h2>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4 pt-5">
-                    <div class="card shadow border cursor-pointer update_quiz" data-toggle="modal" data-target="#UpdateQuiz">
+                    <div class="card shadow border cursor-pointer new-card" data-toggle="modal" data-target="#UpdateQuiz">
                         <div class="card-body m-8">
-                            <i class="fas fa-book-open h1 text-white mb-3"></i>
-                            <h2 class="text-white">Update Quiz</h2>
+                            <i class="fas fa-book-open h1 update_quiz mb-3"></i>
+                            <h2 class="text-dark">Update Quiz</h2>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4 pt-5">
-                    <div class="card shadow border border-danger cursor-pointer bg-danger delete_quiz" data-toggle="modal" data-target="#DeleteQuiz">
+                    <div class="card shadow border cursor-pointer new-card delete_quiz" data-toggle="modal" data-target="#DeleteQuiz">
                         <div class="card-body m-8">
-                            <i class="fas fa-trash-alt h1 text-white mb-3"></i>
-                            <h2 class="text-white">Delete Quiz</h2>
+                            <i class="fas fa-trash-alt h1 text-danger mb-3"></i>
+                            <h2 class="text-dark">Delete Quiz</h2>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-3 pt-5 align-self-center">
-                    <img class="w-75 mx-auto" src="{{ url('images/time_paper.jpg') }}" alt="quiz">
+                    <img class="w-100 mx-auto" src="{{ url('images/notebook.png') }}" alt="quiz">
                 </div>
                 <div class="col-md-6 pt-5">
-                    <div class="card shadow border border-info cursor-pointer bg-info" data-toggle="modal" data-target="#ContactUsModal">
+                    <div class="card shadow border cursor-pointer new-card" data-toggle="modal" data-target="#ContactUsModal">
                         <div class="card-body m-8">
-                            <i class="fas fa-marker h1 text-white mb-3"></i>
-                            <h2 class="text-white">Edit Contact-us</h2>
+                            <i class="fas fa-marker h1 text-info mb-3"></i>
+                            <h2 class="text-dark">Edit Contact-us</h2>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-3 pt-5 align-self-center">
-                    <img class="w-50 mx-auto" src="{{ url('images/head_question.png') }}" alt="quiz">
+                    <img class="w-80 mx-auto" src="{{ url('images/diary.png') }}" alt="quiz">
                 </div>
             </div>
         </div>

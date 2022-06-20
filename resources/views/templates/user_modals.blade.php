@@ -27,7 +27,7 @@
       <div class="modal-body">
         <div class="form-group">
           <!-- Change according to the question status -->
-          <img src="{{ url('/images/right_answer.gif') }}" alt="Right Answer">
+          <img src="{{ url('/images/tick.png') }}" alt="Right Answer">
           <div class="d-flex mt-4 justify-center">
             <p class="text-dark">Get ready <span class="continue_team font-semibold">Team-B</span> Now your turn !!</p>
           </div>
@@ -49,7 +49,7 @@
       <div class="modal-body">
         <div class="form-group">
           <div class="d-flex mt-4 justify-center">
-            <p class="text-dark font-semibold">Results after <span class="badge badge-success p-2 ml-2 round_no">Round 5</span></p>
+            <p class="text-dark font-semibold">Results after <span class="badge badge-success p-2 ml-2 round_no rounded-pill purple-color">Round 5</span></p>
           </div>
           <div class="row results d-block">
             <div class="row justify-center shadow-sm">

@@ -2,40 +2,42 @@
     <x-slot name="header">
         <div class="d-flex justify-between">
             <div class="d-flex">
-                <i id="fa-home" class="fas fa-home h2 text-dark mr-3"></i>
-                <h2 class="font-semibold text-xl text-gray-800 leading-tight my-auto">
-                    {{ __('School Quiz Dashboard') }}
+                <img class="w-10" src="{{ url('images/lightbulb.png') }}" alt="Logo">
+                <h2 class="font-semibold text-xl text-gray-900 leading-tight my-auto ml-2">
+                    {{ __('Quiz Portal') }}
                 </h2>
             </div>
-            <!-- <div class="go_to_dashboard">
-                <img class="logo homepage" src="{{ url('images/school_quiz1.png') }}" alt="School Quiz"  title="Go to Dashboard">
-            </div> -->
+            <div class="d-flex">
+                <div>
+                    <button type="button" class="btn btn-dark p-2 px-3 rounded-pill homepage">Dashboard</button>
+                </div>
+                <a href="/home/contact-page" class="contact-us btn btn-primary p-2 px-3 ml-2 rounded-pill">Contact us</a>
+            </div>
+            
         </div>
     </x-slot>
-    <div class="background_wall dashboard_back"></div>
-    <div class="py-16 px-10 text-center pt-3">
-        <div class="container mx-auto">
-            <!-- <div class="row m-0">
-                <img class="w-25 mx-auto" src="{{ url('images/screen_show.jpg') }}" alt="quiz">
-            </div> -->
-            
-            <div>
-                <img class="home_image mx-auto" src="{{ url('images/School_Quiz_Logo.jpg') }}" alt="quiz">
+    <div class="dashboard_back">
+        <img src="{{ url('images/animated.gif') }}" alt="animation">
+    </div>
+    <div class="py-16 px-10 text-center">
+        <div class="container d-flex flex-column">
+            <div class="row m-0">
+                <img class="w-25" src="{{ url('images/online-quiz.png') }}" alt="quiz">
             </div>
             <div class="row">
-                <div class="col-md-6 mt-2 save-card">
+                <div class="col-md-3 mt-2 save-card">
                     <div class="card shadow border border-white cursor-pointer saved-quiz" data-toggle="modal" data-target="#StartQuiz">
-                        <div class="card-body m-12">
-                            <i class="fas fa-book h1 text-white mb-3"></i>
-                            <h2 class="text-white">Saved Quiz</h2>
+                        <div class="card-body m-3">
+                            <i class="fas fa-book h1 text-warning mb-3"></i>
+                            <h4 class="text-dark">Play Quiz</h4>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 mt-2 make-card">
+                <div class="col-md-3 mt-2 make-card">
                     <div class="card shadow bor der border-white cursor-pointer organize-quiz">
-                        <div class="card-body m-12">
-                            <i class="fas fa-marker h1 text-white mb-3"></i>
-                            <h2 class="text-white">Make Quiz</h2>
+                        <div class="card-body m-3">
+                            <i class="fas fa-marker h1 text-primary mb-3"></i>
+                            <h4 class="text-dark">Create Quiz</h4>
                         </div>
                     </div>
                 </div>
@@ -75,7 +77,7 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button id='start_quiz' onclick='startQuiz()' class="btn btn-primary start_quiz_button">Start</button>
+                    <button id='start_quiz' onclick='startQuiz()' class="btn btn-primary purple-color px-3 start_quiz_button">Start</button>
                 </div>
             </div>
         </div>
