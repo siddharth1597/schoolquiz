@@ -6,25 +6,24 @@
             <div class="d-flex justify-between">
                 <div class="d-flex">
                     <div class="d-flex">
-                        <img class="logo" src="{{ url('images/School_Quiz_Logo.jpg') }}" alt="School Quiz"  title="School Quiz">
+                        <img class="logo" src="{{ url('images/lightbulb.png') }}" alt="Quiz"  title="Quiz Portal">
                     </div>
                     <h2 class="font-semibold text-xl text-gray-800 leading-tight my-auto ml-2">
-                        {{ __('School Quiz') }}
+                        {{ __('Quiz in Progress') }}
                     </h2>
                 </div>
                 <div class="cross my-auto d-none">
                     <i class="fas fa-times-circle text-danger h4 home_icon"></i>
                 </div>
                 <div class="d-flex team-points header">
-                    <span class="team_a_points badge badge-dark p-2 my-auto ml-2"></span>
-                    <span class="team_b_points badge badge-dark p-2 my-auto ml-2"></span>
-                    <span class="team_c_points badge badge-dark p-2 my-auto ml-2"></span>
+                    <span class="team_a_points badge badge-dark rounded-pill p-2 my-auto ml-2"></span>
+                    <span class="team_b_points badge badge-warning rounded-pill p-2 my-auto ml-2"></span>
+                    <span class="team_c_points badge badge-info rounded-pill p-2 my-auto ml-2"></span>
                 </div>
             </div>
         </div>
     </x-slot>
-    <div class="background_wall saved_set"></div>
-    <div class="py-10 px-10 text-center play-set">
+    <div class="py-4 px-10 text-center play-set">
         <div class="container mx-auto">
             <div class="row">
                 <div class="d-none team-points mobile-screen mx-auto mb-3">
@@ -33,11 +32,11 @@
                     <span class="team_c_points badge badge-dark p-2 my-auto ml-2"></span>
                 </div>
                 <div class="saved_quiz card shadow border border-white w-100 card_back_color">
-                    <div class="card-body m-3" style="padding-top: 0;">
+                    <div class="card-body mt-3 mx-3 mb-0 pb-0" style="padding-top: 0;">
                         <div class="d-flex justify-center mb-3">
-                            <!-- <img class="ques_icon" src="{{ url('images/quiz_icon.png') }}" alt="quiz"> -->
-                            <h4 class="ques_heading font-weight-bold m-2 text-secondary">Question-1</h4>
-                            <span id="team_id" class="badge badge-success p-2 my-auto ml-2"></span>
+                            <img class="ques_icon" src="{{ url('images/quiz_icon.png') }}" alt="quiz">
+                            <h5 class="ques_heading font-semibold m-2 text-secondary">Question-1/30</h5>
+                            <span id="team_id" class="badge badge-success p-2 my-auto ml-2 rounded-pill purple-color"></span>
                         </div>
                         <form>
                             @csrf
@@ -93,17 +92,17 @@
                                 </div>
                                 <input type="hidden" id="storedQuestions" value="1">
                                 <div class="form-group col-md-5 ml-5 mt-4 mx-auto question-media">
-                                    <img id="question_media" class="shadow rounded m-auto" src="{{ url('images/media_icon.png') }}" alt="No Media Image">
+                                    <img id="question_media" class="rounded m-auto" src="{{ url('images/media_icon.gif') }}" alt="No Media Image">
                                 </div>
                             </div>
                         </form>
                     </div>
-                    <div class="card-footer py-4 justify-between d-flex">
+                    <div class="card-footer py-3 justify-between d-flex">
                         <i id='back-{{ $quiz_set_no }}' class="invisible fas fa-arrow-circle-left text-dark h4 float-left">  Back</i>
-                        <div class="stopwatch rounded-lg">
-                            <div id="stopwatch" class="mb-0 text-center font-weight-bold text-white h4">60</div>
+                        <div class="stopwatch rounded-circle">
+                            <div id="stopwatch" class="mb-0 text-center font-weight-bold text-white h5">60</div>
                         </div>
-                        <button id='save_details' data-question="1" data-set="{{ $quiz_set_no }}" data-team="A" onclick='submitAnswer(this)' tabindex="0" class="btn btn-primary float-right">Submit</button>
+                        <button id='save_details' data-question="1" data-set="{{ $quiz_set_no }}" data-team="A" onclick='submitAnswer(this)' tabindex="0" class="btn btn-dark px-4 float-right rounded-pill">Submit</button>
                     </div>
                 </div>
             </div>
@@ -115,9 +114,9 @@
                     }
                 @endphp
             </div>
-            <div>
-                <img class="w-25 mx-auto" src="{{ url('images/screen_show.jpg') }}" alt="quiz">
-            </div>
+
+            <img class="w-60 position-absolute top-32 left-0 back-image1" src="{{ url('images/speed.png') }}" alt="quiz">
+            <img class="w-60 position-absolute bottom-60 right-0 back-image2" src="{{ url('images/program.png') }}" alt="quiz">
         </div>
     </div>
 

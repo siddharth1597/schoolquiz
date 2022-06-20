@@ -6,10 +6,12 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <meta name="url" content="{{ url('') }}">
 
-        <title>{{ config('app.name', 'SchoolQuiz') }}</title>
-        <link rel="icon" href="{!! url('images/school_quiz1.png') !!}" type = "image/x-icon">
+        <title>Quiz Portal | SidTechTalks</title>
+        <link rel="icon" href="{!! url('images/lightbulb.png') !!}" type = "image/x-icon">
         <!-- Fonts -->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet"> 
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
@@ -50,6 +52,7 @@
             <div class="loading">
                 <img class="w-40 m-auto" src="{{ url('images/loading.gif') }}" alt="loading">
             </div>
+
             <!-- Page Heading -->
             @if (isset($header))
                 <header class="bg-white shadow position-relative">
@@ -63,11 +66,11 @@
             <main class="position-relative">
                 {{ $slot }}
             </main>
-
         </div>
+
+        <!-- Page Footer -->
         <footer class="position-relative bg-dark p-3 px-5 w-100 text-right shadow footer">
-            <i class="fas fa-phone-alt text-white mr-2"></i>
-            <a href="/home/contact-page" class="text-white">Contact us</a>
+            <p class="text-white mb-0">Made with 💓 by SidTechTalks</p>
         </footer>
         @stack('modals')
 

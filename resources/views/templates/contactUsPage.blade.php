@@ -3,8 +3,8 @@
         <i id="fa-back" class="d-none fas fa-arrow-left h2 text-dark position-absolute cursor-pointer" title="Go to Dashboard"></i>
         <div class="d-flex justify-between">
             <div class="d-flex">
-                <img class="winner_page_image mt-4 rounded-lg m-auto" src="{{ url('/images/School_Quiz_Logo.jpg') }}" alt="logo">
-                <button id="download_app" class="btn btn-primary px-3 my-auto ml-2">Download App</button>
+                <img class="w-10 mt-4 rounded-lg m-auto" src="{{ url('/images/lightbulb.png') }}" alt="logo">
+                <!-- <button id="download_app" class="btn btn-primary px-3 my-auto ml-2">Download App</button> -->
             </div>
             <div class="invisible">
                 Go to Dashboard
@@ -13,7 +13,7 @@
                 $icon = $contact->home_icon;
             @endphp
             <div class="d-flex">
-                <span class="home_icon badge badge-dark mr-2 my-auto p-2">Home</span>
+                <span class="home_icon btn btn-dark mr-2 my-auto p-1 px-3 rounded-pill">Home</span>
             </div>
         </div>
     </x-slot>
@@ -23,7 +23,7 @@
             @php
                 $profile = $contact->profile_image;
             @endphp
-            <div class="card shadow border border-white w-100 contact-us-back">
+            <div class="card shadow border border-white w-100 bg-dark">
                 <div class="card-body m-3">
                     <h2 id="title" class="font-semibold text-dark">{{ $contact->title }}</h2>
                     <div class="row mt-5">

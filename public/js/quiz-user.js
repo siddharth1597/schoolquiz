@@ -107,7 +107,7 @@ function stopwatch() {
       // If the count down is over, write some text 
       if (current < 0) {
         document.getElementById("stopwatch").innerHTML = "Time's up";
-        var status_gif = '\\images/very_poor.gif';
+        var status_gif = '\\images/timeout.png';
         var status = 'Very Poor';
         var current_question = $('#save_details').attr('data-question');
         var current_team = $('#save_details').attr('data-team');
@@ -213,7 +213,7 @@ function clearSavedForm() {
   document.getElementById('option3').innerHTML = '';
   document.getElementById('option4').innerHTML = '';
   $('input[name="answer"]').prop('checked', false);
-  $('#question_media').attr('src', '\\images/media_icon.png').attr('alt', 'No Media Image');
+  $('#question_media').attr('src', '\\images/media_icon.gif').attr('alt', 'No Media Image');
 }
 
 // Get the question data.
@@ -258,7 +258,7 @@ function playQuiz($this) {
             $('#question_media').attr('src', data.saved_question['media_file'] + '?v=' + (new Date()).getTime()).attr('alt', 'Quiz Media Image');
           }
 
-          $('.ques_heading').text('Question-' + data.question);
+          $('.ques_heading').text('Question-' + data.question + '/30');
           $('#save_details').attr('data-question', data.question);
           $('#save_details').attr('data-team', data.team);
           $('.loading').css('display', 'none');
@@ -335,13 +335,13 @@ function submitAnswer($this) {
         $('#question-' + (Number(question_no) + 1)).addClass('btn-dark').removeClass('btn-secondary');
 
         if (data.status == 'matched') {
-          status_gif = '\\images/right_answer.gif';
+          status_gif = '\\images/tick.png';
           status = 'Right Answer';
           audio1 = '\\sounds/applause.mp3';
           audio2 = '\\sounds/right_answer.mp3';
         }
         else if (data.status == 'unmatched') {
-          status_gif = '\\images/wrong_answer.gif';
+          status_gif = '\\images/cross.png';
           status = 'Wrong Answer';
           audio1 = '\\sounds/buzzer.mp3';
           audio2 = '\\sounds/wrong_answer.mp3';

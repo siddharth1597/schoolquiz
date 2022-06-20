@@ -1,12 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Londrina+Shadow&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=PT+Sans+Caption&display=swap');
+* {
+  font-family: 'Poppins', sans-serif;
+}
 .stopwatch {
-  box-shadow:  0 0 0.125rem 0.25rem #2933423d !important;
-  padding: 5px 6px;
+  box-shadow:  0 0 0.125rem 0.25rem #bababa3d !important;
+  width: 50px;
+  height: 50px;
 }
 
-.contact-us-back {
-  font-family: 'PT Sans Caption', sans-serif;
+.stopwatch div {
+  margin-top: 13px;
 }
 
 .contact_background_wall {
@@ -18,7 +20,7 @@
   width: 100%;
   height: 750px;
   margin-top: -50px;
-  z-index: 1;
+  z-index: -1;
 }
 
 .home_icon {
@@ -29,6 +31,15 @@
 .background_wall.saved_set {
   height: 1100px;
   opacity: .2;
+}
+
+.back-image1 {
+  left: -2rem;
+  z-index: -1;
+}
+
+.back-image2 {
+  z-index: -1;
 }
 
 #team_id {
@@ -52,7 +63,8 @@
 }
 
 #ContinueQuiz img {
-  width: 100%;
+  width: 50%;
+  margin: auto;
 }
 
 #StartQuiz .modal-dialog {
@@ -70,32 +82,25 @@
 }
 
 .winner_celeb {
-  z-index: 1;
+  z-index: -1;
   opacity: .3;
 }
 
 .winner_cup {
   z-index: 1;
-  width: 60%;
-  left: 21%;
 }
 
 .winner_title {
-  letter-spacing: 3px;
-  font-size: 64px;
+  letter-spacing: 2px;
+  font-size: 40px;
   z-index: 2;
-  top: 80px;
-  font-family: auto;
 }
 
 .winner_team {
-  font-size: 64px;
-  letter-spacing: 4px;
+  font-size: 40px;
+  letter-spacing: 2px;
   color: darkred;
   z-index: 2;
-  transform: translate(0, -160px);
-  bottom: 0;
-  font-family: auto;
 }
 
 #question_media {
@@ -116,14 +121,6 @@
 #download_app {
   position: relative;
   z-index: 10;
-}
-
-.winner_page_image {
-  top: 0;
-  left: 20px;
-  z-index: 9;
-  width: 55px;
-  opacity: 1;
 }
 
 .contact_image {

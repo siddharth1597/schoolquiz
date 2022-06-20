@@ -90,7 +90,7 @@ function clearForm(next_question_no, $this, set_no) {
   document.getElementById('media_files').innerHTML = '+ Add Image or Video (optional)';
   $($this).attr('data-question', next_question_no);
   $('#back-' + set_no).attr('data-question', next_question_no - 1);
-  $('.ques_heading').text('Question-' + next_question_no);
+  $('.ques_heading').text('Question-' + next_question_no + '/30');
   $('[name="answer"]').prop('checked', false);
   
   if (next_question_no == 30) { 
@@ -151,7 +151,7 @@ function storedNextForm(current_question, set_no) {
             }
           }
           else {
-            $('.media_image').attr('src', '\\images/media_icon.png').attr('alt', 'No Media Image');
+            $('.media_image').attr('src', '\\images/media_icon.gif').attr('alt', 'No Media Image');
             document.getElementById('media_file').value = '';
             document.getElementById('media_files').innerHTML = '+ Add Image or Video (optional)';
           }
@@ -160,7 +160,7 @@ function storedNextForm(current_question, set_no) {
         }
 
         $('#back-' + set_no).attr('data-question', current_question - 1);
-        $('.ques_heading').text('Question-' + (current_question));
+        $('.ques_heading').text('Question-' + (current_question) + '/30');
         if ($('#save_details-' + set_no).length > 0) {
           $('#save_details-' + set_no).attr('data-question', current_question);
         }
@@ -205,7 +205,7 @@ function backForm($this) {
           document.getElementById('option4').value = data.saved_question['option4'];
 
           $($this).attr('data-question', current_question - 1);
-          $('.ques_heading').text('Question-' + (Number(current_question)));
+          $('.ques_heading').text('Question-' + (Number(current_question)) + '/30');
           $('input[name="answer"][value='+ data.saved_question["answer"] +']').prop('checked', true);
 
           if ($('#save_details-' + set_no).length > 0) {
@@ -230,7 +230,7 @@ function backForm($this) {
             }
           }
           else {
-            $('.media_image').attr('src', '\\images/media_icon.png').attr('alt', 'No Media Image');
+            $('.media_image').attr('src', '\\images/media_icon.gif').attr('alt', 'No Media Image');
             document.getElementById('media_file').value = '';
             document.getElementById('media_files').innerHTML = '+ Add Image or Video (optional)';
           }
@@ -279,7 +279,7 @@ $(document).ready(function() {
     var set_no = $(this).attr('data-set');
 
     // Clear media file
-    $('.media_image').attr('src', '\\images/media_icon.png').attr('alt', 'No Media Image');
+    $('.media_image').attr('src', '\\images/media_icon.gif').attr('alt', 'No Media Image');
     document.getElementById('media_file').value = '';
     document.getElementById('media_files').innerHTML = '+ Add Image or Video (optional)';
 

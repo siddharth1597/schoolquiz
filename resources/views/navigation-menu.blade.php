@@ -6,7 +6,7 @@
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
-                        <img class="logo" src="{{ url('images/school_quiz1.png') }}" alt="School Quiz">
+                        <img class="logo" src="{{ url('images/lightbulb.png') }}" alt="Quiz Portal">
                     </a>
                 </div>
 

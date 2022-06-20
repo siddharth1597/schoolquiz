@@ -1,19 +1,19 @@
 <x-app-layout>
     <x-slot name="header">
         <div class="quiz-header">
-            <i id="fa-back" class="fas fa-arrow-left h2 text-dark position-absolute cursor-pointer" title="Go to Dashboard"></i>
+            <i id="fa-back" class="fas fa-arrow-left h3 text-dark position-absolute cursor-pointer" title="Go to Dashboard"></i>
             <div class="d-flex justify-between">
                 <div class="d-flex">
-                    <i id="fa-edit" class="fas fa-edit h2 text-dark mr-3"></i>
+                    <i id="fa-edit" class="fas fa-edit h3 text-dark mr-3"></i>
                     <h2 class="font-semibold text-xl text-gray-800 leading-tight my-auto">
                         {{ __('Create Quiz') }}
                     </h2>
                 </div>
                 <div class="row">
-                    <h3 class="text-success font-semibold">Quiz Set-{{ $quiz_set_no }}</h3>
+                    <h4 class="purple-text font-semibold">Quiz Set-{{ $quiz_set_no }}</h4>
                 </div>
                 <div class="d-flex go_to_dashboard">
-                    <img class="logo homepage" src="{{ url('images/school_quiz1.png') }}" alt="School Quiz"  title="Go to Dashboard">
+                    <img class="logo homepage" src="{{ url('images/lightbulb.png') }}" alt="Quiz Portal"  title="Go to Dashboard">
                 </div>
             </div>
         </div>
@@ -21,10 +21,10 @@
     <div class="background_wall"></div>
     <div class="py-10 px-10 text-center create-set">
         <div class="row d-flex justify-center mt-2 mb-4">
-            <div class="ml-1 mt-2 float-left" style="z-index: 10"><button id="question-1" data-question="1" class="btn btn-dark rounded shadow create_question_pagination" title="Question 1">1</button></div>
+            <div class="ml-1 mt-2 float-left" style="z-index: 10"><button id="question-1" data-question="1" class="btn btn-dark rounded-circle shadow create_question_pagination" title="Question 1">1</button></div>
             @php
                 for ($i = 2 ; $i < 31 ; $i++) {
-                    echo '<div class="ml-1 mt-2 float-left" style="z-index: 10"><button id=question-' . $i . ' data-question=' . $i . ' class="btn btn-secondary rounded shadow create_question_pagination" title="Question ' . $i . '">' . $i . '</button></div>';
+                    echo '<div class="ml-1 mt-2 float-left" style="z-index: 10"><button id=question-' . $i . ' data-question=' . $i . ' class="btn btn-secondary rounded-circle shadow create_question_pagination" title="Question ' . $i . '">' . $i . '</button></div>';
                 }
             @endphp
         </div>
@@ -34,7 +34,7 @@
                     <div class="card-body m-3" style="padding-top: 0;">
                         <div class="d-flex justify-center mb-3">
                             <img class="ques_icon" src="{{ url('images/quiz_icon.png') }}" alt="quiz">
-                            <h4 class="ques_heading font-weight-bold m-2 text-secondary">Question-1</h4>
+                            <h4 class="ques_heading font-weight-bold m-2 text-secondary">Question-1/30</h4>
                         </div>
                         <form>
                             @csrf
@@ -97,20 +97,20 @@
                                             <small id="upload_msg_proof d-none" class="form-text"></small>
                                         </div>
                                     </div>
-                                    <i class="far fa-image h1 mt-2" style="font-size: 9.5rem; color:#d8dadc"></i>
+                                    <img class="rounded m-auto mt-2 w-60" src="{{ url('images/media_icon.gif') }}" alt="media">
                                 </div>
                             </div>
                         </form>
                     </div>
-                    <div class="card-footer py-4">
+                    <div class="card-footer py-3">
                         <i id='back-{{ $quiz_set_no }}' data-set={{ $quiz_set_no }} data-question="0" class="fas fa-arrow-circle-left text-dark h4 cursor-pointer back_link float-left" onclick="backForm(this)">  Back</i>
-                        <button id='save_details-{{ $quiz_set_no }}' data-question="1" data-set="{{ $quiz_set_no }}" onclick='saveQuestion(this, "create")' class="btn btn-primary float-right">Submit & Next</button>
+                        <button id='save_details-{{ $quiz_set_no }}' data-question="1" data-set="{{ $quiz_set_no }}" onclick='saveQuestion(this, "create")' class="btn btn-dark rounded-pill float-right">Submit & Next</button>
                     </div>
                 </div>
             </div>
-            <div>
+            <!-- <div>
                 <img class="w-25 mx-auto" src="{{ url('images/quiz-logo-poll.jpg') }}" alt="quiz">
-            </div>
+            </div> -->
         </div>
     </div>
 
