@@ -65,8 +65,10 @@ class CreateQuizController extends Controller
                         $filename = 'Media_s' . $set_no . '_q' . $question_no;
                         $fileNameToStore = $filename . '.' . $extension;
 
+                        // for online- /schoolquiz/public/uploads/Quiz_Media/
+                        // for local- uploads/Quiz_Media/
                         $request->file('media_file')->move(public_path('uploads/Quiz_Media'), $fileNameToStore);
-                        $media_file =  '/uploads/Quiz_Media/' . $fileNameToStore;
+                        $media_file =  '/schoolquiz/public/uploads/Quiz_Media/' . $fileNameToStore;
                     }
                     else {
                         $media_file = Session::has('question_media') ? Session::get('question_media') : '';

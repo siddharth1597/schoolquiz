@@ -52,10 +52,10 @@ class ContactUsController extends Controller
         'phone_no' => $request->phone_no
       ];
       if (Session::has('profile_image') && Session::get('profile_image') != '') {
-        $values_update['profile_image'] = '/uploads/Contact_us/' . Session::get('profile_image');
+        $values_update['profile_image'] = '/schoolquiz/public/uploads/Contact_us/' . Session::get('profile_image');
       }
       if (Session::has('icon') && Session::get('icon') != '') {
-        $values_update['home_icon'] = '/uploads/Contact_us/' . Session::get('icon');
+        $values_update['home_icon'] = '/schoolquiz/public/uploads/Contact_us/' . Session::get('icon');
       }
       $update = contact_us::where('role', 'admin')
           ->update($values_update);
@@ -76,8 +76,8 @@ class ContactUsController extends Controller
       $contact->pincode = $request->pincode;
       $contact->whatsapp_no = $request->whatsapp_no;
       $contact->phone_no = $request->phone_no;
-      $contact->home_icon = '/uploads/Contact_us/' . Session::get('icon');
-      $contact->profile_image = '/uploads/Contact_us/' . Session::get('profile_image');
+      $contact->home_icon = '/schoolquiz/public/uploads/Contact_us/' . Session::get('icon');
+      $contact->profile_image = '/schoolquiz/public/uploads/Contact_us/' . Session::get('profile_image');
       $contact->save();
 
       Session::forget('profile_image');
@@ -121,7 +121,7 @@ class ContactUsController extends Controller
       return response()->json([
         'message' => 'Image Uploaded Successfully',
         'class_name' => 'text-success',
-        'image_url' => '/uploads/Contact_us/' . $new_name
+        'image_url' => '/schoolquiz/public/uploads/Contact_us/' . $new_name
       ]);
     } 
     else {

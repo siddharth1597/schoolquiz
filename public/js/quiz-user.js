@@ -86,7 +86,7 @@ function stopwatch() {
   $('.stopwatch').addClass('bg-success').removeClass('bg-warning').removeClass('bg-danger');
 
   // this function will start after pause_time
-  stopwatch_timeout = setTimeout(function() {
+  // stopwatch_timeout = setTimeout(function() {
 
     // Update the count down every 1 second
     stopwatch_interval = setInterval(function () {
@@ -117,7 +117,7 @@ function stopwatch() {
         // set pagination
         $('#question-' + current_question).addClass('btn-success').removeClass('btn-secondary').removeClass('btn-dark');
         $('#question-' + next_question).addClass('btn-dark').removeClass('btn-secondary');
-        var audio1 = '\\sounds/bell.mp3';
+        var audio1 = '';
         var audio2 = '\\sounds/very_poor.mp3';
 
         clearSavedForm();
@@ -125,7 +125,7 @@ function stopwatch() {
       }
     }, 1000);
 
-  }, pause_time);
+  // }, pause_time);
 }
 
 // Check idle count
@@ -158,10 +158,15 @@ function idleCounter() {
 // show modal after every question.
 function showContinueModal(status_gif, status, next_team, next_question, team_points, audio1, audio2) {
   // Status Audio
-  var sound1 = new Audio(audio1);
-  var sound2 = new Audio(audio2);
-  sound1.play();
-  sound2.play();
+  if(audio1 !== '') {
+    var sound1 = new Audio(audio1);
+    sound1.play();
+  }
+
+  if(audio2 !== '') {
+    var sound2 = new Audio(audio2);
+    sound2.play();
+  }
 
   if (next_question != 16 && next_question != 31) {
     $('#ContinueQuiz').find('.continue_team').text('Team ' + next_team);
@@ -337,13 +342,13 @@ function submitAnswer($this) {
         if (data.status == 'matched') {
           status_gif = '\\images/tick.png';
           status = 'Right Answer';
-          audio1 = '\\sounds/applause.mp3';
+          audio1 = '';
           audio2 = '\\sounds/right_answer.mp3';
         }
         else if (data.status == 'unmatched') {
           status_gif = '\\images/cross.png';
           status = 'Wrong Answer';
-          audio1 = '\\sounds/buzzer.mp3';
+          audio1 = '';
           audio2 = '\\sounds/wrong_answer.mp3';
         }
 
